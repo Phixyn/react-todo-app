@@ -5,7 +5,7 @@ import axios from "axios";
 
 import Header from "./layouts/Header";
 import Todos from "./components/Todos";
-// import AddTodo from "./components/AddTodo";
+import AddTodo from "./components/AddTodo";
 import About from "./pages/About";
 
 import "./App.css";
@@ -67,6 +67,8 @@ class App extends React.Component {
               path="/"
               render={(props) => (
                 <React.Fragment>
+                  <AddTodo addTodo={this.addTodo} />
+
                   <Todos
                     todos={this.state.todos}
                     markComplete={this.markComplete}
