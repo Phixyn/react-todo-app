@@ -37,11 +37,6 @@ class App extends React.Component {
       .then((res) => this.setState({ todos: [...this.state.todos, res.data] }));
   };
 
-  // Toggle completed state of todo object
-  markComplete = (id) => {
-    return true;
-  };
-
   // Delete a todo item
   delTodo = (id) => {
     // [...] = spread operator (copy items)
@@ -53,6 +48,18 @@ class App extends React.Component {
           todos: [...this.state.todos.filter((todo) => todo.id !== id)],
         })
       );
+  };
+
+  // Toggle completed state of todo item
+  markComplete = (id) => {
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      }),
+    });
   };
 
   render() {
