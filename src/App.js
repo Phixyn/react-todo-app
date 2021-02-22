@@ -21,15 +21,39 @@ class App extends React.Component {
       .then((res) => this.setState({ todos: res.data }));
   }
 
+  // Add a new todo item
+  addTodo = (title) => {
+    // const newTodo = {
+    //   id: uuidv4(),
+    //   title, // new in ES6: same as title: title
+    //   completed: false
+    // }
+
+    axios
+      .post("https://jsonplaceholder.typicode.com/todos", {
+        title, // new in ES6: same as title: title
+        completed: false,
+      })
+      .then((res) => this.setState({ todos: [...this.state.todos, res.data] }));
+  };
+
   // Toggle completed state of todo object
   markComplete = (id) => {
     return true;
   };
 
-  // Delete todo item
+  // Delete a todo item
   delTodo = (id) => {
-    return true;
-  }
+    // [...] = spread operator (copy items)
+    // Used because we can't (and shouldn't) change state values directly
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .then((res) =>
+        this.setState({
+          todos: [...this.state.todos.filter((todo) => todo.id !== id)],
+        })
+      );
+  };
 
   render() {
     return (
