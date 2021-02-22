@@ -75,9 +75,11 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <div className="container">
+          <header>
             <Header />
+          </header>
 
+          <section className="container">
             <Route
               exact
               path="/"
@@ -95,7 +97,7 @@ class App extends React.Component {
             />
 
             <Route path="/about" component={About} />
-          </div>
+          </section>
         </div>
       </Router>
     );
