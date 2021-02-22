@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import { v4 as uuidv4 } from 'uuid';
-import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
+// import axios from "axios";
 
 import Header from "./layouts/Header";
 import Todos from "./components/Todos";
@@ -15,39 +15,48 @@ class App extends React.Component {
     todos: [],
   };
 
-  componentDidMount() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/todos?_limit=10")
-      .then((res) => this.setState({ todos: res.data }));
-  }
+  // Use if testing against the JSON Placeholder API
+  // componentDidMount() {
+  //   axios
+  //     .get("https://jsonplaceholder.typicode.com/todos?_limit=10")
+  //     .then((res) => this.setState({ todos: res.data }));
+  // }
 
   // Add a new todo item
   addTodo = (title) => {
-    // const newTodo = {
-    //   id: uuidv4(),
-    //   title, // new in ES6: same as title: title
-    //   completed: false
-    // }
+    let newTodo = {
+      id: uuidv4(),
+      title, // new in ES6: same as title: title
+      completed: false,
+    };
 
-    axios
-      .post("https://jsonplaceholder.typicode.com/todos", {
-        title, // new in ES6: same as title: title
-        completed: false,
-      })
-      .then((res) => this.setState({ todos: [...this.state.todos, res.data] }));
+    this.setState({ todos: [...this.state.todos, newTodo] });
+
+    // Use if testing against the JSON Placeholder API
+    // axios
+    //   .post("https://jsonplaceholder.typicode.com/todos", {
+    //     title,
+    //     completed: false,
+    //   })
+    //   .then((res) => this.setState({ todos: [...this.state.todos, res.data] }));
   };
 
   // Delete a todo item
   delTodo = (id) => {
     // [...] = spread operator (copy items)
     // Used because we can't (and shouldn't) change state values directly
-    axios
-      .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
-      .then((res) =>
-        this.setState({
-          todos: [...this.state.todos.filter((todo) => todo.id !== id)],
-        })
-      );
+    this.setState({
+      todos: [...this.state.todos.filter((todo) => todo.id !== id)],
+    });
+
+    // Use if testing against the JSON Placeholder API
+    // axios
+    //   .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    //   .then((res) =>
+    //     this.setState({
+    //       todos: [...this.state.todos.filter((todo) => todo.id !== id)],
+    //     })
+    //   );
   };
 
   // Toggle completed state of todo item
