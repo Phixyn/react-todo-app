@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #282c34;
+  background-color: rgb(26, 26, 26);
   color: #d9d9d9;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
@@ -24,10 +24,6 @@ a:hover {
 
 p {
   font-size: 1.2em;
-}
-
-.container {
-  padding: 0 1rem;
 }
 
 .btn {

@@ -13,7 +13,7 @@ class Header extends React.Component {
 }
 
 let headerStyle = {
-  background: "#000",
+  background: "rgb(10,10,10)",
   borderBottom: "1px solid #dd0000",
   textAlign: "center",
   padding: "10px",
