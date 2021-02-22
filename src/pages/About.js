@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 function About() {
   return (
@@ -10,7 +10,7 @@ function About() {
       <h1>About</h1>
       <p>This is a simple To-Do list app to demonstrate my React knowledge.</p>
     </React.Fragment>
-  )
+  );
 }
 
-export default About
+export default About;
