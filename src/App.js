@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 // import axios from "axios";
 
@@ -7,8 +7,6 @@ import Header from "./layouts/Header";
 import Todos from "./components/Todos";
 import AddTodo from "./components/AddTodo";
 import About from "./pages/About";
-
-import "./App.css";
 
 class App extends React.Component {
   state = {
@@ -73,33 +71,36 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <div className="App">
-          <header>
+      <div id="app" className="bg-gray-300 h-screen pt-8">
+        <Router>
+          <div className="max-w-sm mx-auto">
             <Header />
-          </header>
 
-          <section className="container">
-            <Route
-              exact
-              path="/"
-              render={(props) => (
-                <React.Fragment>
-                  <AddTodo addTodo={this.addTodo} />
+            <section className="container">
+              <Switch>
 
-                  <Todos
-                    todos={this.state.todos}
-                    markComplete={this.markComplete}
-                    delTodo={this.delTodo}
-                  />
-                </React.Fragment>
-              )}
-            />
+                <Route
+                  exact
+                  path="/"
+                  render={(props) => (
+                    <React.Fragment>
+                      <AddTodo addTodo={this.addTodo} />
 
-            <Route path="/about" component={About} />
-          </section>
-        </div>
-      </Router>
+                      <Todos
+                        todos={this.state.todos}
+                        markComplete={this.markComplete}
+                        delTodo={this.delTodo}
+                      />
+                    </React.Fragment>
+                  )}
+                />
+
+                <Route path="/about" component={About} />
+              </Switch>
+            </section>
+          </div>
+        </Router>
+      </div>
     );
   }
 }
