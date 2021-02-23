@@ -1,12 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class Header extends React.Component {
   render() {
     return (
-      <header style={headerStyle}>
+      <header className="pb-8">
         <h1>Todo List</h1>
-        <Link to="/">Home</Link> | <Link to="/about">About</Link>
+        <NavLink
+          exact
+          to="/"
+          className="pb-1 mr-4"
+          activeClassName="border-b-2 border-gray-700"
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/about"
+          className="pb-1"
+          activeClassName="border-b-2 border-gray-700"
+        >
+          About
+        </NavLink>
       </header>
     );
   }
