@@ -20,33 +20,27 @@ class AddTodo extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} style={{ display: "flex" }}>
-        <input
-          type="text"
-          name="title"
-          placeholder="Add task..."
-          style={formInputStyle}
-          value={this.state.title}
-          onChange={this.onChange}
-        />
-        <input
-          type="submit"
-          value="Submit"
-          className="btn"
-          style={{ flex: "1" }}
-        />
-      </form>
+      <div className="mt-6 px-3">
+        <form onSubmit={this.onSubmit} style={{ display: "flex" }}>
+          <input
+            type="text"
+            name="title"
+            placeholder="Add task..."
+            value={this.state.title}
+            onChange={this.onChange}
+            className="block w-full px-3 py-2 placeholder-gray-500 bg-white rounded shadow focus:outline-none"
+          />
+          <input
+            type="submit"
+            value="Submit"
+            className="btn"
+            style={{ flex: "1" }}
+          />
+        </form>
+      </div>
     );
   }
 }
-
-const formInputStyle = {
-  border: "1px solid #222",
-  background: "#444",
-  color: "#d9d9d9",
-  flex: "10",
-  padding: "5px",
-};
 
 AddTodo.propTypes = {
   addTodo: PropTypes.func.isRequired,

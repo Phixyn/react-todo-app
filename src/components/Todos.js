@@ -4,14 +4,29 @@ import PropTypes from "prop-types";
 
 class Todos extends React.Component {
   render() {
-    return this.props.todos.map((todo) => (
-      <TodoItem
-        key={todo.id}
-        todo={todo}
-        markComplete={this.props.markComplete}
-        delTodo={this.props.delTodo}
-      />
-    ));
+    return (
+      <div className="mt-6">
+        {this.props.todos.length > 0 ? (
+          <ul className="mt-8">
+            {this.props.todos.map((todo) => (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                markComplete={this.props.markComplete}
+                delTodo={this.props.delTodo}
+              />
+            ))}
+          </ul>
+        ) : (
+          <p
+            className="px-3 mt-16 text-lg text-center text-gray-500"
+            data-testid="empty-todos"
+          >
+            Everything's done!
+          </p>
+        )}
+      </div>
+    )
   }
 }
 
