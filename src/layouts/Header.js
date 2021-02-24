@@ -5,7 +5,6 @@ class Header extends React.Component {
   render() {
     return (
       <header className="pb-8">
-        <h1>Todo List</h1>
         <NavLink
           exact
           to="/"

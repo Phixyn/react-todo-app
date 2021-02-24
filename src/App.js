@@ -83,7 +83,9 @@ class App extends React.Component {
                   exact
                   path="/"
                   render={(props) => (
-                    <React.Fragment>
+                    <div className="max-w-sm px-4 py-6 mx-auto bg-white rounded shadow-lg">
+                      <h1 className="text-2xl font-bold px-3">Todos</h1>
+
                       <AddTodo addTodo={this.addTodo} />
 
                       <Todos
@@ -91,7 +93,7 @@ class App extends React.Component {
                         markComplete={this.markComplete}
                         delTodo={this.delTodo}
                       />
-                    </React.Fragment>
+                    </div>
                   )}
                 />
 
