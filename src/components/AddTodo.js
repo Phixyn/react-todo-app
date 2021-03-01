@@ -2,7 +2,6 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 function AddTodo(props) {
-  // TODO check react examples to see if they use const or let
   const [title, setTitle] = useState("");
 
   const onSubmit = (evt) => {
