@@ -1,8 +1,12 @@
+import { FaTrashAlt } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 function TodoItem(props) {
   const getStyle = () => {
     return {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-start",
       background: "#ccc",
       padding: "10px",
       borderBottom: "1px #777 dotted",
@@ -20,12 +24,11 @@ function TodoItem(props) {
         onChange={() => props.markComplete(props.todo.id)}
       />
       &nbsp;
-      {props.todo.title}
+      <span style={{ flex: 1 }}>{props.todo.title}</span>
       <button
-        style={deleteBtnStyle}
         onClick={() => props.delTodo(props.todo.id)}
       >
-        X
+        <FaTrashAlt style={{ color: "#dd0000" }} />
       </button>
     </li>
   );
@@ -35,16 +38,6 @@ TodoItem.propTypes = {
   todo: PropTypes.object.isRequired,
   markComplete: PropTypes.func.isRequired,
   delTodo: PropTypes.func.isRequired,
-};
-
-const deleteBtnStyle = {
-  background: "#dd0000",
-  color: "#eee",
-  border: "none",
-  padding: "5px 10px",
-  borderRadius: "50%",
-  cursor: "pointer",
-  float: "right",
 };
 
 export default TodoItem;
