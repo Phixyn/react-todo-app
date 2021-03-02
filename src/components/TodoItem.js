@@ -15,6 +15,8 @@ function TodoItem(props) {
       <p>
         <input
           type="checkbox"
+          checked={props.todo.completed}
+          value={props.todo.completed}
           onChange={() => props.markComplete(props.todo.id)}
         />
         &nbsp;
