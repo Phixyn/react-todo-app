@@ -11,24 +11,22 @@ function TodoItem(props) {
   };
 
   return (
-    <div style={getStyle()}>
-      <p>
-        <input
-          type="checkbox"
-          checked={props.todo.completed}
-          value={props.todo.completed}
-          onChange={() => props.markComplete(props.todo.id)}
-        />
-        &nbsp;
-        {props.todo.title}
-        <button
-          style={deleteBtnStyle}
-          onClick={() => props.delTodo(props.todo.id)}
-        >
-          X
-        </button>
-      </p>
-    </div>
+    <li style={getStyle()}>
+      <input
+        type="checkbox"
+        checked={props.todo.completed}
+        value={props.todo.completed}
+        onChange={() => props.markComplete(props.todo.id)}
+      />
+      &nbsp;
+      {props.todo.title}
+      <button
+        style={deleteBtnStyle}
+        onClick={() => props.delTodo(props.todo.id)}
+      >
+        X
+      </button>
+    </li>
   );
 }
 
