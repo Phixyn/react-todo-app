@@ -24,8 +24,8 @@ function AddTodo(props) {
     <div className="mt-6 px-3">
       <form onSubmit={onSubmit} style={{ display: "flex" }}>
         <input
+          name="task-title"
           type="text"
-          name="title"
           placeholder="Add task..."
           value={title}
           onChange={(evt) => setTitle(evt.target.value)}

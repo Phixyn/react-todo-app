@@ -13,6 +13,7 @@ function TodoItem(props) {
   return (
     <li style={getStyle()}>
       <input
+        name="completed-checkbox"
         type="checkbox"
         checked={props.todo.completed}
         value={props.todo.completed}
