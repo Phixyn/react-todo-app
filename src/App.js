@@ -38,7 +38,7 @@ function App() {
 
     // [...] = spread operator (copy items)
     // Used because we can't (and shouldn't) change state values directly
-    setTodos([...todos, newTodo])
+    setTodos([...todos, newTodo]);
   };
 
   // Delete a todo item
@@ -58,18 +58,17 @@ function App() {
   return (
     <div id="app" className="bg-gray-300 h-screen pt-8">
       <Router>
-        <div className="max-w-sm mx-auto">
+        <div className="max-w-md mx-auto">
           <Header />
 
-          <section className="container">
+          <section>
             <Switch>
-
               <Route
                 exact
                 path="/"
                 render={(props) => (
-                  <div className="max-w-sm px-4 py-6 mx-auto bg-gray-200 rounded shadow-lg">
-                    <h1 className="text-2xl font-bold px-3">Todos</h1>
+                  <div className="max-w-md px-4 py-6 mx-auto bg-gray-200 rounded shadow-lg">
+                    <h1 className="text-2xl font-bold text-center">Todo List</h1>
 
                     <AddTodo addTodo={addTodo} />
 
