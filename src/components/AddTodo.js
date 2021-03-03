@@ -29,12 +29,12 @@ function AddTodo(props) {
           placeholder="Add task..."
           value={title}
           onChange={(evt) => setTitle(evt.target.value)}
-          className="block w-full px-3 py-2 placeholder-gray-500 bg-white rounded shadow focus:outline-none border focus:border-blue-500 focus:border-blue-600"
+          className="transition duration-500 ease-in-out block w-full px-3 py-2 placeholder-gray-500 bg-gray-50 shadow focus:outline-none border-2 focus:border-blue-500 focus:border-blue-600"
         />
         <input
           type="submit"
           value="Add"
-          className="bg-blue-600 text-gray-100 px-4 shadow"
+          className="bg-blue-600 text-gray-100 px-4 shadow cursor-pointer"
         />
       </form>
     </div>
