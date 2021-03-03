@@ -7,7 +7,7 @@ function TodoItem(props) {
       display: "flex",
       alignItems: "center",
       justifyContent: "flex-start",
-      background: "#ccc",
+      background: "#dddddd",
       padding: "10px",
       borderBottom: "1px #777 dotted",
       textDecoration: props.todo.completed ? "line-through" : "none",
