@@ -21,7 +21,7 @@ function AddTodo(props) {
   };
 
   return (
-    <div className="mt-6 px-3">
+    <div className="mt-6">
       <form onSubmit={onSubmit} style={{ display: "flex" }}>
         <input
           name="task-title"
@@ -29,13 +29,12 @@ function AddTodo(props) {
           placeholder="Add task..."
           value={title}
           onChange={(evt) => setTitle(evt.target.value)}
-          className="block w-full px-3 py-2 placeholder-gray-500 bg-white rounded shadow focus:outline-none"
+          className="block w-full px-3 py-2 placeholder-gray-500 bg-white rounded shadow focus:outline-none border focus:border-blue-500 focus:border-blue-600"
         />
         <input
           type="submit"
-          value="Submit"
-          className="btn"
-          style={{ flex: "1" }}
+          value="Add"
+          className="bg-blue-600 text-gray-100 px-4 shadow"
         />
       </form>
     </div>
