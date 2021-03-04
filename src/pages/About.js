@@ -4,12 +4,12 @@ function About() {
       <h1 className="text-xl font-bold">About</h1>
 
       <p className="mt-4">
-        This is a simple to-do list app to demonstrate my <a className="underline font-medium text-blue-500" href="https://reactjs.org/" target="_blank">React</a> knowledge.
+        This is a simple to-do list app to demonstrate my <a className="transition duration-500 ease-in-out font-medium text-pink-600 hover:text-pink-500" href="https://reactjs.org/" target="_blank">React</a> knowledge.
       </p>
 
       <p className="mt-4">
         <a
-          className="border-b border-blue-500 font-medium text-blue-500"
+          className="transition duration-500 ease-in-out border-b border-pink-600 font-medium text-pink-600 hover:text-pink-500"
           href="https://github.com/Phixyn/react-todo-app"
           target="_blank"
         >
