@@ -7,14 +7,14 @@ function Header() {
         exact
         to="/"
         className="pb-1 mr-4"
-        activeClassName="border-b-2 border-gray-700"
+        activeClassName="border-b-2 border-pink-600"
       >
         Home
       </NavLink>
       <NavLink
         to="/about"
         className="pb-1"
-        activeClassName="border-b-2 border-gray-700"
+        activeClassName="border-b-2 border-pink-600"
       >
         About
       </NavLink>

@@ -10,6 +10,7 @@ function TodoItem(props) {
       padding: "10px",
       borderBottom: "1px #cccccc solid",
       textDecoration: props.todo.completed ? "line-through" : "none",
+      color: props.todo.completed ? "rgb(219, 39, 119)" : "#121212"
     };
   };
 
