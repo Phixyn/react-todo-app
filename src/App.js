@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 // import axios from "axios"; // TODO remove from package.json
-import Header from "./layouts/Header";
+import Header from "./components/Header";
 import TodosHeader from "./components/TodosHeader";
 import Todos from "./components/Todos";
 import AddTodo from "./components/AddTodo";
