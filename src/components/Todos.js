@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem";
 
 function Todos(props) {
   return (
-    <div className="mt-6">
+    <div className="px-4 mt-6">
       {props.todos.length > 0 ? (
         // If there are todo items, show them in a list
         <ul className="mt-8">

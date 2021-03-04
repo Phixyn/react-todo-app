@@ -22,7 +22,7 @@ function AddTodo(props) {
   };
 
   return (
-    <div className="mt-6">
+    <div className="px-4 mt-6">
       <form onSubmit={onSubmit} style={{ display: "flex" }}>
         <input
           name="task-title"

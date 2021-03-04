@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 // import axios from "axios"; // TODO remove from package.json
 import Header from "./layouts/Header";
+import TodosHeader from "./components/TodosHeader";
 import Todos from "./components/Todos";
 import AddTodo from "./components/AddTodo";
 import About from "./pages/About";
@@ -67,8 +68,8 @@ function App() {
                 exact
                 path="/"
                 render={(props) => (
-                  <div className="max-w-md px-4 py-6 mx-auto bg-gray-200 rounded shadow-lg">
-                    <h1 className="text-2xl font-bold text-center">Todo List</h1>
+                  <div className="max-w-md pb-6 mx-auto bg-gray-200 rounded shadow-lg">
+                    <TodosHeader />
 
                     <AddTodo addTodo={addTodo} />
 
