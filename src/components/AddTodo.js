@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaPlus } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 function AddTodo(props) {
@@ -31,11 +32,11 @@ function AddTodo(props) {
           onChange={(evt) => setTitle(evt.target.value)}
           className="transition duration-500 ease-in-out block w-full px-3 py-2 placeholder-gray-500 bg-gray-50 shadow focus:outline-none border-2 focus:border-blue-500 focus:border-blue-600"
         />
-        <input
+        <button
           type="submit"
-          value="Add"
-          className="bg-blue-600 text-gray-100 px-4 shadow cursor-pointer"
-        />
+          className="bg-blue-600 text-gray-100 px-4 shadow cursor-pointer">
+          <FaPlus />
+        </button>
       </form>
     </div>
   );
