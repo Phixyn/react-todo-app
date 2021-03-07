@@ -3,10 +3,10 @@ import TodoItem from "./TodoItem";
 
 function Todos(props) {
   return (
-    <div className="px-4 mt-6">
+    <div className="px-4 mt-6 max-h-screen overflow-auto">
       {props.todos.length > 0 ? (
         // If there are todo items, show them in a list
-        <ul className="mt-8">
+        <ul className="mt-4">
           {props.todos.map((todo) => (
             <TodoItem
               key={todo.id}
@@ -19,7 +19,7 @@ function Todos(props) {
       ) : (
         // No todo items, all caught up
         <p
-          className="px-3 mt-16 text-lg text-center text-gray-500"
+          className="px-3 pb-6 mt-16 text-lg text-center text-gray-500"
           data-testid="empty-todos"
         >
           You're all caught up!
