@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-function Header() {
+function AppHeader() {
   return (
     <header className="mb-8">
       <NavLink
@@ -22,4 +22,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default AppHeader;

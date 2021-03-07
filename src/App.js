@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Header from "./components/Header";
+import AppHeader from "./components/AppHeader";
 import TodoList from "./components/TodoList";
 import About from "./pages/About";
 
@@ -8,7 +8,7 @@ function App() {
     <div id="app" className="bg-gray-300 h-screen pt-8">
       <Router>
         <div className="max-w-md mx-auto">
-          <Header />
+          <AppHeader />
           <section>
             <Switch>
               <Route exact path="/" component={TodoList} />
