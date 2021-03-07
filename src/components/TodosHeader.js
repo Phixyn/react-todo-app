@@ -27,10 +27,12 @@ const TodosHeader = () => {
   ][date.getMonth()];
 
   return (
-    <div className="bg-gray-300 border-b-2 border-pink-600 shadow-sm px-4 py-6">
+    <div
+      className="bg-todo-header bg-cover bg-center border-b-1 border-gray-300 px-4 py-6"
+    >
       {/* TODO set 'st, nd, rd, th' programmatically */}
-      <h1 className="text-2xl">{`${weekDay}, ${day}th`}</h1>
-      <p className="pt-1 text-lg text-gray-500">{month}</p>
+      <h1 className="text-2xl text-white">{`${weekDay}, ${day}th`}</h1>
+      <p className="pt-1 text-lg text-gray-100">{month}</p>
     </div>
   );
 };
