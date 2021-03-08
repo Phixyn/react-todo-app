@@ -59,7 +59,7 @@ function TodoList() {
 
       <AddTodo addTodo={addTodo} />
 
-      <div className="px-4 pb-6 mt-6 mb-4 max-h-screen overflow-auto">
+      <div className="px-4 pb-6 mt-6 mb-4 h-96 overflow-auto">
         {todos.length > 0 ? (
           // If there are todo items, show them in a list
           <ul className="mt-4">
