@@ -54,12 +54,12 @@ function TodoList() {
   };
 
   return (
-    <div className="max-w-md pb-6 mx-auto bg-gray-200 rounded shadow-lg">
+    <div className="max-w-md mx-auto bg-gray-200 rounded shadow-lg">
       <TodosHeader />
 
       <AddTodo addTodo={addTodo} />
 
-      <div className="px-4 mt-6 max-h-screen overflow-auto">
+      <div className="px-4 pb-6 mt-6 mb-4 max-h-screen overflow-auto">
         {todos.length > 0 ? (
           // If there are todo items, show them in a list
           <ul className="mt-4">
@@ -81,6 +81,11 @@ function TodoList() {
             You're all caught up!
           </p>
         )}
+      </div>
+
+      <div className="px-4 py-3 h-14 bg-gray-300 border-t border-gray-400 flex flex-row flex-wrap text-gray-600">
+        <p className="flex-1 order-1">{0} tasks</p>
+        <p className="flex-1 order-last text-right"><a className="transition duration-500 ease-in-out hover:text-pink-500" href="https://phixyn.com/" target="_blank">Phixyn</a></p>
       </div>
     </div>
   )
