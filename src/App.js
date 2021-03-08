@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppHeader from "./components/AppHeader";
-import TodoList from "./components/TodoList";
+import TodosList from "./components/TodosList";
 import About from "./pages/About";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
           <AppHeader />
           <section>
             <Switch>
-              <Route exact path="/" component={TodoList} />
+              <Route exact path="/" component={TodosList} />
               <Route path="/about" component={About} />
             </Switch>
           </section>

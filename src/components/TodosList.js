@@ -6,7 +6,7 @@ import TodosFooter from "./TodosFooter";
 import TodosHeader from "./TodosHeader";
 import TodoItem from "./TodoItem";
 
-function TodoList() {
+function TodosList() {
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -89,10 +89,4 @@ function TodoList() {
   );
 }
 
-TodoList.propTypes = {
-  todos: PropTypes.array.isRequired,
-  markComplete: PropTypes.func.isRequired,
-  delTodo: PropTypes.func.isRequired,
-};
-
-export default TodoList;
+export default TodosList;
