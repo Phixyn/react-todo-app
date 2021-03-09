@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import PropTypes from "prop-types";
 import AddTodo from "./AddTodo";
 import TodosFooter from "./TodosFooter";
 import TodosHeader from "./TodosHeader";
@@ -84,7 +83,10 @@ function TodosList() {
         )}
       </div>
 
-      <TodosFooter />
+      <TodosFooter
+        totalTasks={todos.length}
+        doneTasks={todos.filter((todo) => todo.completed).length}
+      />
     </div>
   );
 }
