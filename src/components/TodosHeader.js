@@ -1,4 +1,4 @@
-const TodosHeader = () => {
+function TodosHeader() {
   // TODO improve this, this is just to test the design
   const date = new Date();
   const weekDay = [
@@ -27,13 +27,13 @@ const TodosHeader = () => {
   ][date.getMonth()];
 
   return (
-    <div
+    <header
       className="bg-todo-header bg-cover bg-center border-b-1 border-gray-300 px-4 py-6"
     >
       {/* TODO set 'st, nd, rd, th' programmatically */}
       <h1 className="text-2xl text-white">{`${weekDay}, ${day}th`}</h1>
       <p className="pt-1 text-lg text-gray-100">{month}</p>
-    </div>
+    </header>
   );
 };
 
