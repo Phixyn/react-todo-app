@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AppHeader from "./components/AppHeader";
+import AppFooter from "./components/AppFooter";
 import TodosList from "./components/TodosList";
 import About from "./pages/About";
 
@@ -8,13 +8,14 @@ function App() {
     <div id="app" className="bg-gray-300 h-screen pt-8">
       <Router>
         <div className="max-w-md mx-auto">
-          <AppHeader />
           <section>
             <Switch>
               <Route exact path="/" component={TodosList} />
               <Route path="/about" component={About} />
             </Switch>
           </section>
+
+          <AppFooter />
         </div>
       </Router>
     </div>
