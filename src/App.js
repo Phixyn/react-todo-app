@@ -5,7 +5,7 @@ import About from "./pages/About";
 
 function App() {
   return (
-    <div id="app" className="bg-gray-300 h-screen pt-8">
+    <div id="app" className="bg-gray-300 h-screen md:pt-8">
       <Router>
         <div className="max-w-md mx-auto">
           <section>
