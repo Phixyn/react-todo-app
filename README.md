@@ -1,25 +1,27 @@
 # React To-Do App
 
-A simple to-do list React application.
+A simple to-do list application to demonstrate my React knowledge.
 
-## Available Scripts
+Front-end project only, no backend or database storage.
 
-In the project directory, you can run:
+## Serving
 
-### `yarn start`
+Run `npm start` from the project directory to run in development mode.
 
-Runs the app in the development mode.  
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The application is served at [http://localhost:3000](http://localhost:3000) by default.
 
-### `yarn test`
+## Building
 
-Launches the test runner in the interactive watch mode.
+Run `npm build` to build the static assets for external or local hosting. The files will be located inside the `build` folder by default.
 
-### `yarn build`
+This correctly bundles React in production mode and optimizes the build for best performance.
 
-Builds the app for production to the `build` folder.  
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.
+TODO
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Note:** Tasks are not stored anywhere. If the page is refreshed or closed, all tasks will be gone.
+
+## License
+
+**MIT License**. For more information see [LICENSE](https://github.com/Phixyn/react-todo-app/blob/master/LICENSE).
