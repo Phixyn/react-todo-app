@@ -25,6 +25,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "eject": "react-scripts eject",
     "postinstall": "patch-package"
   },
@@ -49,6 +51,7 @@
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "autoprefixer": "^9.8.6",
+    "cypress": "^6.7.0",
     "patch-package": "^6.4.5",
     "postcss": "^7.0.35",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
