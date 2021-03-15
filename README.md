@@ -4,17 +4,24 @@ A simple to-do list application to demonstrate my React knowledge.
 
 Front-end project only, no backend or database storage.
 
-## Serving
+## Getting Started
 
-Run `npm start` from the project directory to run in development mode.
+1. Clone the repository and `cd` into its root directory
+2. Run `yarn install` to install dependencies
+3. Run `yarn start` from the project directory to run in development mode
 
 The application is served at [http://localhost:3000](http://localhost:3000) by default.
 
 ## Building
 
-Run `npm build` to build the static assets for external or local hosting. The files will be located inside the `build` folder by default.
+Run `yarn build` to build the static assets for external or local hosting. The files will be located inside the `build` folder by default.
 
 This correctly bundles React in production mode and optimizes the build for best performance.
+
+## Testing
+
+1. Run `yarn start` to run in development mode
+2. Run `yarn cypress:run` to run end-to-end tests
 
 ## Usage
 
