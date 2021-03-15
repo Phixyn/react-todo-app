@@ -52,6 +52,7 @@
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "autoprefixer": "^9.8.6",
     "cypress": "^6.7.0",
+    "faker": "^5.4.0",
     "patch-package": "^6.4.5",
     "postcss": "^7.0.35",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
