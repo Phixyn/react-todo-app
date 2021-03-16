@@ -4112,6 +4112,13 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
+cypress-react-selector@^2.3.6:
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/cypress-react-selector/-/cypress-react-selector-2.3.6.tgz#f884292c22c5cd783bfad4c991842e5be4df9380"
+  integrity sha512-fK1jpsOIfIqjObyuMQiopkf18HZ8p0j8Gk9H2bzIbRL3KzTqkJhhLkMLOOEUNZ7P52v1U4wdUN7iaF0brAAIGA==
+  dependencies:
+    resq "1.10.0"
+
 cypress@^6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/cypress/-/cypress-6.7.0.tgz#06e5bec43bd1e6f277532f29f8fe9bcccbb372e7"
@@ -5210,6 +5217,11 @@ faker@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/faker/-/faker-5.4.0.tgz#f18e55993c6887918182b003d163df14daeb3011"
   integrity sha512-Y9n/Ky/xZx/Bj8DePvXspUYRtHl/rGQytoIT5LaxmNwSe3wWyOeOXb3lT6Dpipq240PVpeFaGKzScz/5fvff2g==
+
+fast-deep-equal@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
+  integrity sha1-ewUhjd+WZ79/Nwv3/bLLFf3Qqkk=
 
 fast-deep-equal@^3.1.1:
   version "3.1.3"
@@ -10224,6 +10236,13 @@ resolve@^1.10.0, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.14.2, resolve@^1.1
   dependencies:
     is-core-module "^2.2.0"
     path-parse "^1.0.6"
+
+resq@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/resq/-/resq-1.10.0.tgz#40b5e3515ff984668e6b6b7c2401f282b08042ea"
+  integrity sha512-hCUd0xMalqtPDz4jXIqs0M5Wnv/LZXN8h7unFOo4/nvExT9dDPbhwd3udRxLlp0HgBnHcV009UlduE9NZi7A6w==
+  dependencies:
+    fast-deep-equal "^2.0.1"
 
 restore-cursor@^1.0.1:
   version "1.0.1"
