@@ -3,7 +3,11 @@ import { NavLink } from "react-router-dom";
 function About() {
   return (
     <>
-      <h1 className="text-xl font-bold">About</h1>
+      <h1
+        className="text-xl font-bold"
+        data-testid="aboutPageHeader">
+        About
+      </h1>
 
       <p className="mt-4">
         This is a simple to-do list app to demonstrate my <a className="transition duration-500 ease-in-out font-medium text-pink-600 hover:text-pink-500" href="https://reactjs.org/" target="_blank">React</a> knowledge.
