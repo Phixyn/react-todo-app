@@ -10,7 +10,7 @@ function About() {
       </h1>
 
       <p className="mt-4">
-        This is a simple to-do list app to demonstrate my <a className="transition duration-500 ease-in-out font-medium text-pink-600 hover:text-pink-500" href="https://reactjs.org/" target="_blank">React</a> knowledge.
+        This is a simple to-do list app to demonstrate my React knowledge.
       </p>
 
       <p className="mt-4">
