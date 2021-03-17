@@ -7,12 +7,12 @@ describe("app footer", () => {
   });
 
   it("should display link to About page", () => {
-    cy.get('[data-testid="footerAboutLink"]').should("be.visible");
+    cy.get('[data-testid="footer-about-link"]').should("be.visible");
   });
 
   it("should navigate to About page when clicking on About link", () => {
-    cy.get('[data-testid="footerAboutLink"]').click();
-    cy.get('[data-testid="aboutPageHeader"]').should("be.visible");    
+    cy.get('[data-testid="footer-about-link"]').click();
+    cy.get('[data-testid="about-page-header"]').should("be.visible");
     // TODO assert location as well?
   });
 });

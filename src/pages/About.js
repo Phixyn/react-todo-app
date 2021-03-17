@@ -5,7 +5,7 @@ function About() {
     <>
       <h1
         className="text-xl font-bold"
-        data-testid="aboutPageHeader">
+        data-testid="about-page-header">
         About
       </h1>
 
