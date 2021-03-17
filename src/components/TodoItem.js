@@ -23,11 +23,13 @@ function TodoItem(props) {
         checked={props.todo.completed}
         value={props.todo.completed}
         onChange={() => props.markComplete(props.todo.id)}
+        data-testid="task-completed-checkbox"
       />
       &nbsp;
       <span className="flex-1">{props.todo.title}</span>
       <button
         onClick={() => props.delTodo(props.todo.id)}
+        data-testid="delete-task-btn"
       >
         <FaTrashAlt style={{ color: "#dd0000" }} />
       </button>

@@ -6,25 +6,25 @@ import TodosHeader from "./TodosHeader";
 import TodoItem from "./TodoItem";
 
 function TodosList() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: "Feed the cat",
-      day: "Feb 5th at 2:30pm",
-      completed: true,
-    },
-    {
-      id: 2,
-      title: "Meeting at school",
-      completed: false,
-    },
-    {
-      id: 3,
-      title: "Grocery shopping",
-      completed: false,
-    },
-  ]);
-  // const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([
+  //   {
+  //     id: 1,
+  //     title: "Feed the cat",
+  //     day: "Feb 5th at 2:30pm",
+  //     completed: true,
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Meeting at school",
+  //     completed: false,
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Grocery shopping",
+  //     completed: false,
+  //   },
+  // ]);
+  const [todos, setTodos] = useState([]);
 
   // Add a new todo item
   const addTodo = (title) => {
