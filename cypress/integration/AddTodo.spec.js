@@ -39,6 +39,6 @@ describe("add todo item form", () => {
     cy.get('[data-testid="task-input-field"]').type(task)
     cy.get('[data-testid="task-submit-btn"]').click();
 
-    cy.get("#todos-list").find("li").contains(task).should("be.visible");
+    cy.get('[data-testid="todos-list"]').find("li").contains(task).should("be.visible");
   });
 });

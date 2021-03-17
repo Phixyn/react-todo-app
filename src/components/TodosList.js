@@ -62,7 +62,7 @@ function TodosList() {
       <div className="px-4 pb-6 mt-6 mb-4 h-96 overflow-auto">
         {todos.length > 0 ? (
           // If there are todo items, show them in a list
-          <ul id="todos-list" className="mt-4">
+          <ul className="mt-4" data-testid="todos-list">
             {todos.map((todo) => (
               <TodoItem
                 key={todo.id}
