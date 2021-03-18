@@ -16,7 +16,6 @@ describe("add todo item form", () => {
     cy.getByTestId("task-submit-btn").should("be.visible");
   });
 
-  // placeholder : "Add task..."
   it("should display a placeholder text in the text input", () => {
     cy.getByTestId("task-input-field").should(
       "have.attr",
@@ -39,9 +38,11 @@ describe("add todo item form", () => {
     cy.getByTestId("task-input-field").type(task);
     cy.getByTestId("task-submit-btn").click();
 
+    // Check that the new task was added to the bottom of the list
     cy.getByTestId("todos-list")
-      .find("li")
-      .contains(task)
-      .should("be.visible");
+      .get("li")
+      .last()
+      .should("be.visible")
+      .and("have.text", task);
   });
 });
