@@ -5,9 +5,8 @@ import About from "./pages/About";
 
 function App() {
   return (
-    <div id="app" className="bg-gray-300 text-gray-800 h-screen md:pt-8">
+    <div id="app" className="flex flex-col max-w-md mx-auto md:pt-8">
       <Router>
-        <div className="max-w-md mx-auto">
           <section>
             <Switch>
               <Route exact path="/" component={TodosList} />
@@ -16,7 +15,6 @@ function App() {
           </section>
 
           <AppFooter />
-        </div>
       </Router>
     </div>
   );

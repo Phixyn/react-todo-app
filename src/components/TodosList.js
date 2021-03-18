@@ -54,7 +54,7 @@ function TodosList() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-gray-200 rounded shadow-lg">
+    <div className="flex flex-col max-w-md mx-auto bg-gray-200 rounded shadow-lg">
       <TodosHeader />
 
       <AddTodo addTodo={addTodo} />
@@ -75,7 +75,7 @@ function TodosList() {
         ) : (
           // No todo items, all caught up
           <p
-            className="mt-16 mb-6 text-lg text-center text-gray-500"
+            className="my-16 text-lg text-center text-gray-500"
             data-testid="empty-todos"
           >
             You're all caught up!
