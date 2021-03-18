@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function About() {
   return (
-    <>
+    <div className="px-8 pt-6 pb-2 md:p-0">
       <h1
         className="text-xl font-bold"
         data-testid="about-page-header">
@@ -32,7 +32,7 @@ function About() {
           &larr; Back to Todo List
         </NavLink>
       </p>
-    </>
+    </div>
   );
 }
 
