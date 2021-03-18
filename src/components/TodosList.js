@@ -59,7 +59,7 @@ function TodosList() {
 
       <AddTodo addTodo={addTodo} />
 
-      <div className="px-4 pb-6 mt-6 mb-4 h-96 overflow-auto">
+      <div className="mx-4 my-6 h-96 overflow-auto">
         {todos.length > 0 ? (
           // If there are todo items, show them in a list
           <ul className="mt-4" data-testid="todos-list">
@@ -75,7 +75,7 @@ function TodosList() {
         ) : (
           // No todo items, all caught up
           <p
-            className="px-3 pb-6 mt-16 text-lg text-center text-gray-500"
+            className="mt-16 mb-6 text-lg text-center text-gray-500"
             data-testid="empty-todos"
           >
             You're all caught up!

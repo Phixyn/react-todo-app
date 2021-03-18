@@ -5,7 +5,7 @@ function AppFooter() {
   const location = useLocation();
 
   return (
-    <footer className="mt-6 pb-6 text-center">
+    <footer className="my-6 text-center">
       { location.pathname === "/" ? (
         <NavLink
           to="/about"
