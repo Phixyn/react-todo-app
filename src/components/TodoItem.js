@@ -19,14 +19,13 @@ function TodoItem(props) {
       <input
         name="completed-checkbox"
         type="checkbox"
-        className="form-checkbox mr-1 rounded text-pink-600 shadow-none focus:shadow-none focus:ring-0 focus:outline-none"
+        className="form-checkbox rounded text-pink-600 shadow-none focus:shadow-none focus:ring-0 focus:outline-none"
         checked={props.todo.completed}
         value={props.todo.completed}
         onChange={() => props.markComplete(props.todo.id)}
         data-testid="task-completed-checkbox"
       />
-      &nbsp;
-      <span className="flex-1">{props.todo.title}</span>
+      <span className="flex-1 px-2">{props.todo.title}</span>
       <button
         onClick={() => props.delTodo(props.todo.id)}
         data-testid="delete-task-btn"
