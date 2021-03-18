@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaPlus } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 function AddTodo(props) {
@@ -23,21 +23,21 @@ function AddTodo(props) {
 
   return (
     <div className="px-4 mt-6">
-      <form onSubmit={onSubmit} style={{ display: "flex" }}>
+      <form onSubmit={onSubmit} className="flex items-center transition duration-500 ease-in-out py-2 border-b-2 border-gray-300 focus-within:border-b-2 focus-within:border-pink-600">
         <input
           name="task-title"
           type="text"
           placeholder="Add task..."
           value={title}
           onChange={(evt) => setTitle(evt.target.value)}
-          className="transition duration-500 ease-in-out block w-full px-3 py-2 placeholder-gray-500 bg-gray-50 focus:outline-none border-2 border-gray-300 focus:border-2 focus:border-pink-600"
+          className="block w-full px-3 bg-gray-200 placeholder-gray-500 focus:outline-none"
           data-testid="task-input-field"
         />
         <button
           type="submit"
-          className="bg-pink-600 text-gray-100 px-4 cursor-pointer"
+          className="transition duration-700 ease-in-out text-gray-400 focus:outline-none hover:text-pink-500 text-lg px-2 cursor-pointer"
           data-testid="task-submit-btn">
-          <FaPlus />
+          <FaEdit />
         </button>
       </form>
     </div>
