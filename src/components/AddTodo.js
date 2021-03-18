@@ -30,7 +30,7 @@ function AddTodo(props) {
           placeholder="Add task..."
           value={title}
           onChange={(evt) => setTitle(evt.target.value)}
-          className="block w-full px-3 bg-gray-200 placeholder-gray-500 focus:outline-none"
+          className="flex-1 px-2.5 bg-gray-200 placeholder-gray-500 focus:outline-none"
           data-testid="task-input-field"
         />
         <button
