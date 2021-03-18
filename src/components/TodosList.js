@@ -54,7 +54,7 @@ function TodosList() {
   };
 
   return (
-    <div className="flex flex-col max-w-md mx-auto bg-gray-200 rounded shadow-lg">
+    <div className="flex flex-col bg-gray-200 rounded shadow-lg">
       <TodosHeader />
 
       <AddTodo addTodo={addTodo} />

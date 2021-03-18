@@ -5,7 +5,7 @@ import About from "./pages/About";
 
 function App() {
   return (
-    <div id="app" className="flex flex-col max-w-md mx-auto md:pt-8">
+    <div id="app" className="flex flex-col container max-w-md mx-auto md:pt-8">
       <Router>
           <section>
             <Switch>
