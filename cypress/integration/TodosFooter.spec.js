@@ -9,19 +9,19 @@ describe("todo list footer", () => {
   });
 
   it("should display number of total tasks", () => {
-    cy.get('[data-testid="total-tasks-count"]')
+    cy.getByTestId("total-tasks-count")
       .should("be.visible")
       .and("have.text", "0 tasks");
   });
 
   it("should display number of complete tasks", () => {
-    cy.get('[data-testid="completed-tasks-count"]')
+    cy.getByTestId("completed-tasks-count")
       .should("be.visible")
       .and("have.text", "0 complete");
   });
 
   it("should display number of open tasks", () => {
-    cy.get('[data-testid="open-tasks-count"]')
+    cy.getByTestId("open-tasks-count")
       .should("be.visible")
       .and("have.text", "0 open");
   });
@@ -30,44 +30,44 @@ describe("todo list footer", () => {
     let task = random.words();
 
     // Check number of total tasks
-    cy.get('[data-testid="total-tasks-count"]').should("have.text", "0 tasks");
+    cy.getByTestId("total-tasks-count").should("have.text", "0 tasks");
 
     // Add new task
-    cy.get('[data-testid="task-input-field"]').type(task);
-    cy.get('[data-testid="task-submit-btn"]').click();
+    cy.getByTestId("task-input-field").type(task);
+    cy.getByTestId("task-submit-btn").click();
 
     // Check number of total tasks again
-    cy.get('[data-testid="total-tasks-count"]').should("have.text", "1 tasks");
+    cy.getByTestId("total-tasks-count").should("have.text", "1 tasks");
 
     // Delete task
-    cy.get('[data-testid="todos-list"]')
+    cy.getByTestId("todos-list")
       .find("li")
       .contains(task)
-      .get('[data-testid="delete-task-btn"]')
+      .getByTestId("delete-task-btn")
       .click();
 
-    cy.get('[data-testid="total-tasks-count"]').should("have.text", "0 tasks");
+    cy.getByTestId("total-tasks-count").should("have.text", "0 tasks");
   });
 
   it("should update number of complete tasks", () => {
     let task = random.words();
 
-    cy.get('[data-testid="completed-tasks-count"]').should(
+    cy.getByTestId("completed-tasks-count").should(
       "have.text",
       "0 complete"
     );
 
-    cy.get('[data-testid="task-input-field"]').type(task);
-    cy.get('[data-testid="task-submit-btn"]').click();
+    cy.getByTestId("task-input-field").type(task);
+    cy.getByTestId("task-submit-btn").click();
 
     // Mark task as complete
-    cy.get('[data-testid="todos-list"]')
+    cy.getByTestId("todos-list")
       .find("li")
       .contains(task)
-      .get('[data-testid="task-completed-checkbox"]')
+      .getByTestId("task-completed-checkbox")
       .click();
 
-    cy.get('[data-testid="completed-tasks-count"]').should(
+    cy.getByTestId("completed-tasks-count").should(
       "have.text",
       "1 complete"
     );
@@ -76,20 +76,20 @@ describe("todo list footer", () => {
   it("should update number of open tasks", () => {
     let task = random.words();
 
-    cy.get('[data-testid="open-tasks-count"]').should("have.text", "0 open");
+    cy.getByTestId("open-tasks-count").should("have.text", "0 open");
 
-    cy.get('[data-testid="task-input-field"]').type(task);
-    cy.get('[data-testid="task-submit-btn"]').click();
+    cy.getByTestId("task-input-field").type(task);
+    cy.getByTestId("task-submit-btn").click();
 
-    cy.get('[data-testid="open-tasks-count"]').should("have.text", "1 open");
+    cy.getByTestId("open-tasks-count").should("have.text", "1 open");
 
     // Mark task as complete
-    cy.get('[data-testid="todos-list"]')
+    cy.getByTestId("todos-list")
       .find("li")
       .contains(task)
-      .get('[data-testid="task-completed-checkbox"]')
+      .getByTestId("task-completed-checkbox")
       .click();
 
-    cy.get('[data-testid="open-tasks-count"]').should("have.text", "0 open");
+    cy.getByTestId("open-tasks-count").should("have.text", "0 open");
   });
 });
