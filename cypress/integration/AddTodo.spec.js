@@ -40,7 +40,7 @@ describe("add todo item form", () => {
 
     // Check that the new task was added to the bottom of the list
     cy.getByTestId("todos-list")
-      .get("li")
+      .find("li")
       .last()
       .should("be.visible")
       .and("have.text", task);

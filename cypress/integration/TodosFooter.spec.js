@@ -31,11 +31,11 @@ describe("todo list footer", () => {
     cy.addTask(random.words());
     cy.getByTestId("total-tasks-count").should("have.text", "1 tasks");
 
-    // Delete task
+    // Delete one task
     cy.getByTestId("todos-list")
-      .get("li")
+      .find("li")
       .last()
-      .getByTestId("delete-task-btn")
+      .findByTestId("delete-task-btn")
       .click();
 
     cy.getByTestId("total-tasks-count").should("have.text", "0 tasks");
@@ -54,9 +54,9 @@ describe("todo list footer", () => {
 
     // Mark task as complete
     cy.getByTestId("todos-list")
-      .get("li")
+      .find("li")
       .last()
-      .getByTestId("task-completed-checkbox")
+      .findByTestId("task-completed-checkbox")
       .click();
 
     cy.getByTestId("open-tasks-count").should("have.text", "0 open");
