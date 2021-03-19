@@ -35,7 +35,7 @@ function AddTodo(props) {
         />
         <button
           type="submit"
-          className="transition duration-700 ease-in-out text-gray-400 focus:outline-none hover:text-pink-500 text-lg px-2 cursor-pointer"
+          className="transition duration-200 ease-in-out text-gray-400 focus:outline-none hover:text-pink-500 text-lg px-2 cursor-pointer"
           data-testid="task-submit-btn">
           <FaEdit />
         </button>
