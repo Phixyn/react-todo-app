@@ -12,7 +12,7 @@ describe("app footer", () => {
 
   it("should navigate to About page when clicking on About link", () => {
     cy.getByTestId("footer-about-link").click();
+    cy.location("pathname").should("equal", "/about");
     cy.getByTestId("about-page-header").should("be.visible");
-    // TODO assert location as well?
   });
 });
