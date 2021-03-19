@@ -16,7 +16,7 @@ function TodoItem(props) {
       <input
         name="completed-checkbox"
         type="checkbox"
-        className="form-checkbox rounded text-pink-600 shadow-none focus:shadow-none focus:ring-0 focus:outline-none"
+        className="form-checkbox rounded text-pink-600 shadow-none focus:shadow-none focus:ring-0 focus:ring-offset-0 focus:outline-none"
         checked={props.todo.completed}
         value={props.todo.completed}
         onChange={() => props.markComplete(props.todo.id)}
