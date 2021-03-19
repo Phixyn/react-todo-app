@@ -29,7 +29,9 @@ describe("todo list footer", () => {
   it("should update number of total tasks", () => {
     cy.getByTestId("total-tasks-count").should("have.text", "0 tasks");
     cy.addTask(random.words());
-    cy.getByTestId("total-tasks-count").should("have.text", "1 tasks");
+    cy.getByTestId("total-tasks-count").should("have.text", "1 task");
+    cy.addTask(random.words());
+    cy.getByTestId("total-tasks-count").should("have.text", "2 tasks");
 
     // Delete one task
     cy.getByTestId("todos-list")
@@ -38,7 +40,7 @@ describe("todo list footer", () => {
       .findByTestId("delete-task-btn")
       .click();
 
-    cy.getByTestId("total-tasks-count").should("have.text", "0 tasks");
+    cy.getByTestId("total-tasks-count").should("have.text", "1 task");
   });
 
   it("should update number of complete tasks", () => {
