@@ -2,16 +2,16 @@ import { FaTrashAlt } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 function TodoItem(props) {
-  const textDecorationClass = props.todo.completed
+  let textDecorationClass = props.todo.completed
     ? "line-through"
     : "no-underline";
-  const textColorClass = props.todo.completed
+  let textColorClass = props.todo.completed
     ? "text-pink-600"
     : "text-gray-800";
 
   return (
     <li
-      className={`flex items-center space-x-1 py-2.5 px-2.5 border-b border-gray-300 transition duration-500 ease-in ${textDecorationClass} ${textColorClass}`}
+      className={`flex items-center space-x-1 py-2.5 px-2.5 border-b border-gray-300 transition duration-300 ease-in ${textDecorationClass} ${textColorClass}`}
     >
       <input
         name="completed-checkbox"
@@ -27,9 +27,10 @@ function TodoItem(props) {
       </span>
       <button
         onClick={() => props.delTodo(props.todo.id)}
+        className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none"
         data-testid="delete-task-btn"
       >
-        <FaTrashAlt className="text-red-600" />
+        <FaTrashAlt />
       </button>
     </li>
   );
