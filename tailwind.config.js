@@ -4,7 +4,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: theme => ({
-        "todo-header": "url('/src/header.jpg')",
+        "todo-header-day": "url('/src/header-day.jpg')",
+        "todo-header-afternoon": "url('/src/header-afternoon.jpg')",
+        "todo-header-night": "url('/src/header-night.jpg')",
       })
     },
   },

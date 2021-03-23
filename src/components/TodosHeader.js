@@ -41,9 +41,22 @@ function TodosHeader() {
     }
   };
 
+  const getHeaderImageClass = (hour) => {
+    if (hour >= 6 && hour < 16) {
+      // Day time - 06:00 to 16:00
+      return "bg-todo-header-day";
+    } else if (hour >= 16 && hour < 20) {
+      // Afternoon - 16:00 to 20:00
+      return "bg-todo-header-afternoon";
+    } else if (hour >= 20 || hour <= 5) {
+      // Night time - 20:00 to 05:00
+      return "bg-todo-header-night";
+    }
+  };
+
   return (
     <header
-      className="bg-todo-header bg-cover bg-center border-b-1 border-gray-300 px-4 py-6"
+      className={`${getHeaderImageClass(date.getHours())} bg-cover bg-center border-b-1 border-gray-300 px-4 py-6`}
     >
       <h1 className="text-2xl text-white">{`${weekDay}, ${day}${getDaySuffix(day)}`}</h1>
       <p className="pt-1 text-lg text-gray-100">{month}</p>
