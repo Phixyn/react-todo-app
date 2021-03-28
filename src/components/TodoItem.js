@@ -12,6 +12,7 @@ function TodoItem(props) {
   return (
     <li
       className={`flex items-center space-x-1 py-2.5 px-2.5 border-b border-gray-300 transition duration-300 ease-in ${textDecorationClass} ${textColorClass}`}
+      data-testid="todo-item"
     >
       <input
         name="completed-checkbox"

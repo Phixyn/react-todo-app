@@ -76,7 +76,7 @@ function TodosList() {
           // No todo items, all caught up
           <p
             className="my-16 text-lg text-center text-gray-500"
-            data-testid="empty-todos"
+            data-testid="empty-todos-message"
           >
             You're all caught up!
           </p>
