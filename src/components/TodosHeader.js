@@ -57,9 +57,20 @@ function TodosHeader() {
   return (
     <header
       className={`${getHeaderImageClass(date.getHours())} bg-cover bg-center border-b-1 border-gray-300 px-4 py-6`}
+      data-testid="todos-header-bg"
     >
-      <h1 className="text-2xl text-white">{`${weekDay}, ${day}${getDaySuffix(day)}`}</h1>
-      <p className="pt-1 text-lg text-gray-100">{month}</p>
+      <h1
+        className="text-2xl text-white"
+        data-testid="calendar-date"
+      >
+        {`${weekDay}, ${day}${getDaySuffix(day)}`}
+      </h1>
+      <p
+        className="pt-1 text-lg text-gray-100"
+        data-testid="calendar-month"
+      >
+        {month}
+      </p>
     </header>
   );
 };
