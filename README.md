@@ -14,7 +14,7 @@
     </a>
   </p>
 
-  ![Preview Screenshot](src/header.jpg?raw=true)
+  ![Preview Screenshot](docs/screenshots/desktop_preview_full.png?raw=true)
 </div>
 
 - - -
