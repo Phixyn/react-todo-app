@@ -1,6 +1,7 @@
 function TodosHeader() {
   // TODO improve this, this is just to test the design
   const date = new Date();
+  const day = date.getDate();
   const weekDay = [
     "Sunday",
     "Monday",
@@ -10,7 +11,6 @@ function TodosHeader() {
     "Friday",
     "Saturday",
   ][date.getDay()];
-  const day = date.getDate();
   const month = [
     "January",
     "February",
@@ -26,21 +26,16 @@ function TodosHeader() {
     "December",
   ][date.getMonth()];
 
-  // TODO check if there are more elegant solutions than this
-  //    but tbfh, this was pretty good problem solving xD
-  const getDaySuffix = (calendarDay) => {
-    switch (calendarDay % 10) {
-      case 1:
-        return "st";
-      case 2:
-        return "nd";
-      case 3:
-        return "rd";
-      default:
-        return "th";
-    }
+  const enOrdinalRules = new Intl.PluralRules("en", { type: "ordinal" });
+  const enOrdinalRulesMap = {
+    one: "st",
+    two: "nd",
+    few: "rd",
+    other: "th",
   };
+  const enOrdinalSuffix = enOrdinalRulesMap[enOrdinalRules.select(day)];
 
+  // Use a different header image depending on the time of day
   const getHeaderImageClass = (hour) => {
     if (hour >= 6 && hour < 16) {
       // Day time - 06:00 to 16:00
@@ -59,20 +54,14 @@ function TodosHeader() {
       className={`${getHeaderImageClass(date.getHours())} bg-cover bg-center border-b-1 border-gray-300 px-4 py-6`}
       data-testid="todos-header-bg"
     >
-      <h1
-        className="text-2xl text-white"
-        data-testid="calendar-date"
-      >
-        {`${weekDay}, ${day}${getDaySuffix(day)}`}
+      <h1 className="text-2xl text-white" data-testid="calendar-date">
+        {`${weekDay}, ${day}${enOrdinalSuffix}`}
       </h1>
-      <p
-        className="pt-1 text-lg text-gray-100"
-        data-testid="calendar-month"
-      >
+      <p className="pt-1 text-lg text-gray-100" data-testid="calendar-month">
         {month}
       </p>
     </header>
   );
-};
+}
 
 export default TodosHeader;
