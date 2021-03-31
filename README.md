@@ -3,7 +3,7 @@
 </h1>
 
 <div align="center">
-  <h4>A to-do list application made with React.</h4>
+  <p>A to-do list application made with React.</p>
 
   <p>
     <a href="https://react-todo-phix.netlify.app/">
@@ -14,7 +14,7 @@
     </a>
   </p>
 
-  ![Preview Screenshot](docs/screenshots/desktop_preview_full.png?raw=true)
+  ![Preview Screenshot](docs/screenshots/mobile_preview_cropped.png?raw=true)
 </div>
 
 - - -
