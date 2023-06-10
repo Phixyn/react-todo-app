@@ -51,7 +51,7 @@
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "autoprefixer": "^9.8.6",
-    "cypress": "^6.7.0",
+    "cypress": "^10.0.2",
     "cypress-react-selector": "^2.3.6",
     "faker": "^5.4.0",
     "patch-package": "^6.4.5",
