@@ -1,68 +1,69 @@
-<h1 align="center">
-  React To-Do App
-</h1>
+# React + TypeScript + Vite
 
-<div align="center">
-  <p>A to-do list application made with React.</p>
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-  <p>
-    <a href="https://react-todo-phix.netlify.app/">
-      <img alt="Netlify deploy status" src="https://api.netlify.com/api/v1/badges/d4c024ed-0cc2-46af-890b-1ef998289a17/deploy-status">
-    </a>
-    <a href="https://github.com/Phixyn/react-todo-app/blob/master/LICENSE">
-      <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT badge" />
-    </a>
-  </p>
+Currently, two official plugins are available:
 
-  ![Preview Screenshot](docs/screenshots/mobile_preview_cropped.png?raw=true)
-</div>
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- - -
+## Expanding the ESLint configuration
 
-## Table of Contents
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- [Overview](#overview)
-- [Getting Started](#getting-started)
-- [Building](#building)
-- [Testing](#testing)
-- [Usage](#usage)
-- [License](#license)
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-- - -
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
 
-## Overview
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-A simple to-do list application to demonstrate my React knowledge.
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-Front-end project only, no backend or database storage.
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-## Getting Started
-
-1. Clone the repository and `cd` into its root directory
-2. Run `yarn install` to install dependencies
-3. Run `yarn start` from the project directory to run in development mode
-
-The application is served at [http://localhost:3000](http://localhost:3000) by default.
-
-## Building
-
-Run `yarn build` to build the static assets for external or local hosting. The files will be located inside the `build` folder by default.
-
-This correctly bundles React in production mode and optimizes the build for best performance.
-
-## Testing
-
-1. Run `yarn start` to run in development mode
-2. Run `yarn cypress:run` to run end-to-end tests
-
-## Usage
-
-Write task descriptions in the text field and press `Enter` to add them to the list. You can also click on the icon inside the text field to add the task.
-
-Tasks can be marked as complete by ticking the checkbox. They can also be deleted by clicking the trash icon.
-
-**Note:** Tasks are not stored anywhere. If the page is refreshed or closed, all tasks will be gone.
-
-## License
-
-**MIT License**. For more information see [LICENSE](https://github.com/Phixyn/react-todo-app/blob/master/LICENSE).
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
