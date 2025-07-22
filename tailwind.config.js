@@ -1,9 +1,9 @@
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkmode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      backgroundImage: theme => ({
+      backgroundimage: theme => ({
         "todo-header-day": "url('/src/header-day.jpg')",
         "todo-header-afternoon": "url('/src/header-afternoon.jpg')",
         "todo-header-night": "url('/src/header-night.jpg')",
@@ -12,12 +12,12 @@ module.exports = {
   },
   variants: {
     extend: {
-      borderWidth: ['hover', 'focus', 'focus-within'],
+      borderwidth: ['hover', 'focus', 'focus-within'],
     },
   },
   plugins: [
     require("@tailwindcss/forms")({
-      useFormClasses: true,
+      useformclasses: true,
     })
   ],
 };
