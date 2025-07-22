@@ -1,6 +1,7 @@
 @import "tailwindcss";
-
-/* @import "@tailwindcss/forms"; */
+@plugin '@tailwindcss/forms' {
+   strategy: "class";
+}
 
 @theme {
   /* Custom background images */
