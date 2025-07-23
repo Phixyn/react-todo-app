@@ -1,4 +1,4 @@
-function TodosHeader() {
+export default function TodosHeader() {
   // TODO improve this, this is just to test the design
   const date = new Date();
   const day = date.getDate();
@@ -32,11 +32,13 @@ function TodosHeader() {
     two: "nd",
     few: "rd",
     other: "th",
+    zero: "",
+    many: "",
   };
-  const enOrdinalSuffix = enOrdinalRulesMap[enOrdinalRules.select(day)];
+  const enOrdinalSuffix: string = enOrdinalRulesMap[enOrdinalRules.select(day)];
 
   // Use a different header image depending on the time of day
-  const getHeaderImageClass = (hour) => {
+  const getHeaderImageClass = (hour: number) => {
     if (hour >= 6 && hour < 16) {
       // Day time - 06:00 to 16:00
       return "bg-todo-header-day";
@@ -64,4 +66,3 @@ function TodosHeader() {
   );
 }
 
-export default TodosHeader;

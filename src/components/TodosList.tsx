@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+
 import AddTodo from "./AddTodo";
 import TodosFooter from "./TodosFooter";
 import TodosHeader from "./TodosHeader";
 import TodoItem from "./TodoItem";
 
-function TodosList() {
+// TODO Move to a types file?
+export interface TodoItemType {
+  id: string;
+  title: string;
+  completed: boolean;
+}
+
+export default function TodosList() {
   // const [todos, setTodos] = useState([
   //   {
   //     id: 1,
@@ -24,13 +32,13 @@ function TodosList() {
   //     completed: false,
   //   },
   // ]);
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<TodoItemType[]>([]);
 
   // Add a new todo item
-  const addTodo = (title) => {
+  const addTodo = (title: string) => {
     let newTodo = {
       id: uuidv4(),
-      title, // new in ES6: same as title: title
+      title,
       completed: false,
     };
 
@@ -40,12 +48,12 @@ function TodosList() {
   };
 
   // Delete a todo item
-  const delTodo = (id) => {
+  const delTodo = (id: string) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   // Toggle completed state of todo item
-  const markComplete = (id) => {
+  const markComplete = (id: string) => {
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -91,4 +99,3 @@ function TodosList() {
   );
 }
 
-export default TodosList;
