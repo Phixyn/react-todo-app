@@ -4,18 +4,19 @@ function AppHeader() {
   return (
     <header className="mb-8">
       <NavLink
-        exact
         to="/"
-        className="pb-1 mr-4 transition duration-500 ease-in-out hover:text-gray-700"
-        activeClassName="border-b-2 border-pink-600"
+        className={({ isActive }) =>
+          isActive ? "border-b-2 border-pink-600" : "pb-1 mr-4 transition duration-500 ease-in-out hover:text-gray-700"
+        }
         data-testid="header-home-link"
       >
         Home
       </NavLink>
       <NavLink
         to="/about"
-        className="pb-1 transition duration-500 ease-in-out hover:text-gray-700"
-        activeClassName="border-b-2 border-pink-600"
+        className={({ isActive }) =>
+          isActive ? "border-b-2 border-pink-600" : "pb-1 transition duration-500 ease-in-out hover:text-gray-700"
+        }
         data-testid="header-about-link"
       >
         About

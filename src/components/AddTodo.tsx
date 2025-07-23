@@ -1,21 +1,25 @@
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
-import PropTypes from "prop-types";
 
-function AddTodo(props) {
+interface AddTodoProps {
+  addTodo: (title: string) => void;
+}
+
+export default function AddTodo({ addTodo }: AddTodoProps) {
   const [title, setTitle] = useState("");
 
-  const onSubmit = (evt) => {
-    // Stop form being submmited to same file and reloading the page
+  const onSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+    // Stop form being submitted to same file and reloading the page
     evt.preventDefault();
 
     // Validate todo text
     if (!title) {
+      // TODO Replace with toast
       alert("Please add a task description.");
       return;
     }
 
-    props.addTodo(title);
+    addTodo(title);
 
     // Clear task text in component state
     setTitle("");
@@ -44,8 +48,3 @@ function AddTodo(props) {
   );
 }
 
-AddTodo.propTypes = {
-  addTodo: PropTypes.func.isRequired,
-};
-
-export default AddTodo;

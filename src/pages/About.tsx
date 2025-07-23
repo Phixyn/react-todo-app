@@ -25,7 +25,6 @@ function About() {
 
       <p className="mt-4">
         <NavLink
-          exact
           to="/"
           className="transition duration-500 ease-in-out border-b border-pink-600 font-medium text-pink-600 hover:text-pink-500"
         >
