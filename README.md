@@ -46,9 +46,7 @@ The application is served at [http://localhost:5173](http://localhost:5173) by d
 
 ## Building
 
-- [ ] TODO To update
-
-Run `yarn build` to build the static assets for external or local hosting. The files will be located inside the `build` folder by default.
+Run `npm run build` to build the static assets for external or local hosting. The files will be located inside the `dist` folder by default.
 
 This correctly bundles React in production mode and optimizes the build for best performance.
 
