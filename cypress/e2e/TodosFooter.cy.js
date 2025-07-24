@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { random } from "faker";
+import { faker } from '@faker-js/faker';
 
 describe("todo list footer", () => {
   beforeEach(() => {
@@ -28,9 +28,9 @@ describe("todo list footer", () => {
 
   it("should update number of total tasks", () => {
     cy.getByTestId("total-tasks-count").should("have.text", "0 tasks");
-    cy.addTask(random.words());
+    cy.addTask(faker.word.words());
     cy.getByTestId("total-tasks-count").should("have.text", "1 task");
-    cy.addTask(random.words());
+    cy.addTask(faker.word.words());
     cy.getByTestId("total-tasks-count").should("have.text", "2 tasks");
 
     // Delete one task
@@ -45,13 +45,13 @@ describe("todo list footer", () => {
 
   it("should update number of complete tasks", () => {
     cy.getByTestId("completed-tasks-count").should("have.text", "0 complete");
-    cy.addTask(random.words(), true);
+    cy.addTask(faker.word.words(), true);
     cy.getByTestId("completed-tasks-count").should("have.text", "1 complete");
   });
 
   it("should update number of open tasks", () => {
     cy.getByTestId("open-tasks-count").should("have.text", "0 open");
-    cy.addTask(random.words());
+    cy.addTask(faker.word.words());
     cy.getByTestId("open-tasks-count").should("have.text", "1 open");
 
     // Mark task as complete

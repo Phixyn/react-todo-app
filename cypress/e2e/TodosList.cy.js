@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { random } from "faker";
+import { faker } from '@faker-js/faker';
 
 describe("todo list", () => {
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe("todo list", () => {
   });
 
   it("displays todo items", () => {
-    cy.addTask(random.words());
+    cy.addTask(faker.word.words());
 
     cy.getByTestId("todos-list")
       .find("li")

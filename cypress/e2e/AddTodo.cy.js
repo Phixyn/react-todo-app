@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { random } from "faker";
+import { faker } from '@faker-js/faker';
 
 describe("add todo item form", () => {
   beforeEach(() => {
@@ -25,7 +25,7 @@ describe("add todo item form", () => {
   });
 
   it("should allow text to be entered in the text input", () => {
-    let task = random.words();
+    let task = faker.word.words();
 
     cy.getByTestId("task-input-field")
       .type(task)
@@ -33,7 +33,7 @@ describe("add todo item form", () => {
   });
 
   it("can be used to add new tasks to the to-do list", () => {
-    let task = random.words();
+    let task = faker.word.words();
 
     cy.getByTestId("task-input-field").type(task);
     cy.getByTestId("task-submit-btn").click();
