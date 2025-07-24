@@ -12,7 +12,7 @@ declare namespace Cypress {
      *
      * @yields {Object} The DOM element(s) found.
      */
-    getByTestId(testId: string): Chainable<JQuery<HTMLElement>>
+    getByTestId(testId: string, options?: Partial<TypeOptions>): Chainable<JQuery<HTMLElement>>
 
     /**
      * Queries the DOM subject for an element with the given data-testid value.
@@ -33,7 +33,7 @@ declare namespace Cypress {
      *
      * @yields {Object} The DOM element(s) found.
      */
-    findByTestId(testId: string): Chainable<JQuery<HTMLElement>>
+    findByTestId(testId: string, options?: Partial<TypeOptions>): Chainable<JQuery<HTMLElement>>
 
     /**
      * Adds a new task to the to-do list via UI interactions, optionally marking

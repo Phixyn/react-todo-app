@@ -1,14 +1,14 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.add("getByTestId", (testId, ...args) => {
-  return cy.get(`[data-testid=${testId}]`, ...args);
+Cypress.Commands.add("getByTestId", (testId, options?) => {
+  return cy.get(`[data-testid=${testId}]`, options);
 });
 
 Cypress.Commands.add(
   "findByTestId",
   { prevSubject: true },
-  (subject, testId, ...args) => {
-    return subject.find(`[data-testid=${testId}]`, ...args);
+  (subject, testId, options?) => {
+    return subject.find(`[data-testid=${testId}]`, options);
   }
 );
 
