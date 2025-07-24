@@ -1,12 +1,4 @@
 /// <reference types="cypress" />
-// ***********************************************
-// This file can be used to create various
-// custom commands and overwrite existing ones.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
 
 /**
  * Queries the entire DOM for an element with the given data-testid value.
