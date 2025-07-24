@@ -7,7 +7,7 @@ describe("todo list", () => {
     cy.visit("/");
     cy.waitForReact(5000, "#root");
   });
-  
+
   it("starts with no items", () => {
     cy.getByTestId("todos-list", {
       timeout: 0,
