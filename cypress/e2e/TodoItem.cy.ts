@@ -9,7 +9,7 @@ describe("todo list", () => {
   });
 
   it("displays the correct task description", () => {
-    let task = faker.word.words();
+    const task = faker.word.words();
 
     cy.addTask(task);
     cy.getByTestId("todos-list")
@@ -41,7 +41,7 @@ describe("todo list", () => {
   });
 
   it("can be deleted", () => {
-    let task = faker.word.words();
+    const task = faker.word.words();
 
     // Add a couple of tasks to work with and make test a bit "realistic"
     cy.addTask(task);
