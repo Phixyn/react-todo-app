@@ -1,18 +1,20 @@
+import { useContext } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 
+import { GlobalContext } from "../context/GlobalState";
 import type { TodoItemType } from "./TodosList";
 
 interface TodoItemProps {
   todo: TodoItemType;
-  markComplete: (id: string) => void;
-  delTodo: (id: string) => void;
 }
 
-export default function TodoItem({ todo, markComplete, delTodo }: TodoItemProps) {
-  let textDecorationClass = todo.completed
+export default function TodoItem({ todo }: TodoItemProps) {
+  const { toggleCompleteTodo, deleteTodo } = useContext(GlobalContext);
+
+  const textDecorationClass = todo.completed
     ? "line-through"
     : "no-underline";
-  let textColorClass = todo.completed
+  const textColorClass = todo.completed
     ? "text-pink-600"
     : "text-gray-800";
 
@@ -26,14 +28,14 @@ export default function TodoItem({ todo, markComplete, delTodo }: TodoItemProps)
         type="checkbox"
         className="form-checkbox rounded text-pink-600 shadow-none focus:shadow-none focus:ring-0 focus:ring-offset-0 focus:outline-none"
         checked={todo.completed}
-        onChange={() => markComplete(todo.id)}
+        onChange={() => toggleCompleteTodo(todo.id)}
         data-testid="task-completed-checkbox"
       />
       <span className="flex-1 px-2 min-w-0 break-words">
         {todo.title}
       </span>
       <button
-        onClick={() => delTodo(todo.id)}
+        onClick={() => deleteTodo(todo.id)}
         className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none"
         data-testid="delete-task-btn"
       >
