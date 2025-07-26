@@ -20,7 +20,7 @@ describe('AddTodo', () => {
   })
 
   test('should show an alert when form is submitted with empty input', () => {
-    const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {})
+    const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => { })
 
     render(<AddTodo />)
     const form = screen.getByTestId('task-form')

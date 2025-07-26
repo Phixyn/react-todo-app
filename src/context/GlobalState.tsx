@@ -4,23 +4,22 @@ import type { ReactNode } from 'react'
 import AppReducer from './AppReducer'
 import type { TodoItemType } from '../components/TodosList'
 
-// Rename to TodoListState ?
-export interface TodoState {
+export interface TodoListState {
   todoItems: TodoItemType[];
   addTodo: (todoItem: TodoItemType) => void;
-  toggleCompleteTodo: (id: string) => void;
+  toggleTodoComplete: (id: string) => void;
   deleteTodo: (id: string) => void;
 }
 
-// TODO Improve?
-const initialState: TodoState = {
+// TODO Fix ESLint errors
+const initialState: TodoListState = {
   todoItems: [],
-  addTodo: (_todoItem: TodoItemType) => {},
-  toggleCompleteTodo: (_id: string) => {},
-  deleteTodo: (_id: string) => {}
+  addTodo: (_todoItem: TodoItemType) => { },
+  toggleTodoComplete: (_id: string) => { },
+  deleteTodo: (_id: string) => { }
 }
 
-export const GlobalContext = createContext<TodoState>(initialState);
+export const GlobalContext = createContext<TodoListState>(initialState);
 
 type GlobalProviderProps = {
   children: ReactNode;
@@ -38,9 +37,9 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
   }
 
   // Toggle completed state of todo item
-  function toggleCompleteTodo(id: string) {
+  function toggleTodoComplete(id: string) {
     dispatch({
-      type: 'TOGGLE_COMPLETE_TODO',
+      type: 'TOGGLE_TODO_COMPLETE',
       payload: id
     });
   }
@@ -57,9 +56,10 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
       value={{
         todoItems: state.todoItems,
         addTodo,
-        toggleCompleteTodo,
+        toggleTodoComplete,
         deleteTodo
-    }}>
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );

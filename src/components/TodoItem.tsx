@@ -9,7 +9,7 @@ interface TodoItemProps {
 }
 
 export default function TodoItem({ todo }: TodoItemProps) {
-  const { toggleCompleteTodo, deleteTodo } = useContext(GlobalContext);
+  const { toggleTodoComplete, deleteTodo } = useContext(GlobalContext);
 
   const textDecorationClass = todo.completed
     ? "line-through"
@@ -28,7 +28,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
         type="checkbox"
         className="form-checkbox rounded text-pink-600 shadow-none focus:shadow-none focus:ring-0 focus:ring-offset-0 focus:outline-none"
         checked={todo.completed}
-        onChange={() => toggleCompleteTodo(todo.id)}
+        onChange={() => toggleTodoComplete(todo.id)}
         data-testid="task-completed-checkbox"
       />
       <span className="flex-1 px-2 min-w-0 break-words">
