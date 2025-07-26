@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { useContext } from "react";
+
+import { GlobalContext } from "../context/GlobalState";
 
 import AddTodo from "./AddTodo";
 import TodosFooter from "./TodosFooter";
@@ -14,69 +15,22 @@ export interface TodoItemType {
 }
 
 export default function TodosList() {
-  // const [todos, setTodos] = useState([
-  //   {
-  //     id: 1,
-  //     title: "Feed the cat",
-  //     day: "Feb 5th at 2:30pm",
-  //     completed: true,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Meeting at school",
-  //     completed: false,
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Grocery shopping",
-  //     completed: false,
-  //   },
-  // ]);
-  const [todos, setTodos] = useState<TodoItemType[]>([]);
-
-  // Add a new todo item
-  const addTodo = (title: string) => {
-    let newTodo = {
-      id: uuidv4(),
-      title,
-      completed: false,
-    };
-
-    // [...] = spread operator (copy items)
-    // Used because we can't (and shouldn't) change state values directly
-    setTodos([...todos, newTodo]);
-  };
-
-  // Delete a todo item
-  const delTodo = (id: string) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-
-  // Toggle completed state of todo item
-  const markComplete = (id: string) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
-  };
+  const { todoItems } = useContext(GlobalContext);
 
   return (
     <div className="flex flex-col bg-gray-200 rounded shadow-lg">
       <TodosHeader />
 
-      <AddTodo addTodo={addTodo} />
+      <AddTodo />
 
       <div className="mx-4 my-6 h-96 overflow-auto">
-        {todos.length > 0 ? (
+        {todoItems.length > 0 ? (
           // If there are todo items, show them in a list
           <ul className="mt-4" data-testid="todos-list">
-            {todos.map((todo) => (
+            {todoItems.map((todoItem) => (
               <TodoItem
-                key={todo.id}
-                todo={todo}
-                markComplete={markComplete}
-                delTodo={delTodo}
+                key={todoItem.id}
+                todo={todoItem}
               />
             ))}
           </ul>
@@ -92,8 +46,8 @@ export default function TodosList() {
       </div>
 
       <TodosFooter
-        totalTasks={todos.length}
-        doneTasks={todos.filter((todo) => todo.completed).length}
+        totalTasks={todoItems.length}
+        doneTasks={todoItems.filter((todoItem) => todoItem.completed).length}
       />
     </div>
   );

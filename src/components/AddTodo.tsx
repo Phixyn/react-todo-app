@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEdit } from "react-icons/fa";
+import { v4 as uuidv4 } from "uuid";
 
-interface AddTodoProps {
-  addTodo: (title: string) => void;
-}
+import { GlobalContext } from "../context/GlobalState";
 
-export default function AddTodo({ addTodo }: AddTodoProps) {
+export default function AddTodo() {
   const [title, setTitle] = useState("");
+
+  const { addTodo } = useContext(GlobalContext);
 
   const onSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     // Stop form being submitted to same file and reloading the page
@@ -19,7 +20,13 @@ export default function AddTodo({ addTodo }: AddTodoProps) {
       return;
     }
 
-    addTodo(title);
+    const newTodo = {
+      id: uuidv4(),
+      title,
+      completed: false,
+    };
+
+    addTodo(newTodo);
 
     // Clear task text in component state
     setTitle("");
