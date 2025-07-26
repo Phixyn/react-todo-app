@@ -27,7 +27,10 @@ export default function AddTodo({ addTodo }: AddTodoProps) {
 
   return (
     <div className="mx-4 mt-6">
-      <form onSubmit={onSubmit} className="flex items-center transition duration-500 ease-in-out py-2 border-b-2 border-gray-300 focus-within:border-b-2 focus-within:border-pink-600">
+      <form
+        onSubmit={onSubmit}
+        className="flex items-center transition duration-500 ease-in-out py-2 border-b-2 border-gray-300 focus-within:border-b-2 focus-within:border-pink-600"
+        data-testid="task-form">
         <input
           name="task-title"
           type="text"

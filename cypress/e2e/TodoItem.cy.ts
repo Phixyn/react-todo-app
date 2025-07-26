@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { random } from "faker";
+import { faker } from '@faker-js/faker';
 
 describe("todo list", () => {
   beforeEach(() => {
@@ -9,7 +9,7 @@ describe("todo list", () => {
   });
 
   it("displays the correct task description", () => {
-    let task = random.words();
+    const task = faker.word.words();
 
     cy.addTask(task);
     cy.getByTestId("todos-list")
@@ -19,7 +19,7 @@ describe("todo list", () => {
   });
 
   it("can be marked as complete", () => {
-    cy.addTask(random.words());
+    cy.addTask(faker.word.words());
 
     // "Simple" way
     // cy.getByTestId("todos-list")
@@ -41,11 +41,11 @@ describe("todo list", () => {
   });
 
   it("can be deleted", () => {
-    let task = random.words();
+    const task = faker.word.words();
 
     // Add a couple of tasks to work with and make test a bit "realistic"
     cy.addTask(task);
-    cy.addTask(random.words());
+    cy.addTask(faker.word.words());
 
     // All of the below can use closures, but at the cost of readability
     cy.getByTestId("todos-list")
