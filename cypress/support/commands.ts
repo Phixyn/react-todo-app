@@ -9,7 +9,7 @@ Cypress.Commands.add(
   { prevSubject: true },
   (subject, testId, options?) => {
     return subject.find(`[data-testid="${testId}"]`, options);
-  }
+  },
 );
 
 Cypress.Commands.add("addTask", (task, isComplete = false) => {

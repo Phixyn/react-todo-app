@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
 
 describe("add todo item form", () => {
   beforeEach(() => {
@@ -20,16 +20,14 @@ describe("add todo item form", () => {
     cy.getByTestId("task-input-field").should(
       "have.attr",
       "placeholder",
-      "Add task..."
+      "Add task...",
     );
   });
 
   it("should allow text to be entered in the text input", () => {
     const task = faker.word.words();
 
-    cy.getByTestId("task-input-field")
-      .type(task)
-      .should("have.value", task);
+    cy.getByTestId("task-input-field").type(task).should("have.value", task);
   });
 
   it("can be used to add new tasks to the to-do list", () => {

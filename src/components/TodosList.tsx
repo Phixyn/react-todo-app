@@ -28,10 +28,7 @@ export default function TodosList() {
           // If there are todo items, show them in a list
           <ul className="mt-4" data-testid="todos-list">
             {todoItems.map((todoItem) => (
-              <TodoItem
-                key={todoItem.id}
-                todo={todoItem}
-              />
+              <TodoItem key={todoItem.id} todo={todoItem} />
             ))}
           </ul>
         ) : (
@@ -52,4 +49,3 @@ export default function TodosList() {
     </div>
   );
 }
-

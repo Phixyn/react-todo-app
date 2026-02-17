@@ -1,13 +1,13 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/forms' {
-   strategy: "class";
+  strategy: "class";
 }
 
 @theme {
   /* Custom background images */
-  --background-image-todo-header-day: url('/src/assets/header-day.jpg');
-  --background-image-todo-header-afternoon: url('/src/assets/header-afternoon.jpg');
-  --background-image-todo-header-night: url('/src/assets/header-night.jpg');
+  --background-image-todo-header-day: url("/src/assets/header-day.jpg");
+  --background-image-todo-header-afternoon: url("/src/assets/header-afternoon.jpg");
+  --background-image-todo-header-night: url("/src/assets/header-night.jpg");
 }
 
 /*

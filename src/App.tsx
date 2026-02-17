@@ -6,12 +6,15 @@ import AppFooter from "./components/AppFooter.jsx";
 import TodosList from "./components/TodosList.jsx";
 import About from "./pages/About.jsx";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
     <GlobalProvider>
-      <div id="app" className="flex flex-col container max-w-md mx-auto md:pt-8">
+      <div
+        id="app"
+        className="flex flex-col container max-w-md mx-auto md:pt-8"
+      >
         <Router>
           <section>
             <Routes>

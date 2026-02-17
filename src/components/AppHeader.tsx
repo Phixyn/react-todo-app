@@ -6,7 +6,9 @@ function AppHeader() {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          isActive ? "border-b-2 border-pink-600" : "pb-1 mr-4 transition duration-500 ease-in-out hover:text-gray-700"
+          isActive
+            ? "border-b-2 border-pink-600"
+            : "pb-1 mr-4 transition duration-500 ease-in-out hover:text-gray-700"
         }
         data-testid="header-home-link"
       >
@@ -15,7 +17,9 @@ function AppHeader() {
       <NavLink
         to="/about"
         className={({ isActive }) =>
-          isActive ? "border-b-2 border-pink-600" : "pb-1 transition duration-500 ease-in-out hover:text-gray-700"
+          isActive
+            ? "border-b-2 border-pink-600"
+            : "pb-1 transition duration-500 ease-in-out hover:text-gray-700"
         }
         data-testid="header-about-link"
       >

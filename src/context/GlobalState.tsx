@@ -1,8 +1,8 @@
-import { createContext, useReducer } from 'react'
-import type { ReactNode } from 'react'
+import { createContext, useReducer } from "react";
+import type { ReactNode } from "react";
 
-import AppReducer from './AppReducer'
-import type { TodoItemType } from '../components/TodosList'
+import AppReducer from "./AppReducer";
+import type { TodoItemType } from "../components/TodosList";
 
 export interface TodoListState {
   todoItems: TodoItemType[];
@@ -14,16 +14,16 @@ export interface TodoListState {
 // TODO Fix ESLint errors
 const initialState: TodoListState = {
   todoItems: [],
-  addTodo: (_todoItem: TodoItemType) => { },
-  toggleTodoComplete: (_id: string) => { },
-  deleteTodo: (_id: string) => { }
-}
+  addTodo: (_todoItem: TodoItemType) => {},
+  toggleTodoComplete: (_id: string) => {},
+  deleteTodo: (_id: string) => {},
+};
 
 export const GlobalContext = createContext<TodoListState>(initialState);
 
 type GlobalProviderProps = {
   children: ReactNode;
-}
+};
 
 export const GlobalProvider = ({ children }: GlobalProviderProps) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
@@ -31,23 +31,23 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
   // Actions
   function addTodo(todoItem: TodoItemType) {
     dispatch({
-      type: 'ADD_TODO',
-      payload: todoItem
+      type: "ADD_TODO",
+      payload: todoItem,
     });
   }
 
   // Toggle completed state of todo item
   function toggleTodoComplete(id: string) {
     dispatch({
-      type: 'TOGGLE_TODO_COMPLETE',
-      payload: id
+      type: "TOGGLE_TODO_COMPLETE",
+      payload: id,
     });
   }
 
   function deleteTodo(id: string) {
     dispatch({
-      type: 'DELETE_TODO',
-      payload: id
+      type: "DELETE_TODO",
+      payload: id,
     });
   }
 
@@ -57,11 +57,10 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
         todoItems: state.todoItems,
         addTodo,
         toggleTodoComplete,
-        deleteTodo
+        deleteTodo,
       }}
     >
       {children}
     </GlobalContext.Provider>
   );
-}
-
+};
