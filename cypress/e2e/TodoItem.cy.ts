@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
 
 describe("todo list", () => {
   beforeEach(() => {
@@ -12,10 +12,7 @@ describe("todo list", () => {
     const task = faker.word.words();
 
     cy.addTask(task);
-    cy.getByTestId("todos-list")
-      .find("li")
-      .first()
-      .should("have.text", task);
+    cy.getByTestId("todos-list").find("li").first().should("have.text", task);
   });
 
   it("can be marked as complete", () => {
@@ -48,9 +45,7 @@ describe("todo list", () => {
     cy.addTask(faker.word.words());
 
     // All of the below can use closures, but at the cost of readability
-    cy.getByTestId("todos-list")
-      .contains(task)
-      .should("exist");
+    cy.getByTestId("todos-list").contains(task).should("exist");
 
     // Delete the first task
     cy.getByTestId("todos-list")
@@ -63,7 +58,8 @@ describe("todo list", () => {
     // Assert deletion
     cy.getByTestId("todos-list", {
       timeout: 0,
-    }).contains(task)
+    })
+      .contains(task)
       .should("not.exist");
   });
 });

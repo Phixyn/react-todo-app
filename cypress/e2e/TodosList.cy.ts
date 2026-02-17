@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
 
 describe("todo list", () => {
   beforeEach(() => {

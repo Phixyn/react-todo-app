@@ -37,7 +37,8 @@ export default function AddTodo() {
       <form
         onSubmit={onSubmit}
         className="flex items-center transition duration-500 ease-in-out py-2 border-b-2 border-gray-300 focus-within:border-b-2 focus-within:border-pink-600"
-        data-testid="task-form">
+        data-testid="task-form"
+      >
         <input
           name="task-title"
           type="text"
@@ -50,11 +51,11 @@ export default function AddTodo() {
         <button
           type="submit"
           className="transition duration-200 ease-in-out text-gray-400 focus:outline-none hover:text-pink-500 text-lg px-2 cursor-pointer"
-          data-testid="task-submit-btn">
+          data-testid="task-submit-btn"
+        >
           <FaEdit />
         </button>
       </form>
     </div>
   );
 }
-

@@ -14,10 +14,17 @@ export default function AppFooter() {
           About
         </NavLink>
       ) : (
-        <p>Made by <a className="transition duration-500 ease-in-out font-medium text-pink-600 hover:text-pink-500" href="https://phixyn.com/" target="_blank">Phixyn</a></p>
+        <p>
+          Made by{" "}
+          <a
+            className="transition duration-500 ease-in-out font-medium text-pink-600 hover:text-pink-500"
+            href="https://phixyn.com/"
+            target="_blank"
+          >
+            Phixyn
+          </a>
+        </p>
       )}
-
     </footer>
-  )
+  );
 }
-

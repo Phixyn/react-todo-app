@@ -7,17 +7,14 @@ describe("todo list header", () => {
   });
 
   it("should display background image", () => {
-    cy.getByTestId("todos-header-bg")
-      .should("be.visible")
+    cy.getByTestId("todos-header-bg").should("be.visible");
   });
 
   it("should display day of week and calendar day", () => {
-    cy.getByTestId("calendar-date")
-      .should("be.visible")
+    cy.getByTestId("calendar-date").should("be.visible");
   });
 
   it("should display month name", () => {
-    cy.getByTestId("calendar-month")
-      .should("be.visible")
+    cy.getByTestId("calendar-month").should("be.visible");
   });
 });

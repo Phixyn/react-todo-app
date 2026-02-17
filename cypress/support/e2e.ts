@@ -1,3 +1,2 @@
-import './commands'
-import 'cypress-react-selector'
-
+import "./commands";
+import "cypress-react-selector";

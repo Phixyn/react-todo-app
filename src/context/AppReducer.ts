@@ -19,27 +19,29 @@ type DeleteTodoAction = {
 type Action = AddTodoAction | ToggleTodoCompleteAction | DeleteTodoAction;
 
 export default (state: TodoListState, action: Action): TodoListState => {
-
   switch (action.type) {
-    case 'ADD_TODO':
+    case "ADD_TODO":
       return {
         ...state,
-        todoItems: [action.payload, ...state.todoItems]
-      }
-    case 'TOGGLE_TODO_COMPLETE':
+        todoItems: [action.payload, ...state.todoItems],
+      };
+    case "TOGGLE_TODO_COMPLETE":
       return {
         ...state,
         todoItems: state.todoItems.map((todoItem) =>
-          todoItem.id === action.payload ? { ...todoItem, completed: !todoItem.completed } : todoItem
-        )
-      }
-    case 'DELETE_TODO':
+          todoItem.id === action.payload
+            ? { ...todoItem, completed: !todoItem.completed }
+            : todoItem,
+        ),
+      };
+    case "DELETE_TODO":
       return {
         ...state,
-        todoItems: state.todoItems.filter(todoItem => todoItem.id !== action.payload)
-      }
+        todoItems: state.todoItems.filter(
+          (todoItem) => todoItem.id !== action.payload,
+        ),
+      };
     default:
       return state;
   }
-}
-
+};

@@ -11,12 +11,8 @@ interface TodoItemProps {
 export default function TodoItem({ todo }: TodoItemProps) {
   const { toggleTodoComplete, deleteTodo } = useContext(GlobalContext);
 
-  const textDecorationClass = todo.completed
-    ? "line-through"
-    : "no-underline";
-  const textColorClass = todo.completed
-    ? "text-pink-600"
-    : "text-gray-800";
+  const textDecorationClass = todo.completed ? "line-through" : "no-underline";
+  const textColorClass = todo.completed ? "text-pink-600" : "text-gray-800";
 
   return (
     <li
@@ -31,9 +27,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
         onChange={() => toggleTodoComplete(todo.id)}
         data-testid="task-completed-checkbox"
       />
-      <span className="flex-1 px-2 min-w-0 break-words">
-        {todo.title}
-      </span>
+      <span className="flex-1 px-2 min-w-0 break-words">{todo.title}</span>
       <button
         onClick={() => deleteTodo(todo.id)}
         className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none"
@@ -44,4 +38,3 @@ export default function TodoItem({ todo }: TodoItemProps) {
     </li>
   );
 }
-

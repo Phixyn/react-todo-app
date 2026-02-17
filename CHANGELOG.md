@@ -4,7 +4,7 @@ All notable changes to this project are documented in this file. The format is i
 
 This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-- - -
+***
 
 ## Table of Contents
 
