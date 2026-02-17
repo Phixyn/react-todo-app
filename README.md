@@ -17,7 +17,7 @@
   ![Preview Screenshot](docs/screenshots/mobile_preview_cropped.png?raw=true)
 </div>
 
-- - -
+***
 
 ## Table of Contents
 
@@ -28,7 +28,7 @@
 - [Usage](#usage)
 - [License](#license)
 
-- - -
+***
 
 ## Overview
 
@@ -68,4 +68,3 @@ Tasks can be marked as complete by ticking the checkbox. They can also be delete
 ## License
 
 **MIT License**. For more information see [LICENSE](https://github.com/Phixyn/react-todo-app/blob/master/LICENSE).
-
