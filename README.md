@@ -52,10 +52,8 @@ This correctly bundles React in production mode and optimizes the build for best
 
 ## Testing
 
-- [ ] TODO To update
-
-1. Run `yarn start` to run in development mode
-2. Run `yarn cypress:run` to run end-to-end tests
+1. Run `npm run dev` to start the dev server
+2. In a separate terminal window, run `npm run cypress:run` to run end-to-end tests
 
 ## Usage
 
