@@ -37,6 +37,40 @@ describe("todo list", () => {
       });
   });
 
+  it("can be edited", () => {
+    const originalTask = faker.word.words();
+    const editedTask = faker.word.words();
+
+    cy.addTask(originalTask);
+
+    // Click the edit button
+    cy.contains("li", originalTask).findByTestId("edit-task-btn").click();
+
+    // The input should be visible and focused
+    cy.getByTestId("todo-item")
+      .find("input[type='text']")
+      .filter((_, el) => (el as HTMLInputElement).value === originalTask)
+      .should("have.value", originalTask);
+
+    // Clear and type new value
+    cy.getByTestId("todo-item")
+      .find("input[type='text']")
+      .filter(`[value="${originalTask}"]`)
+      .clear()
+      .type(editedTask);
+
+    // Click save
+    cy.getByTestId("todo-item")
+      .find("input[type='text']")
+      .filter(`[value="${editedTask}"]`)
+      .getByTestId("save-task-btn")
+      .click();
+
+    // Assert the task was updated
+    cy.getByTestId("todos-list").contains(editedTask).should("exist");
+    cy.getByTestId("todos-list").contains(originalTask).should("not.exist");
+  });
+
   it("can be deleted", () => {
     const task = faker.word.words();
 
@@ -47,13 +81,8 @@ describe("todo list", () => {
     // All of the below can use closures, but at the cost of readability
     cy.getByTestId("todos-list").contains(task).should("exist");
 
-    // Delete the first task
-    cy.getByTestId("todos-list")
-      .find("li")
-      .contains(task)
-      .next()
-      .should("have.attr", "data-testid", "delete-task-btn")
-      .click();
+    // Delete the task
+    cy.contains("li", task).findByTestId("delete-task-btn").click();
 
     // Assert deletion
     cy.getByTestId("todos-list", {
