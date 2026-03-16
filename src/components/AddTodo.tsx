@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { FaEdit } from "react-icons/fa";
+import { FaRegPlusSquare } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
 import { GlobalContext } from "../context/GlobalState";
@@ -53,7 +53,7 @@ export default function AddTodo() {
           className="transition duration-200 ease-in-out text-gray-400 focus:outline-none hover:text-pink-500 text-lg px-2 cursor-pointer"
           data-testid="task-submit-btn"
         >
-          <FaEdit />
+          <FaRegPlusSquare />
         </button>
       </form>
     </div>

@@ -1,5 +1,5 @@
 import { useContext, useRef, useEffect, useState } from "react";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaSave, FaTimes, FaTrashAlt } from "react-icons/fa";
 
 import { GlobalContext } from "../context/GlobalState";
 import type { TodoItemType } from "./TodosList";
@@ -96,26 +96,26 @@ export default function TodoItem({ todo }: TodoItemProps) {
           <>
             <button
               onClick={handleSave}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-green-500 focus:outline-none text-sm px-2"
+              className="transition duration-200 ease-in-out text-gray-400 hover:text-green-500 focus:outline-none text-sm px-1"
               data-testid="save-task-btn"
               aria-label="Save todo"
             >
-              Save
+              <FaSave />
             </button>
             <button
               onClick={handleCancel}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-red-500 focus:outline-none text-sm px-2"
+              className="transition duration-200 ease-in-out text-gray-400 hover:text-red-500 focus:outline-none text-sm px-1"
               data-testid="cancel-task-btn"
               aria-label="Cancel editing"
             >
-              Cancel
+              <FaTimes />
             </button>
           </>
         ) : (
           <>
             <button
               onClick={handleEditClick}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none"
+              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none px-1"
               data-testid="edit-task-btn"
               aria-label="Edit todo"
             >
@@ -123,7 +123,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
             </button>
             <button
               onClick={() => deleteTodo(todo.id)}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none"
+              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none px-1"
               data-testid="delete-task-btn"
               aria-label="Delete todo"
             >
