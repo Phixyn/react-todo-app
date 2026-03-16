@@ -16,7 +16,22 @@ type DeleteTodoAction = {
   payload: string;
 };
 
-type Action = AddTodoAction | ToggleTodoCompleteAction | DeleteTodoAction;
+type UpdateTodoAction = {
+  type: "UPDATE_TODO";
+  payload: { id: string; title: string };
+};
+
+type SetEditingIdAction = {
+  type: "SET_EDITING_ID";
+  payload: string | null;
+};
+
+type Action =
+  | AddTodoAction
+  | ToggleTodoCompleteAction
+  | DeleteTodoAction
+  | UpdateTodoAction
+  | SetEditingIdAction;
 
 export default (state: TodoListState, action: Action): TodoListState => {
   switch (action.type) {
@@ -40,6 +55,20 @@ export default (state: TodoListState, action: Action): TodoListState => {
         todoItems: state.todoItems.filter(
           (todoItem) => todoItem.id !== action.payload,
         ),
+      };
+    case "UPDATE_TODO":
+      return {
+        ...state,
+        todoItems: state.todoItems.map((todoItem) =>
+          todoItem.id === action.payload.id
+            ? { ...todoItem, title: action.payload.title }
+            : todoItem,
+        ),
+      };
+    case "SET_EDITING_ID":
+      return {
+        ...state,
+        editingId: action.payload,
       };
     default:
       return state;

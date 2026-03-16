@@ -6,17 +6,23 @@ import type { TodoItemType } from "../components/TodosList";
 
 export interface TodoListState {
   todoItems: TodoItemType[];
+  editingId: string | null;
   addTodo: (todoItem: TodoItemType) => void;
   toggleTodoComplete: (id: string) => void;
   deleteTodo: (id: string) => void;
+  updateTodo: (id: string, title: string) => void;
+  setEditingId: (id: string | null) => void;
 }
 
 // TODO Fix ESLint errors
 const initialState: TodoListState = {
   todoItems: [],
+  editingId: null,
   addTodo: (_todoItem: TodoItemType) => {},
   toggleTodoComplete: (_id: string) => {},
   deleteTodo: (_id: string) => {},
+  updateTodo: (_id: string, _title: string) => {},
+  setEditingId: (_id: string | null) => {},
 };
 
 export const GlobalContext = createContext<TodoListState>(initialState);
@@ -51,13 +57,30 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
     });
   }
 
+  function updateTodo(id: string, title: string) {
+    dispatch({
+      type: "UPDATE_TODO",
+      payload: { id, title },
+    });
+  }
+
+  function setEditingId(id: string | null) {
+    dispatch({
+      type: "SET_EDITING_ID",
+      payload: id,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         todoItems: state.todoItems,
+        editingId: state.editingId,
         addTodo,
         toggleTodoComplete,
         deleteTodo,
+        updateTodo,
+        setEditingId,
       }}
     >
       {children}
