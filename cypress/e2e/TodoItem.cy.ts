@@ -37,7 +37,7 @@ describe("todo list", () => {
       });
   });
 
-it("can be edited", () => {
+  it("can be edited", () => {
     const originalTask = faker.word.words();
     const editedTask = faker.word.words();
 
@@ -47,18 +47,24 @@ it("can be edited", () => {
     cy.contains("li", originalTask).findByTestId("edit-task-btn").click();
 
     // The input should be visible and focused
-    cy.contains("li", originalTask)
+    cy.getByTestId("todo-item")
       .find("input[type='text']")
+      .filter((_, el) => (el as HTMLInputElement).value === originalTask)
       .should("have.value", originalTask);
 
     // Clear and type new value
-    cy.contains("li", originalTask)
+    cy.getByTestId("todo-item")
       .find("input[type='text']")
+      .filter(`[value="${originalTask}"]`)
       .clear()
       .type(editedTask);
 
     // Click save
-    cy.contains("li", editedTask).findByTestId("save-task-btn").click();
+    cy.getByTestId("todo-item")
+      .find("input[type='text']")
+      .filter(`[value="${editedTask}"]`)
+      .getByTestId("save-task-btn")
+      .click();
 
     // Assert the task was updated
     cy.getByTestId("todos-list").contains(editedTask).should("exist");

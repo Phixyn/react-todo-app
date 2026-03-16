@@ -11,8 +11,13 @@ interface TodoItemProps {
 export default function TodoItem({ todo }: TodoItemProps) {
   const [editValue, setEditValue] = useState(todo.title);
   const inputRef = useRef<HTMLInputElement>(null);
-  const { toggleTodoComplete, deleteTodo, editingId, setEditingId, updateTodo } =
-    useContext(GlobalContext);
+  const {
+    toggleTodoComplete,
+    deleteTodo,
+    editingId,
+    setEditingId,
+    updateTodo,
+  } = useContext(GlobalContext);
 
   const isEditing = editingId === todo.id;
 
