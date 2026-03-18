@@ -85,7 +85,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
           value={editValue}
           onChange={(e) => setEditValue(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="flex-1 px-2 min-w-0 text-base md:text-lg bg-white border border-pink-600 rounded focus:outline-none focus:ring-2 focus:ring-pink-600"
+          className="flex-1 px-2 py-1 min-w-0 text-base md:text-lg bg-gray-100 border-b-2 border-pink-600 rounded-t focus:outline-none focus:bg-white transition duration-200 ease-in-out"
           aria-label="Edit todo title"
         />
       ) : (
