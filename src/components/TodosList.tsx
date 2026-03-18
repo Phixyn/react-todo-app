@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { GlobalContext } from "../context/GlobalState";
+import { TodoContext } from "../context/TodoContext";
 
 import AddTodo from "./AddTodo";
 import TodosFooter from "./TodosFooter";
@@ -15,7 +15,7 @@ export interface TodoItemType {
 }
 
 export default function TodosList() {
-  const { todoItems } = useContext(GlobalContext);
+  const { todoItems } = useContext(TodoContext);
 
   return (
     <div className="flex flex-col bg-gray-200 rounded shadow-lg">

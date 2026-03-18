@@ -1,7 +1,7 @@
 import { useContext, useRef, useEffect, useState } from "react";
 import { FaEdit, FaSave, FaTimes, FaTrashAlt } from "react-icons/fa";
 
-import { GlobalContext } from "../context/GlobalState";
+import { TodoContext } from "../context/TodoContext";
 import type { TodoItemType } from "./TodosList";
 
 interface TodoItemProps {
@@ -17,7 +17,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
     editingId,
     setEditingId,
     updateTodo,
-  } = useContext(GlobalContext);
+  } = useContext(TodoContext);
 
   const isEditing = editingId === todo.id;
 

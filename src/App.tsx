@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { GlobalProvider } from "./context/GlobalState.js";
+import { TodoProvider } from "./context/TodoProvider";
 
-import AppFooter from "./components/AppFooter.jsx";
-import TodosList from "./components/TodosList.jsx";
-import About from "./pages/About.jsx";
+import AppFooter from "./components/AppFooter";
+import TodosList from "./components/TodosList";
+import About from "./pages/About";
 
 import "./App.css";
 
 function App() {
   return (
-    <GlobalProvider>
+    <TodoProvider>
       <div
         id="app"
         className="flex flex-col container max-w-md mx-auto md:pt-8"
@@ -26,7 +26,7 @@ function App() {
           <AppFooter />
         </Router>
       </div>
-    </GlobalProvider>
+    </TodoProvider>
   );
 }
 

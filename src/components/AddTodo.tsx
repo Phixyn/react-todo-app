@@ -2,12 +2,12 @@ import { useContext, useState } from "react";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
-import { GlobalContext } from "../context/GlobalState";
+import { TodoContext } from "../context/TodoContext";
 
 export default function AddTodo() {
   const [title, setTitle] = useState("");
 
-  const { addTodo } = useContext(GlobalContext);
+  const { addTodo } = useContext(TodoContext);
 
   const onSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     // Stop form being submitted to same file and reloading the page
