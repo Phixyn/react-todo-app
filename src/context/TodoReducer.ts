@@ -1,5 +1,5 @@
 import type { TodoItemType } from "../components/TodosList";
-import type { TodoListState } from "./GlobalState";
+import type { TodoListState } from "./TodoContext";
 
 type AddTodoAction = {
   type: "ADD_TODO";

@@ -1,40 +1,15 @@
-import { createContext, useReducer } from "react";
+import { useReducer } from "react";
 import type { ReactNode } from "react";
 
-import AppReducer from "./AppReducer";
 import type { TodoItemType } from "../components/TodosList";
+import { TodoContext, initialState } from "./TodoContext";
+import TodoReducer from "./TodoReducer";
 
-export interface TodoListState {
-  todoItems: TodoItemType[];
-  editingId: string | null;
-  addTodo: (todoItem: TodoItemType) => void;
-  toggleTodoComplete: (id: string) => void;
-  deleteTodo: (id: string) => void;
-  updateTodo: (id: string, title: string) => void;
-  setEditingId: (id: string | null) => void;
-}
-
-// TODO Fix ESLint errors
-const initialState: TodoListState = {
-  todoItems: [],
-  editingId: null,
-  addTodo: () => {},
-  toggleTodoComplete: () => {},
-  deleteTodo: () => {},
-  updateTodo: () => {},
-  setEditingId: () => {},
-} satisfies TodoListState;
-
-export const GlobalContext = createContext<TodoListState>(initialState);
-
-type GlobalProviderProps = {
-  children: ReactNode;
-};
-
-export const GlobalProvider = ({ children }: GlobalProviderProps) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState);
+export const TodoProvider = ({ children }: { children: ReactNode }) => {
+  const [state, dispatch] = useReducer(TodoReducer, initialState);
 
   // Actions
+
   function addTodo(todoItem: TodoItemType) {
     dispatch({
       type: "ADD_TODO",
@@ -72,7 +47,7 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
   }
 
   return (
-    <GlobalContext.Provider
+    <TodoContext.Provider
       value={{
         todoItems: state.todoItems,
         editingId: state.editingId,
@@ -84,6 +59,6 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
       }}
     >
       {children}
-    </GlobalContext.Provider>
+    </TodoContext.Provider>
   );
 };
