@@ -72,7 +72,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
       <input
         name="completed-checkbox"
         type="checkbox"
-        className="form-checkbox rounded text-pink-600 shadow-none focus:shadow-none focus:ring-0 focus:ring-offset-0 focus:outline-none"
+        className="form-checkbox w-5 h-5 md:w-6 md:h-6 rounded text-pink-600 shadow-none focus:shadow-none focus:ring-0 focus:ring-offset-0 focus:outline-none shrink-0"
         checked={todo.completed}
         onChange={() => toggleTodoComplete(todo.id)}
         data-testid="task-completed-checkbox"
