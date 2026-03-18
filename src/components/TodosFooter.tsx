@@ -8,7 +8,7 @@ export default function TodosFooter({
   doneTasks,
 }: TodosFooterProps) {
   return (
-    <div className="px-4 h-12 text-sm bg-gray-300 border-t border-gray-400 flex flex-wrap items-center text-gray-600">
+    <div className="px-4 md:px-6 lg:px-8 h-12 text-sm md:text-base bg-gray-300 border-t border-gray-400 flex flex-wrap items-center text-gray-600">
       <p className="flex-1 order-1" data-testid="total-tasks-count">
         {totalTasks} {totalTasks === 1 ? "task" : "tasks"}
       </p>

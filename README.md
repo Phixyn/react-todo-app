@@ -61,7 +61,7 @@ Write task descriptions in the text field and press `Enter` to add them to the l
 
 Tasks can be marked as complete by ticking the checkbox. They can also be deleted by clicking the trash icon.
 
-**Note:** Tasks are not stored anywhere. If the page is refreshed or closed, all tasks will be gone.
+**Note:** Tasks are stored in your browser only, not in a database. This project is not intended for real use.
 
 ## License
 
