@@ -18,12 +18,12 @@ export interface TodoListState {
 const initialState: TodoListState = {
   todoItems: [],
   editingId: null,
-  addTodo: (_todoItem: TodoItemType) => {},
-  toggleTodoComplete: (_id: string) => {},
-  deleteTodo: (_id: string) => {},
-  updateTodo: (_id: string, _title: string) => {},
-  setEditingId: (_id: string | null) => {},
-};
+  addTodo: () => {},
+  toggleTodoComplete: () => {},
+  deleteTodo: () => {},
+  updateTodo: () => {},
+  setEditingId: () => {},
+} satisfies TodoListState;
 
 export const GlobalContext = createContext<TodoListState>(initialState);
 
