@@ -18,23 +18,12 @@ describe("todo list", () => {
   it("can be marked as complete", () => {
     cy.addTask(faker.word.words());
 
-    // "Simple" way
-    // cy.getByTestId("todos-list")
-    //   .find("li")
-    //   .first()
-    //   .findByTestId("task-completed-checkbox")
-    //   .click()
-    //   .should("be.checked");
-
-    // "Fancy" way with closure and alias
     cy.getByTestId("todos-list")
       .find("li")
       .first()
       .findByTestId("task-completed-checkbox")
-      .then(($checkbox) => {
-        $checkbox.click();
-        expect($checkbox).to.be.checked;
-      });
+      .click()
+      .should("be.checked");
   });
 
   it("can be edited", () => {
