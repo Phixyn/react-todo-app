@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: 'npm'
+          cache: "npm"
       - run: npm ci
       - run: npm run test
 
@@ -32,6 +32,6 @@ jobs:
         uses: cypress-io/github-action@v7
         with:
           start: npm run dev
-          wait-on: 'http://localhost:5173'
+          wait-on: "http://localhost:5173"
           wait-on-timeout: 60
           browser: chrome
