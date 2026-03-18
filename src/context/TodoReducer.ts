@@ -26,12 +26,18 @@ type SetEditingIdAction = {
   payload: string | null;
 };
 
+type LoadTodosAction = {
+  type: "LOAD_TODOS";
+  payload: TodoItemType[];
+};
+
 type Action =
   | AddTodoAction
   | ToggleTodoCompleteAction
   | DeleteTodoAction
   | UpdateTodoAction
-  | SetEditingIdAction;
+  | SetEditingIdAction
+  | LoadTodosAction;
 
 export default (state: TodoListState, action: Action): TodoListState => {
   switch (action.type) {
@@ -69,6 +75,11 @@ export default (state: TodoListState, action: Action): TodoListState => {
       return {
         ...state,
         editingId: action.payload,
+      };
+    case "LOAD_TODOS":
+      return {
+        ...state,
+        todoItems: action.payload,
       };
     default:
       return state;
