@@ -39,13 +39,13 @@ export default function TodosHeader() {
 
   return (
     <header
-      className={`${getHeaderImageClass(hours)} bg-cover bg-center border-b-1 border-gray-300 px-4 py-6`}
+      className={`${getHeaderImageClass(hours)} bg-cover bg-center border-b-1 border-gray-300 px-4 py-6 md:px-6 md:py-8 lg:px-8 lg:py-10`}
       data-testid="todos-header-bg"
     >
-      <h1 className="text-2xl text-white" data-testid="calendar-date">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl text-white" data-testid="calendar-date">
         {`${weekDay}, ${day}${ordinalSuffix}`}
       </h1>
-      <p className="pt-1 text-lg text-gray-100" data-testid="calendar-month">
+      <p className="pt-1 text-lg md:text-xl text-gray-100" data-testid="calendar-month">
         {month}
       </p>
     </header>

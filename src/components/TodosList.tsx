@@ -23,7 +23,7 @@ export default function TodosList() {
 
       <AddTodo />
 
-      <div className="mx-4 my-6 h-96 overflow-auto">
+      <div className="mx-4 my-6 md:mx-6 lg:mx-8 h-96 md:h-[28rem] lg:h-[32rem] overflow-auto">
         {todoItems.length > 0 ? (
           // If there are todo items, show them in a list
           <ul className="mt-4" data-testid="todos-list">

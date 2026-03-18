@@ -33,7 +33,7 @@ export default function AddTodo() {
   };
 
   return (
-    <div className="mx-4 mt-6">
+    <div className="mx-4 mt-6 md:mx-6 lg:mx-8">
       <form
         onSubmit={onSubmit}
         className="flex items-center transition duration-500 ease-in-out py-2 border-b-2 border-gray-300 focus-within:border-b-2 focus-within:border-pink-600"

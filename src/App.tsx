@@ -13,7 +13,7 @@ function App() {
     <TodoProvider>
       <div
         id="app"
-        className="flex flex-col container max-w-md mx-auto md:pt-8"
+        className="flex flex-col w-full max-w-md sm:max-w-xl md:max-w-2xl mx-auto sm:pt-6 md:pt-10 lg:pt-16"
       >
         <Router>
           <section>
