@@ -96,7 +96,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
           <>
             <button
               onClick={handleSave}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-green-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5"
+              className="transition duration-200 ease-in-out text-gray-400 hover:text-green-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5 rounded-full bg-gray-300 hover:bg-gray-400"
               data-testid="save-task-btn"
               aria-label="Save todo"
             >
@@ -104,7 +104,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
             </button>
             <button
               onClick={handleCancel}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-red-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5"
+              className="transition duration-200 ease-in-out text-gray-400 hover:text-red-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5 rounded-full bg-gray-300 hover:bg-gray-400"
               data-testid="cancel-task-btn"
               aria-label="Cancel editing"
             >
@@ -115,7 +115,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
           <>
             <button
               onClick={handleEditClick}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5"
+              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5 rounded-full bg-gray-300 hover:bg-gray-400"
               data-testid="edit-task-btn"
               aria-label="Edit todo"
             >
@@ -123,7 +123,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
             </button>
             <button
               onClick={() => deleteTodo(todo.id)}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5"
+              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5 rounded-full bg-gray-300 hover:bg-gray-400"
               data-testid="delete-task-btn"
               aria-label="Delete todo"
             >
