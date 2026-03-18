@@ -66,7 +66,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
 
   return (
     <li
-      className={`flex items-center space-x-1 py-2.5 px-2.5 md:py-3 md:px-4 border-b border-gray-300 transition duration-300 ease-in ${textDecorationClass} ${textColorClass}`}
+      className={`flex items-center space-x-1 py-2.5 px-2.5 md:py-3 md:px-4 text-base md:text-lg border-b border-gray-300 transition duration-300 ease-in ${textDecorationClass} ${textColorClass}`}
       data-testid="todo-item"
     >
       <input
@@ -85,7 +85,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
           value={editValue}
           onChange={(e) => setEditValue(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="flex-1 px-2 min-w-0 bg-white border border-pink-600 rounded focus:outline-none focus:ring-2 focus:ring-pink-600"
+          className="flex-1 px-2 min-w-0 text-base md:text-lg bg-white border border-pink-600 rounded focus:outline-none focus:ring-2 focus:ring-pink-600"
           aria-label="Edit todo title"
         />
       ) : (
@@ -96,7 +96,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
           <>
             <button
               onClick={handleSave}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-green-500 focus:outline-none text-sm px-1"
+              className="transition duration-200 ease-in-out text-gray-400 hover:text-green-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5"
               data-testid="save-task-btn"
               aria-label="Save todo"
             >
@@ -104,7 +104,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
             </button>
             <button
               onClick={handleCancel}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-red-500 focus:outline-none text-sm px-1"
+              className="transition duration-200 ease-in-out text-gray-400 hover:text-red-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5"
               data-testid="cancel-task-btn"
               aria-label="Cancel editing"
             >
@@ -115,7 +115,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
           <>
             <button
               onClick={handleEditClick}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none px-1"
+              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5"
               data-testid="edit-task-btn"
               aria-label="Edit todo"
             >
@@ -123,7 +123,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
             </button>
             <button
               onClick={() => deleteTodo(todo.id)}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none px-1"
+              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5"
               data-testid="delete-task-btn"
               aria-label="Delete todo"
             >

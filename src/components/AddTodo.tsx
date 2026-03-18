@@ -45,12 +45,12 @@ export default function AddTodo() {
           placeholder="Add task..."
           value={title}
           onChange={(evt) => setTitle(evt.target.value)}
-          className="flex-1 px-2.5 bg-gray-200 placeholder-gray-500 focus:outline-none"
+          className="flex-1 px-2.5 text-base md:text-lg bg-gray-200 placeholder-gray-500 focus:outline-none"
           data-testid="task-input-field"
         />
         <button
           type="submit"
-          className="transition duration-200 ease-in-out text-gray-400 focus:outline-none hover:text-pink-500 text-lg px-2 cursor-pointer"
+          className="transition duration-200 ease-in-out text-gray-400 focus:outline-none hover:text-pink-500 text-xl p-2.5 md:text-2xl md:p-3 cursor-pointer"
           data-testid="task-submit-btn"
         >
           <FaRegPlusSquare />
