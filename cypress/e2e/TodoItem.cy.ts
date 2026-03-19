@@ -134,6 +134,28 @@ describe("todo list", () => {
     cy.get("[role='alert']").should("not.exist");
   });
 
+  it("should show the character counter in edit mode when near the character limit", () => {
+    const originalTask = "Hello";
+    const nearLimitTask = "a".repeat(450);
+
+    cy.addTask(originalTask);
+
+    cy.contains("li", originalTask).findByTestId("edit-task-btn").click();
+
+    // The character counter should not be visible yet
+    cy.contains("5/500", { timeout: 0 }).should("not.exist");
+
+    // Clear and type a value at the warn threshold (450 characters)
+    cy.getByTestId("todo-item")
+      .find("input[type='text']")
+      .filter(`[value="${originalTask}"]`)
+      .clear()
+      .type(nearLimitTask, { timeout: 15000 });
+
+    // Assert that the character counter is visible with the correct count
+    cy.contains("450/500").should("be.visible");
+  });
+
   it("should show an inline error in edit mode when the task exceeds 500 characters", () => {
     const originalTask = faker.word.words();
     const longTask = "a".repeat(501);
