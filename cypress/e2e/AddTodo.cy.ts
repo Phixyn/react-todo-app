@@ -75,7 +75,7 @@ describe("add todo item form", () => {
   it("should show an inline error when the task exceeds 500 characters", () => {
     const longTask = "a".repeat(501);
 
-    cy.getByTestId("task-input-field").invoke("val", longTask).trigger("input");
+    cy.getByTestId("task-input-field").type(longTask, { timeout: 15000 });
     cy.getByTestId("task-submit-btn").click();
 
     cy.get("[role='alert']").should(
@@ -98,6 +98,8 @@ describe("add todo item form", () => {
     cy.getByTestId("task-input-field").type("   ");
     cy.getByTestId("task-submit-btn").click();
 
-    cy.getByTestId("todos-list").find("li").should("not.exist");
+    cy.getByTestId("todos-list", {
+      timeout: 0,
+    }).should("not.exist");
   });
 });

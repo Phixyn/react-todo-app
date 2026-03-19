@@ -36,6 +36,7 @@ describe("todo list", () => {
     cy.contains("li", originalTask).findByTestId("edit-task-btn").click();
 
     // The input should be visible and focused
+    // Showing a different way to use .filter() here
     cy.getByTestId("todo-item")
       .find("input[type='text']")
       .filter((_, el) => (el as HTMLInputElement).value === originalTask)
@@ -134,20 +135,25 @@ describe("todo list", () => {
   });
 
   it("should show an inline error in edit mode when the task exceeds 500 characters", () => {
-    cy.addTask(faker.word.words());
-    cy.getByTestId("todos-list")
-      .find("li")
-      .first()
-      .findByTestId("edit-task-btn")
-      .click();
+    const originalTask = faker.word.words();
+    const longTask = "a".repeat(501);
+
+    cy.addTask(originalTask);
+
+    cy.contains("li", originalTask).findByTestId("edit-task-btn").click();
 
     // Set a value exceeding the character limit and attempt to save
-    const longTask = "a".repeat(501);
     cy.getByTestId("todo-item")
       .find("input[type='text']")
-      .invoke("val", longTask)
-      .trigger("input");
-    cy.getByTestId("save-task-btn").click();
+      .filter(`[value="${originalTask}"]`)
+      .clear()
+      .type(longTask, { timeout: 15000 });
+
+    cy.getByTestId("todo-item")
+      .find("input[type='text']")
+      .filter(`[value="${longTask}"]`)
+      .getByTestId("save-task-btn")
+      .click();
 
     cy.get("[role='alert']").should(
       "have.text",
