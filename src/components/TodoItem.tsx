@@ -4,6 +4,9 @@ import { FaEdit, FaSave, FaTimes, FaTrashAlt } from "react-icons/fa";
 import { TodoContext } from "../context/TodoContext";
 import type { TodoItemType } from "./TodosList";
 
+const TASK_TITLE_MAX_LENGTH = 500;
+const TASK_TITLE_WARN_THRESHOLD = 450;
+
 interface TodoItemProps {
   todo: TodoItemType;
 }
@@ -41,6 +44,15 @@ export default function TodoItem({ todo }: TodoItemProps) {
       inputRef.current?.focus();
       return;
     }
+
+    if (editValue.length > TASK_TITLE_MAX_LENGTH) {
+      setEditError(
+        `Task must be ${TASK_TITLE_MAX_LENGTH} characters or fewer.`,
+      );
+      inputRef.current?.focus();
+      return;
+    }
+
     updateTodo(todo.id, trimmedValue);
     setEditingId(null);
     setEditError("");
@@ -89,17 +101,42 @@ export default function TodoItem({ todo }: TodoItemProps) {
             type="text"
             value={editValue}
             onChange={(e) => {
-              setEditValue(e.target.value);
-              if (editError) setEditError("");
+              const newValue = e.target.value;
+              setEditValue(newValue);
+              if (newValue.length > TASK_TITLE_MAX_LENGTH) {
+                setEditError(
+                  `Task must be ${TASK_TITLE_MAX_LENGTH} characters or fewer.`,
+                );
+              } else if (editError) {
+                setEditError("");
+              }
             }}
             onKeyDown={handleKeyDown}
             className="w-full px-2 py-1 text-base md:text-lg bg-gray-100 border-b-2 border-pink-600 rounded-t focus:outline-none focus:bg-white transition duration-200 ease-in-out"
             aria-label="Edit todo title"
           />
-          {editError && (
-            <p className="text-red-500 text-sm mt-1" role="alert">
-              {editError}
-            </p>
+          {(editError || editValue.length >= TASK_TITLE_WARN_THRESHOLD) && (
+            <div className="flex items-start justify-between mt-1">
+              {editError ? (
+                <p className="text-red-500 text-sm" role="alert">
+                  {editError}
+                </p>
+              ) : (
+                <span />
+              )}
+              {editValue.length >= TASK_TITLE_WARN_THRESHOLD && (
+                <span
+                  className={`text-sm ml-2 shrink-0 ${
+                    editValue.length > TASK_TITLE_MAX_LENGTH
+                      ? "text-red-500"
+                      : "text-gray-400"
+                  }`}
+                  aria-live="polite"
+                >
+                  {editValue.length}/{TASK_TITLE_MAX_LENGTH}
+                </span>
+              )}
+            </div>
           )}
         </div>
       ) : (
