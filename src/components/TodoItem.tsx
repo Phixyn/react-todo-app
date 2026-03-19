@@ -10,6 +10,7 @@ interface TodoItemProps {
 
 export default function TodoItem({ todo }: TodoItemProps) {
   const [editValue, setEditValue] = useState(todo.title);
+  const [editError, setEditError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const {
     toggleTodoComplete,
@@ -36,16 +37,19 @@ export default function TodoItem({ todo }: TodoItemProps) {
   const handleSave = () => {
     const trimmedValue = editValue.trim();
     if (!trimmedValue) {
-      // Prevent empty save, keep focus on input
+      setEditError("Please add a task description.");
+      inputRef.current?.focus();
       return;
     }
     updateTodo(todo.id, trimmedValue);
     setEditingId(null);
+    setEditError("");
   };
 
   const handleCancel = () => {
     setEditingId(null);
     setEditValue(todo.title);
+    setEditError("");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -79,15 +83,25 @@ export default function TodoItem({ todo }: TodoItemProps) {
         disabled={isEditing}
       />
       {isEditing ? (
-        <input
-          ref={inputRef}
-          type="text"
-          value={editValue}
-          onChange={(e) => setEditValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-          className="flex-1 px-2 py-1 min-w-0 text-base md:text-lg bg-gray-100 border-b-2 border-pink-600 rounded-t focus:outline-none focus:bg-white transition duration-200 ease-in-out"
-          aria-label="Edit todo title"
-        />
+        <div className="flex-1 min-w-0">
+          <input
+            ref={inputRef}
+            type="text"
+            value={editValue}
+            onChange={(e) => {
+              setEditValue(e.target.value);
+              if (editError) setEditError("");
+            }}
+            onKeyDown={handleKeyDown}
+            className="w-full px-2 py-1 text-base md:text-lg bg-gray-100 border-b-2 border-pink-600 rounded-t focus:outline-none focus:bg-white transition duration-200 ease-in-out"
+            aria-label="Edit todo title"
+          />
+          {editError && (
+            <p className="text-red-500 text-sm mt-1" role="alert">
+              {editError}
+            </p>
+          )}
+        </div>
       ) : (
         <span className="flex-1 px-2 min-w-0 break-words">{todo.title}</span>
       )}

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
@@ -6,6 +6,8 @@ import { TodoContext } from "../context/TodoContext";
 
 export default function AddTodo() {
   const [title, setTitle] = useState("");
+  const [error, setError] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const { addTodo } = useContext(TodoContext);
 
@@ -14,22 +16,24 @@ export default function AddTodo() {
     evt.preventDefault();
 
     // Validate todo text
-    if (!title) {
-      // TODO Replace with toast
-      alert("Please add a task description.");
+    const trimmedTitle = title.trim();
+    if (!trimmedTitle) {
+      setError("Please add a task description.");
+      inputRef.current?.focus();
       return;
     }
 
     const newTodo = {
       id: uuidv4(),
-      title,
+      title: trimmedTitle,
       completed: false,
     };
 
     addTodo(newTodo);
 
-    // Clear task text in component state
+    // Clear task text and any previous error in component state
     setTitle("");
+    setError("");
   };
 
   return (
@@ -40,11 +44,15 @@ export default function AddTodo() {
         data-testid="task-form"
       >
         <input
+          ref={inputRef}
           name="task-title"
           type="text"
           placeholder="Add task..."
           value={title}
-          onChange={(evt) => setTitle(evt.target.value)}
+          onChange={(evt) => {
+            setTitle(evt.target.value);
+            if (error) setError("");
+          }}
           className="flex-1 px-2.5 text-base md:text-lg bg-gray-200 placeholder-gray-500 focus:outline-none"
           data-testid="task-input-field"
         />
@@ -56,6 +64,11 @@ export default function AddTodo() {
           <FaRegPlusSquare />
         </button>
       </form>
+      {error && (
+        <p className="text-red-500 text-sm mt-1" role="alert">
+          {error}
+        </p>
+      )}
     </div>
   );
 }
