@@ -4,12 +4,16 @@ import { FaEdit, FaSave, FaTimes, FaTrashAlt } from "react-icons/fa";
 import { TodoContext } from "../context/TodoContext";
 import type { TodoItemType } from "./TodosList";
 
+const TASK_TITLE_MAX_LENGTH = 500;
+const TASK_TITLE_WARN_THRESHOLD = 450;
+
 interface TodoItemProps {
   todo: TodoItemType;
 }
 
 export default function TodoItem({ todo }: TodoItemProps) {
   const [editValue, setEditValue] = useState(todo.title);
+  const [editError, setEditError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const {
     toggleTodoComplete,
@@ -36,16 +40,28 @@ export default function TodoItem({ todo }: TodoItemProps) {
   const handleSave = () => {
     const trimmedValue = editValue.trim();
     if (!trimmedValue) {
-      // Prevent empty save, keep focus on input
+      setEditError("Please add a task description.");
+      inputRef.current?.focus();
       return;
     }
+
+    if (editValue.length > TASK_TITLE_MAX_LENGTH) {
+      setEditError(
+        `Task must be ${TASK_TITLE_MAX_LENGTH} characters or fewer.`,
+      );
+      inputRef.current?.focus();
+      return;
+    }
+
     updateTodo(todo.id, trimmedValue);
     setEditingId(null);
+    setEditError("");
   };
 
   const handleCancel = () => {
     setEditingId(null);
     setEditValue(todo.title);
+    setEditError("");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -79,15 +95,50 @@ export default function TodoItem({ todo }: TodoItemProps) {
         disabled={isEditing}
       />
       {isEditing ? (
-        <input
-          ref={inputRef}
-          type="text"
-          value={editValue}
-          onChange={(e) => setEditValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-          className="flex-1 px-2 py-1 min-w-0 text-base md:text-lg bg-gray-100 border-b-2 border-pink-600 rounded-t focus:outline-none focus:bg-white transition duration-200 ease-in-out"
-          aria-label="Edit todo title"
-        />
+        <div className="flex-1 min-w-0">
+          <input
+            ref={inputRef}
+            type="text"
+            value={editValue}
+            onChange={(e) => {
+              const newValue = e.target.value;
+              setEditValue(newValue);
+              if (newValue.length > TASK_TITLE_MAX_LENGTH) {
+                setEditError(
+                  `Task must be ${TASK_TITLE_MAX_LENGTH} characters or fewer.`,
+                );
+              } else if (editError) {
+                setEditError("");
+              }
+            }}
+            onKeyDown={handleKeyDown}
+            className="w-full px-2 py-1 text-base md:text-lg bg-gray-100 border-b-2 border-pink-600 rounded-t focus:outline-none focus:bg-white transition duration-200 ease-in-out"
+            aria-label="Edit todo title"
+          />
+          {(editError || editValue.length >= TASK_TITLE_WARN_THRESHOLD) && (
+            <div className="flex items-start justify-between mt-1">
+              {editError ? (
+                <p className="text-red-500 text-sm" role="alert">
+                  {editError}
+                </p>
+              ) : (
+                <span />
+              )}
+              {editValue.length >= TASK_TITLE_WARN_THRESHOLD && (
+                <span
+                  className={`text-sm ml-2 shrink-0 ${
+                    editValue.length > TASK_TITLE_MAX_LENGTH
+                      ? "text-red-500"
+                      : "text-gray-400"
+                  }`}
+                  aria-live="polite"
+                >
+                  {editValue.length}/{TASK_TITLE_MAX_LENGTH}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
       ) : (
         <span className="flex-1 px-2 min-w-0 break-words">{todo.title}</span>
       )}

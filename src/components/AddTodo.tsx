@@ -1,11 +1,15 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
 import { TodoContext } from "../context/TodoContext";
 
+const TASK_TITLE_MAX_LENGTH = 500;
+
 export default function AddTodo() {
   const [title, setTitle] = useState("");
+  const [error, setError] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const { addTodo } = useContext(TodoContext);
 
@@ -14,22 +18,30 @@ export default function AddTodo() {
     evt.preventDefault();
 
     // Validate todo text
-    if (!title) {
-      // TODO Replace with toast
-      alert("Please add a task description.");
+    const trimmedTitle = title.trim();
+    if (!trimmedTitle) {
+      setError("Please add a task description.");
+      inputRef.current?.focus();
+      return;
+    }
+
+    if (title.length > TASK_TITLE_MAX_LENGTH) {
+      setError(`Task must be ${TASK_TITLE_MAX_LENGTH} characters or fewer.`);
+      inputRef.current?.focus();
       return;
     }
 
     const newTodo = {
       id: uuidv4(),
-      title,
+      title: trimmedTitle,
       completed: false,
     };
 
     addTodo(newTodo);
 
-    // Clear task text in component state
+    // Clear task text and any previous error in component state
     setTitle("");
+    setError("");
   };
 
   return (
@@ -40,11 +52,22 @@ export default function AddTodo() {
         data-testid="task-form"
       >
         <input
+          ref={inputRef}
           name="task-title"
           type="text"
           placeholder="Add task..."
           value={title}
-          onChange={(evt) => setTitle(evt.target.value)}
+          onChange={(evt) => {
+            const newValue = evt.target.value;
+            setTitle(newValue);
+            if (newValue.length > TASK_TITLE_MAX_LENGTH) {
+              setError(
+                `Task must be ${TASK_TITLE_MAX_LENGTH} characters or fewer.`,
+              );
+            } else if (error) {
+              setError("");
+            }
+          }}
           className="flex-1 px-2.5 text-base md:text-lg bg-gray-200 placeholder-gray-500 focus:outline-none"
           data-testid="task-input-field"
         />
@@ -56,6 +79,25 @@ export default function AddTodo() {
           <FaRegPlusSquare />
         </button>
       </form>
+      <div className="flex items-start justify-between mt-1">
+        {error ? (
+          <p className="text-red-500 text-sm" role="alert">
+            {error}
+          </p>
+        ) : (
+          <span />
+        )}
+        <span
+          className={`text-sm ml-2 shrink-0 ${
+            title.length > TASK_TITLE_MAX_LENGTH
+              ? "text-red-500"
+              : "text-gray-400"
+          }`}
+          aria-live="polite"
+        >
+          {title.length}/{TASK_TITLE_MAX_LENGTH}
+        </span>
+      </div>
     </div>
   );
 }
