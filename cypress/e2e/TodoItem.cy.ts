@@ -67,7 +67,6 @@ describe("todo list", () => {
     cy.addTask(task);
     cy.addTask(faker.word.words());
 
-    // All of the below can use closures, but at the cost of readability
     cy.getByTestId("todos-list").contains(task).should("exist");
 
     // Delete the task
@@ -79,5 +78,98 @@ describe("todo list", () => {
     })
       .contains(task)
       .should("not.exist");
+  });
+
+  it("should show an inline error in edit mode when saved with an empty input", () => {
+    cy.addTask(faker.word.words());
+    cy.getByTestId("todos-list")
+      .find("li")
+      .first()
+      .findByTestId("edit-task-btn")
+      .click();
+
+    // Clear the input and attempt to save
+    cy.getByTestId("todo-item").find("input[type='text']").clear();
+    cy.getByTestId("save-task-btn").click();
+
+    cy.get("[role='alert']").should(
+      "have.text",
+      "Please add a task description.",
+    );
+  });
+
+  it("should show an inline error in edit mode when saved with only whitespace", () => {
+    cy.addTask(faker.word.words());
+    cy.getByTestId("todos-list")
+      .find("li")
+      .first()
+      .findByTestId("edit-task-btn")
+      .click();
+
+    // Replace with whitespace and attempt to save
+    cy.getByTestId("todo-item").find("input[type='text']").clear().type("   ");
+    cy.getByTestId("save-task-btn").click();
+
+    cy.get("[role='alert']").should(
+      "have.text",
+      "Please add a task description.",
+    );
+  });
+
+  it("should clear the inline error in edit mode when the user starts typing", () => {
+    cy.addTask(faker.word.words());
+    cy.getByTestId("todos-list")
+      .find("li")
+      .first()
+      .findByTestId("edit-task-btn")
+      .click();
+    cy.getByTestId("todo-item").find("input[type='text']").clear();
+    cy.getByTestId("save-task-btn").click();
+    cy.get("[role='alert']").should("exist");
+
+    // Type a character to clear the error
+    cy.getByTestId("todo-item").find("input[type='text']").type("S");
+
+    cy.get("[role='alert']").should("not.exist");
+  });
+
+  it("should show an inline error in edit mode when the task exceeds 500 characters", () => {
+    cy.addTask(faker.word.words());
+    cy.getByTestId("todos-list")
+      .find("li")
+      .first()
+      .findByTestId("edit-task-btn")
+      .click();
+
+    // Set a value exceeding the character limit and attempt to save
+    const longTask = "a".repeat(501);
+    cy.getByTestId("todo-item")
+      .find("input[type='text']")
+      .invoke("val", longTask)
+      .trigger("input");
+    cy.getByTestId("save-task-btn").click();
+
+    cy.get("[role='alert']").should(
+      "have.text",
+      "Task must be 500 characters or fewer.",
+    );
+  });
+
+  it("should not save an empty task in edit mode", () => {
+    const originalTask = faker.word.words();
+    cy.addTask(originalTask);
+    cy.getByTestId("todos-list")
+      .find("li")
+      .first()
+      .findByTestId("edit-task-btn")
+      .click();
+
+    // Clear the input and attempt to save
+    cy.getByTestId("todo-item").find("input[type='text']").clear();
+    cy.getByTestId("save-task-btn").click();
+
+    // Assert that original task text is preserved after cancel
+    cy.getByTestId("cancel-task-btn").click();
+    cy.getByTestId("todos-list").contains(originalTask).should("exist");
   });
 });
