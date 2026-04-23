@@ -3,6 +3,8 @@
   strategy: "class";
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Custom background images */
   --background-image-todo-header-day: url("/src/assets/header-day.jpg");
