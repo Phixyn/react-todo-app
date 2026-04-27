@@ -1,5 +1,6 @@
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import { useContext } from "react";
+import { vi } from 'vitest'
 
 import { ThemeContext } from "./ThemeContext";
 import { ThemeProvider } from "./ThemeProvider";
