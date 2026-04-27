@@ -41,25 +41,30 @@ export default function TodosHeader() {
 
   return (
     <header
-      className={`${getHeaderImageClass(hours)} bg-cover bg-center border-b-1 border-gray-300 dark:border-zinc-700 px-4 py-6 md:px-6 md:py-8 lg:px-8 lg:py-10`}
+      className={`${getHeaderImageClass(hours)} ui-divider relative overflow-hidden border-b bg-cover bg-center`}
       data-testid="todos-header-bg"
     >
-      <div className="flex items-start justify-between">
-        <h1
-          className="text-2xl md:text-3xl lg:text-4xl text-white"
-          data-testid="calendar-date"
-        >
-          {`${weekDay}, ${day}${ordinalSuffix}`}
-        </h1>
-        <ThemeSwitcher />
-      </div>
+      <div className="flex items-start justify-between px-4 py-6 md:px-6 md:py-8 lg:px-8 lg:py-10">
+        <div>
+          <h1
+            className="text-2xl text-white md:text-3xl lg:text-4xl"
+            data-testid="calendar-date"
+          >
+            {`${weekDay}, ${day}${ordinalSuffix}`}
+          </h1>
 
-      <p
-        className="pt-1 text-lg md:text-xl text-gray-100"
-        data-testid="calendar-month"
-      >
-        {month}
-      </p>
+          <p
+            className="pt-1 text-lg text-gray-100 md:text-xl"
+            data-testid="calendar-month"
+          >
+            {month}
+          </p>
+        </div>
+
+        <div className="-mt-1 -mr-1">
+          <ThemeSwitcher />
+        </div>
+      </div>
     </header>
   );
 }

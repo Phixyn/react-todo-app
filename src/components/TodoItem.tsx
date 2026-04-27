@@ -1,6 +1,7 @@
 import { useContext, useRef, useEffect, useState } from "react";
 import { FaEdit, FaSave, FaTimes, FaTrashAlt } from "react-icons/fa";
 
+import { ThemeContext } from "../context/ThemeContext";
 import { TodoContext } from "../context/TodoContext";
 import type { TodoItemType } from "./TodosList";
 
@@ -15,6 +16,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
   const [editValue, setEditValue] = useState(todo.title);
   const [editError, setEditError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const { theme } = useContext(ThemeContext);
   const {
     toggleTodoComplete,
     deleteTodo,
@@ -26,9 +28,26 @@ export default function TodoItem({ todo }: TodoItemProps) {
   const isEditing = editingId === todo.id;
 
   const textDecorationClass = todo.completed ? "line-through" : "no-underline";
-  const textColorClass = todo.completed
-    ? "text-pink-600"
-    : "text-gray-800 dark:text-zinc-100";
+  const textColorClass = todo.completed ? "ui-text-muted" : "ui-text-primary";
+  const itemBackgroundStyle = isEditing
+    ? {
+        backgroundColor:
+          "color-mix(in srgb, var(--ui-surface-elevated) 72%, transparent)",
+      }
+    : undefined;
+  const checkboxStyle = {
+    backgroundColor: todo.completed
+      ? "color-mix(in srgb, var(--ui-accent) 12%, var(--ui-surface-secondary))"
+      : "transparent",
+    borderColor: todo.completed
+      ? "color-mix(in srgb, var(--ui-accent) 46%, var(--ui-border-strong))"
+      : "var(--ui-border-strong)",
+    backgroundImage: todo.completed
+      ? `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8.5 6.5 11.5 12.5 4.5' stroke='${theme === "dark" ? "%23f8fafc" : "%230f172a"}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`
+      : "none",
+  };
+  const actionButtonClassName =
+    "ui-icon-button h-10 w-10 shrink-0 text-sm md:h-11 md:w-11 md:text-base";
 
   const handleEditClick = () => {
     if (editingId !== null) {
@@ -84,17 +103,19 @@ export default function TodoItem({ todo }: TodoItemProps) {
 
   return (
     <li
-      className={`flex items-center space-x-1 py-2.5 px-2.5 md:py-3 md:px-4 text-base md:text-lg border-b border-gray-300 dark:border-zinc-700 transition duration-300 ease-in ${textDecorationClass} ${textColorClass}`}
+      className={`ui-divider flex items-center gap-2 border-b px-3 py-3 text-base transition-colors duration-200 ease-in-out md:gap-3 md:px-4 md:py-3.5 md:text-lg ${textDecorationClass} ${textColorClass}`}
       data-testid="todo-item"
+      style={itemBackgroundStyle}
     >
       <input
         name="completed-checkbox"
         type="checkbox"
-        className="form-checkbox w-5 h-5 md:w-6 md:h-6 rounded text-pink-600 shadow-none focus:shadow-none focus:ring-0 focus:ring-offset-0 focus:outline-none shrink-0 dark:bg-zinc-700 dark:border-zinc-500"
+        className="ui-checkbox ui-focus-ring h-5 w-5 shrink-0 shadow-none focus:ring-0 focus:ring-offset-0 md:h-6 md:w-6"
         checked={todo.completed}
         onChange={() => toggleTodoComplete(todo.id)}
         data-testid="task-completed-checkbox"
         disabled={isEditing}
+        style={checkboxStyle}
       />
       {isEditing ? (
         <div className="flex-1 min-w-0">
@@ -114,13 +135,13 @@ export default function TodoItem({ todo }: TodoItemProps) {
               }
             }}
             onKeyDown={handleKeyDown}
-            className="w-full px-2 py-1 text-base md:text-lg bg-gray-100 dark:bg-zinc-700 dark:text-zinc-100 border-b-2 border-pink-600 rounded-t focus:outline-none focus:bg-white dark:focus:bg-zinc-600 transition duration-200 ease-in-out"
+            className="ui-input-shell w-full px-3 py-2 text-base md:text-lg"
             aria-label="Edit todo title"
           />
           {(editError || editValue.length >= TASK_TITLE_WARN_THRESHOLD) && (
-            <div className="flex items-start justify-between mt-1">
+            <div className="mt-2 flex items-start justify-between gap-3 px-1">
               {editError ? (
-                <p className="text-red-500 text-sm" role="alert">
+                <p className="text-sm text-[color:var(--ui-danger)]" role="alert">
                   {editError}
                 </p>
               ) : (
@@ -128,10 +149,10 @@ export default function TodoItem({ todo }: TodoItemProps) {
               )}
               {editValue.length >= TASK_TITLE_WARN_THRESHOLD && (
                 <span
-                  className={`text-sm ml-2 shrink-0 ${
+                  className={`ui-text-muted ml-2 shrink-0 text-sm ${
                     editValue.length > TASK_TITLE_MAX_LENGTH
-                      ? "text-red-500"
-                      : "text-gray-400"
+                      ? "text-[color:var(--ui-danger)]"
+                      : ""
                   }`}
                   aria-live="polite"
                 >
@@ -142,22 +163,26 @@ export default function TodoItem({ todo }: TodoItemProps) {
           )}
         </div>
       ) : (
-        <span className="flex-1 px-2 min-w-0 break-words">{todo.title}</span>
+        <span className="min-w-0 flex-1 break-words px-1.5 leading-7 md:px-2">
+          {todo.title}
+        </span>
       )}
-      <div className="flex items-center space-x-1">
+      <div className="flex items-center gap-2">
         {isEditing ? (
           <>
             <button
+              type="button"
               onClick={handleSave}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-green-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5 rounded-full bg-gray-300 dark:bg-zinc-700 hover:bg-gray-400 dark:hover:bg-zinc-600"
+              className={`${actionButtonClassName} ui-icon-button--success`}
               data-testid="save-task-btn"
               aria-label="Save todo"
             >
               <FaSave />
             </button>
             <button
+              type="button"
               onClick={handleCancel}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-red-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5 rounded-full bg-gray-300 dark:bg-zinc-700 hover:bg-gray-400 dark:hover:bg-zinc-600"
+              className={`${actionButtonClassName} ui-icon-button--danger`}
               data-testid="cancel-task-btn"
               aria-label="Cancel editing"
             >
@@ -167,16 +192,18 @@ export default function TodoItem({ todo }: TodoItemProps) {
         ) : (
           <>
             <button
+              type="button"
               onClick={handleEditClick}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5 rounded-full bg-gray-300 dark:bg-zinc-700 hover:bg-gray-400 dark:hover:bg-zinc-600"
+              className={`${actionButtonClassName} ui-icon-button--accent`}
               data-testid="edit-task-btn"
               aria-label="Edit todo"
             >
               <FaEdit />
             </button>
             <button
+              type="button"
               onClick={() => deleteTodo(todo.id)}
-              className="transition duration-200 ease-in-out text-gray-400 hover:text-pink-500 focus:outline-none text-base p-2 md:text-lg md:p-2.5 rounded-full bg-gray-300 dark:bg-zinc-700 hover:bg-gray-400 dark:hover:bg-zinc-600"
+              className={`${actionButtonClassName} ui-icon-button--danger`}
               data-testid="delete-task-btn"
               aria-label="Delete todo"
             >

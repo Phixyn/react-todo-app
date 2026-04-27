@@ -18,15 +18,15 @@ export default function TodosList() {
   const { todoItems } = useContext(TodoContext);
 
   return (
-    <div className="flex flex-col bg-gray-200 dark:bg-zinc-800 rounded shadow-lg">
+    <div className="ui-panel flex flex-col overflow-hidden">
       <TodosHeader />
 
       <AddTodo />
 
-      <div className="mx-4 my-6 md:mx-6 lg:mx-8 h-96 md:h-[28rem] lg:h-[32rem] overflow-auto">
+      <div className="mx-4 my-5 h-96 overflow-auto md:mx-6 md:my-6 lg:mx-8 lg:my-7 lg:h-[32rem] md:h-[28rem]">
         {todoItems.length > 0 ? (
           // If there are todo items, show them in a list
-          <ul className="mt-4" data-testid="todos-list">
+          <ul className="mt-3" data-testid="todos-list">
             {todoItems.map((todoItem) => (
               <TodoItem key={todoItem.id} todo={todoItem} />
             ))}
@@ -34,7 +34,7 @@ export default function TodosList() {
         ) : (
           // No todo items, all caught up
           <p
-            className="my-16 text-lg text-center text-gray-500 dark:text-zinc-500"
+            className="ui-text-muted mx-auto my-16 max-w-xs text-center text-base leading-7 sm:text-lg"
             data-testid="empty-todos-message"
           >
             You're all caught up!

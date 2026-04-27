@@ -9,9 +9,10 @@ export default function ThemeSwitcher() {
 
   return (
     <button
+      type="button"
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      className="transition duration-200 ease-in-out text-white hover:text-gray-200 focus:outline-none text-xl p-2 rounded-full"
+      className="ui-icon-button ui-icon-button--hero rounded-full p-2 text-xl md:text-2xl"
       data-testid="theme-switcher"
     >
       {isDark ? <FaSun /> : <FaMoon />}
