@@ -8,7 +8,7 @@ export default function AppFooter() {
       {location.pathname === "/" ? (
         <NavLink
           to="/about"
-          className="transition duration-500 ease-in-out text-gray-800 border-b border-gray-800 hover:text-gray-500 hover:border-gray-500"
+          className="transition duration-500 ease-in-out text-gray-800 dark:text-zinc-300 border-b border-gray-800 dark:border-zinc-500 hover:text-gray-500 dark:hover:text-zinc-400 hover:border-gray-500 dark:hover:border-zinc-400"
           data-testid="footer-about-link"
         >
           About

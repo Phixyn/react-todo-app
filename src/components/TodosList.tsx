@@ -18,7 +18,7 @@ export default function TodosList() {
   const { todoItems } = useContext(TodoContext);
 
   return (
-    <div className="flex flex-col bg-gray-200 rounded shadow-lg">
+    <div className="flex flex-col bg-gray-200 dark:bg-zinc-800 rounded shadow-lg">
       <TodosHeader />
 
       <AddTodo />
@@ -34,7 +34,7 @@ export default function TodosList() {
         ) : (
           // No todo items, all caught up
           <p
-            className="my-16 text-lg text-center text-gray-500"
+            className="my-16 text-lg text-center text-gray-500 dark:text-zinc-500"
             data-testid="empty-todos-message"
           >
             You're all caught up!

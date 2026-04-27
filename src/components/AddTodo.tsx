@@ -48,7 +48,7 @@ export default function AddTodo() {
     <div className="mx-4 mt-6 md:mx-6 lg:mx-8">
       <form
         onSubmit={onSubmit}
-        className="flex items-center transition duration-500 ease-in-out py-2 border-b-2 border-gray-300 focus-within:border-b-2 focus-within:border-pink-600"
+        className="flex items-center transition duration-500 ease-in-out py-2 border-b-2 border-gray-300 dark:border-gray-600 focus-within:border-b-2 focus-within:border-pink-600"
         data-testid="task-form"
       >
         <input
@@ -68,7 +68,7 @@ export default function AddTodo() {
               setError("");
             }
           }}
-          className="flex-1 px-2.5 text-base md:text-lg bg-gray-200 placeholder-gray-500 focus:outline-none"
+          className="flex-1 px-2.5 text-base md:text-lg bg-gray-200 dark:bg-zinc-800 dark:text-zinc-100 placeholder-gray-500 dark:placeholder-zinc-500 focus:outline-none"
           data-testid="task-input-field"
         />
         <button

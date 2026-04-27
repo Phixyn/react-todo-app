@@ -5,6 +5,31 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  html {
+    background-color: #f3f4f6; /* gray-100 */
+  }
+
+  body {
+    margin: 0;
+    background-color: #f3f4f6; /* gray-100 */
+  }
+
+  html.dark {
+    background-color: #18181b; /* zinc-900 */
+  }
+
+  html.dark body {
+    background-color: #09090b; /* zinc-950 */
+  }
+}
+
 @theme {
   /* Custom background images */
   --background-image-todo-header-day: url("/src/assets/header-day.jpg");

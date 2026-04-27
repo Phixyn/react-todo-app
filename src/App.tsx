@@ -13,20 +13,22 @@ function App() {
   return (
     <ThemeProvider>
       <TodoProvider>
-        <div
-          id="app"
-          className="flex flex-col w-full max-w-md sm:max-w-xl md:max-w-2xl mx-auto sm:pt-6 md:pt-10 lg:pt-16"
-        >
-          <Router>
-            <section>
-              <Routes>
-                <Route path="/" element={<TodosList />} />
-                <Route path="/about" element={<About />} />
-              </Routes>
-            </section>
+        <div className="min-h-screen bg-gray-100 dark:bg-zinc-950 transition-colors duration-300">
+          <div
+            id="app"
+            className="flex flex-col w-full max-w-md sm:max-w-xl md:max-w-2xl mx-auto sm:pt-6 md:pt-10 lg:pt-16"
+          >
+            <Router>
+              <section>
+                <Routes>
+                  <Route path="/" element={<TodosList />} />
+                  <Route path="/about" element={<About />} />
+                </Routes>
+              </section>
 
-            <AppFooter />
-          </Router>
+              <AppFooter />
+            </Router>
+          </div>
         </div>
       </TodoProvider>
     </ThemeProvider>

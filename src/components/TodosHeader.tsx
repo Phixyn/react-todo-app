@@ -41,7 +41,7 @@ export default function TodosHeader() {
 
   return (
     <header
-      className={`${getHeaderImageClass(hours)} bg-cover bg-center border-b-1 border-gray-300 px-4 py-6 md:px-6 md:py-8 lg:px-8 lg:py-10`}
+      className={`${getHeaderImageClass(hours)} bg-cover bg-center border-b-1 border-gray-300 dark:border-zinc-700 px-4 py-6 md:px-6 md:py-8 lg:px-8 lg:py-10`}
       data-testid="todos-header-bg"
     >
       <div className="flex items-start justify-between">
