@@ -28,8 +28,8 @@
   }
 
   ::selection {
-    background-color: color-mix(in srgb, var(--ui-accent) 36%, transparent);
-    color: var(--ui-text-primary);
+    background-color: var(--ui-selection-bg);
+    color: var(--ui-selection-text);
   }
 
   button,
@@ -110,6 +110,14 @@
 
   .ui-text-muted {
     color: var(--ui-text-muted);
+  }
+
+  .ui-task-completed {
+    color: var(--ui-text-completed);
+    text-decoration-line: line-through;
+    text-decoration-color: var(--ui-accent);
+    text-decoration-thickness: 2.75px;
+    text-decoration-skip-ink: auto;
   }
 
   .ui-accent {
@@ -301,24 +309,54 @@
   .ui-checkbox {
     appearance: none;
     -webkit-appearance: none;
+    position: relative;
+    display: inline-grid;
+    place-items: center;
     background-color: transparent;
     border: 1.5px solid var(--ui-border-strong);
     border-radius: 0.4rem;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 0.8rem;
     transition:
       border-color 180ms ease,
       background-color 180ms ease,
       box-shadow 180ms ease;
   }
 
+  .ui-checkbox::after {
+    content: "";
+    width: 0.3rem;
+    height: 0.6rem;
+    border-right: 2px solid var(--ui-text-primary);
+    border-bottom: 2px solid var(--ui-text-primary);
+    transform: rotate(45deg) scale(0.8);
+    opacity: 0;
+    transition:
+      opacity 140ms ease,
+      transform 140ms ease;
+  }
+
   .ui-checkbox:hover {
     border-color: color-mix(in srgb, var(--ui-accent) 42%, var(--ui-border-strong));
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ui-accent) 10%, transparent);
   }
 
   .ui-checkbox:checked {
-    border-color: color-mix(in srgb, var(--ui-accent) 46%, var(--ui-border-strong));
+    background-color: color-mix(
+      in srgb,
+      var(--ui-accent) 18%,
+      var(--ui-surface-secondary)
+    );
+    border-color: color-mix(in srgb, var(--ui-accent) 62%, var(--ui-border-strong));
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ui-accent) 14%, transparent);
+  }
+
+  .ui-checkbox:checked::after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+
+  .ui-checkbox:disabled {
+    cursor: default;
+    opacity: 0.82;
   }
 }
 

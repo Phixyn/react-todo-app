@@ -19,6 +19,7 @@
   --ui-text-primary: #0f172a;
   --ui-text-secondary: #334155;
   --ui-text-muted: #64748b;
+  --ui-text-completed: #64748b;
   --ui-text-inverse: #f8fafc;
 
   /* Accent and state */
@@ -27,6 +28,8 @@
   --ui-success: #059669;
   --ui-danger: #dc2626;
   --ui-focus-ring: rgba(219, 39, 119, 0.35);
+  --ui-selection-bg: rgba(219, 39, 119, 0.22);
+  --ui-selection-text: #0f172a;
 
   /* Hero and elevation */
   --ui-hero-overlay: linear-gradient(
@@ -64,6 +67,7 @@
   --ui-text-primary: #f8fafc;
   --ui-text-secondary: #cbd5e1;
   --ui-text-muted: #8ea0bf;
+  --ui-text-completed: #8fa0bd;
   --ui-text-inverse: #020617;
 
   /* Accent and state */
@@ -72,6 +76,8 @@
   --ui-success: #34d399;
   --ui-danger: #f87171;
   --ui-focus-ring: rgba(244, 114, 182, 0.32);
+  --ui-selection-bg: #f38bc2;
+  --ui-selection-text: #020617;
 
   /* Hero and elevation */
   --ui-hero-overlay: linear-gradient(

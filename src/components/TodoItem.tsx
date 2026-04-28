@@ -1,7 +1,6 @@
 import { useContext, useRef, useEffect, useState } from "react";
 import { FaEdit, FaSave, FaTimes, FaTrashAlt } from "react-icons/fa";
 
-import { ThemeContext } from "../context/ThemeContext";
 import { TodoContext } from "../context/TodoContext";
 import type { TodoItemType } from "./TodosList";
 
@@ -16,7 +15,6 @@ export default function TodoItem({ todo }: TodoItemProps) {
   const [editValue, setEditValue] = useState(todo.title);
   const [editError, setEditError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const { theme } = useContext(ThemeContext);
   const {
     toggleTodoComplete,
     deleteTodo,
@@ -26,26 +24,12 @@ export default function TodoItem({ todo }: TodoItemProps) {
   } = useContext(TodoContext);
 
   const isEditing = editingId === todo.id;
-
-  const textDecorationClass = todo.completed ? "line-through" : "no-underline";
-  const textColorClass = todo.completed ? "ui-text-muted" : "ui-text-primary";
   const itemBackgroundStyle = isEditing
     ? {
         backgroundColor:
           "color-mix(in srgb, var(--ui-surface-elevated) 72%, transparent)",
       }
     : undefined;
-  const checkboxStyle = {
-    backgroundColor: todo.completed
-      ? "color-mix(in srgb, var(--ui-accent) 12%, var(--ui-surface-secondary))"
-      : "transparent",
-    borderColor: todo.completed
-      ? "color-mix(in srgb, var(--ui-accent) 46%, var(--ui-border-strong))"
-      : "var(--ui-border-strong)",
-    backgroundImage: todo.completed
-      ? `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8.5 6.5 11.5 12.5 4.5' stroke='${theme === "dark" ? "%23f8fafc" : "%230f172a"}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`
-      : "none",
-  };
   const actionButtonClassName =
     "ui-icon-button h-10 w-10 shrink-0 text-sm md:h-11 md:w-11 md:text-base";
 
@@ -103,7 +87,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
 
   return (
     <li
-      className={`ui-divider flex items-center gap-2 border-b px-3 py-3 text-base transition-colors duration-200 ease-in-out md:gap-3 md:px-4 md:py-3.5 md:text-lg ${textDecorationClass} ${textColorClass}`}
+      className="ui-divider ui-text-primary flex items-center gap-2 border-b px-3 py-3 text-base transition-colors duration-200 ease-in-out md:gap-3 md:px-4 md:py-3.5 md:text-lg"
       data-testid="todo-item"
       style={itemBackgroundStyle}
     >
@@ -115,7 +99,6 @@ export default function TodoItem({ todo }: TodoItemProps) {
         onChange={() => toggleTodoComplete(todo.id)}
         data-testid="task-completed-checkbox"
         disabled={isEditing}
-        style={checkboxStyle}
       />
       {isEditing ? (
         <div className="flex-1 min-w-0">
@@ -163,7 +146,11 @@ export default function TodoItem({ todo }: TodoItemProps) {
           )}
         </div>
       ) : (
-        <span className="min-w-0 flex-1 break-words px-1.5 leading-7 md:px-2">
+        <span
+          className={`min-w-0 flex-1 break-words px-1.5 leading-7 md:px-2 ${
+            todo.completed ? "ui-task-completed" : ""
+          }`}
+        >
           {todo.title}
         </span>
       )}
