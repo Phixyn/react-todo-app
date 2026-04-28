@@ -124,7 +124,10 @@ export default function TodoItem({ todo }: TodoItemProps) {
           {(editError || editValue.length >= TASK_TITLE_WARN_THRESHOLD) && (
             <div className="mt-2 flex items-start justify-between gap-3 px-1">
               {editError ? (
-                <p className="text-sm text-[color:var(--ui-danger)]" role="alert">
+                <p
+                  className="text-sm text-[color:var(--ui-danger)]"
+                  role="alert"
+                >
                   {editError}
                 </p>
               ) : (

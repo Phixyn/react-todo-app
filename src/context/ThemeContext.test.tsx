@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import { useContext } from "react";
-import { vi } from 'vitest'
+import { vi } from "vitest";
 
 import { ThemeContext } from "./ThemeContext";
 import { ThemeProvider } from "./ThemeProvider";
@@ -169,9 +169,7 @@ describe("ThemeProvider", () => {
       localStorage.removeItem("theme");
 
       act(() => {
-        listeners.forEach((cb) =>
-          cb({ matches: true } as MediaQueryListEvent),
-        );
+        listeners.forEach((cb) => cb({ matches: true } as MediaQueryListEvent));
       });
 
       expect(screen.getByTestId("theme-value")).toHaveTextContent("dark");
@@ -197,9 +195,7 @@ describe("ThemeProvider", () => {
       renderWithProvider();
 
       act(() => {
-        listeners.forEach((cb) =>
-          cb({ matches: true } as MediaQueryListEvent),
-        );
+        listeners.forEach((cb) => cb({ matches: true } as MediaQueryListEvent));
       });
 
       // Stored preference should keep theme as light

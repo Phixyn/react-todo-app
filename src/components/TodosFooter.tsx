@@ -9,7 +9,10 @@ export default function TodosFooter({
 }: TodosFooterProps) {
   return (
     <div className="ui-surface-inset ui-divider flex min-h-14 flex-wrap items-center gap-y-2 border-t px-4 py-3 text-sm md:px-6 md:text-base lg:px-8">
-      <p className="ui-text-muted order-1 flex-1" data-testid="total-tasks-count">
+      <p
+        className="ui-text-muted order-1 flex-1"
+        data-testid="total-tasks-count"
+      >
         {totalTasks} {totalTasks === 1 ? "task" : "tasks"}
       </p>
       <p
