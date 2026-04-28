@@ -28,6 +28,16 @@
   --ui-success: #059669;
   --ui-danger: #dc2626;
   --ui-focus-ring: rgba(219, 39, 119, 0.35);
+  --ui-accent-glow-soft: rgba(219, 39, 119, 0.03);
+  --ui-accent-border-soft: #daa2c4;
+  --ui-accent-border-medium: #ca7eab;
+  --ui-accent-border-strong: #cf649c;
+  --ui-accent-border-input: #cb74a6;
+  --ui-accent-surface-soft: #fceef4;
+  --ui-accent-surface-checkbox: #efd1e3;
+  --ui-accent-shadow-soft: rgba(219, 39, 119, 0.1);
+  --ui-accent-shadow-checkbox: rgba(219, 39, 119, 0.14);
+  --ui-surface-elevated-translucent: rgba(255, 255, 255, 0.88);
   --ui-selection-bg: rgba(219, 39, 119, 0.22);
   --ui-selection-text: #0f172a;
 
@@ -76,6 +86,16 @@
   --ui-success: #34d399;
   --ui-danger: #f87171;
   --ui-focus-ring: rgba(244, 114, 182, 0.32);
+  --ui-accent-glow-soft: rgba(244, 114, 182, 0.03);
+  --ui-accent-border-soft: #664268;
+  --ui-accent-border-medium: #855281;
+  --ui-accent-border-strong: #a65c91;
+  --ui-accent-border-input: #935687;
+  --ui-accent-surface-soft: #29243e;
+  --ui-accent-surface-checkbox: #3b2c4b;
+  --ui-accent-shadow-soft: rgba(244, 114, 182, 0.1);
+  --ui-accent-shadow-checkbox: rgba(244, 114, 182, 0.14);
+  --ui-surface-elevated-translucent: rgba(24, 36, 58, 0.88);
   --ui-selection-bg: #f38bc2;
   --ui-selection-text: #020617;
 

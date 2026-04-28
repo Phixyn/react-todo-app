@@ -65,7 +65,7 @@
     background:
       radial-gradient(
         circle at top,
-        color-mix(in srgb, var(--ui-accent) 3%, transparent),
+        var(--ui-accent-glow-soft),
         transparent 26%
       ),
       linear-gradient(180deg, var(--ui-shell-bg) 0%, var(--ui-app-bg) 100%);
@@ -176,7 +176,7 @@
   .ui-input-shell:focus,
   .ui-input-shell:focus-visible {
     outline: none;
-    border-color: color-mix(in srgb, var(--ui-accent) 52%, var(--ui-border-strong));
+    border-color: var(--ui-accent-border-input);
     box-shadow: 0 0 0 4px var(--ui-focus-ring);
   }
 
@@ -188,7 +188,7 @@
     min-height: 2.75rem;
     border: 1px solid var(--ui-border-soft);
     border-radius: 9999px;
-    background-color: color-mix(in srgb, var(--ui-surface-elevated) 88%, transparent);
+    background-color: var(--ui-surface-elevated-translucent);
     color: var(--ui-text-secondary);
     transition:
       color 180ms ease,
@@ -198,14 +198,14 @@
   }
 
   .ui-icon-button:hover {
-    border-color: color-mix(in srgb, var(--ui-accent) 34%, var(--ui-border-soft));
-    background-color: color-mix(in srgb, var(--ui-surface-elevated) 72%, var(--ui-accent) 10%);
+    border-color: var(--ui-accent-border-soft);
+    background-color: var(--ui-accent-surface-soft);
     color: var(--ui-accent);
   }
 
   .ui-icon-button:focus-visible {
     outline: none;
-    border-color: color-mix(in srgb, var(--ui-accent) 46%, var(--ui-border-strong));
+    border-color: var(--ui-accent-border-medium);
     color: var(--ui-accent);
     box-shadow: 0 0 0 4px var(--ui-focus-ring);
   }
@@ -335,18 +335,14 @@
   }
 
   .ui-checkbox:hover {
-    border-color: color-mix(in srgb, var(--ui-accent) 42%, var(--ui-border-strong));
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ui-accent) 10%, transparent);
+    border-color: var(--ui-accent-border-medium);
+    box-shadow: 0 0 0 3px var(--ui-accent-shadow-soft);
   }
 
   .ui-checkbox:checked {
-    background-color: color-mix(
-      in srgb,
-      var(--ui-accent) 18%,
-      var(--ui-surface-secondary)
-    );
-    border-color: color-mix(in srgb, var(--ui-accent) 62%, var(--ui-border-strong));
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ui-accent) 14%, transparent);
+    background-color: var(--ui-accent-surface-checkbox);
+    border-color: var(--ui-accent-border-strong);
+    box-shadow: 0 0 0 3px var(--ui-accent-shadow-checkbox);
   }
 
   .ui-checkbox:checked::after {
