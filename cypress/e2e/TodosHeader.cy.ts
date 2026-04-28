@@ -17,4 +17,13 @@ describe("todo list header", () => {
   it("should display month name", () => {
     cy.getByTestId("calendar-month").should("be.visible");
   });
+
+  it("keeps the header content visible after switching themes", () => {
+    cy.getByTestId("theme-switcher").click();
+
+    cy.get("html").should("have.class", "dark");
+    cy.getByTestId("todos-header-bg").should("be.visible");
+    cy.getByTestId("calendar-date").should("be.visible");
+    cy.getByTestId("calendar-month").should("be.visible");
+  });
 });

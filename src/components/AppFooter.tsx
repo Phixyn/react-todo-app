@@ -4,22 +4,23 @@ export default function AppFooter() {
   const location = useLocation();
 
   return (
-    <footer className="pb-6 mt-6 text-center">
+    <footer className="mt-6 pb-6 text-center sm:mt-7 md:mt-8">
       {location.pathname === "/" ? (
         <NavLink
           to="/about"
-          className="transition duration-500 ease-in-out text-gray-800 border-b border-gray-800 hover:text-gray-500 hover:border-gray-500"
+          className="ui-footer-link inline-flex text-sm font-medium tracking-[0.16em] uppercase"
           data-testid="footer-about-link"
         >
           About
         </NavLink>
       ) : (
-        <p>
+        <p className="ui-text-muted text-sm sm:text-base">
           Made by{" "}
           <a
-            className="transition duration-500 ease-in-out font-medium text-pink-600 hover:text-pink-500"
+            className="ui-link-accent border-b border-current font-medium"
             href="https://phixyn.com/"
             target="_blank"
+            rel="noreferrer"
           >
             Phixyn
           </a>

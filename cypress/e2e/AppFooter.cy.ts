@@ -15,4 +15,13 @@ describe("app footer", () => {
     cy.location("pathname").should("equal", "/about");
     cy.getByTestId("about-page-header").should("be.visible");
   });
+
+  it("should show the About page footer content after navigation", () => {
+    cy.getByTestId("footer-about-link").click();
+
+    cy.contains("Made by").should("be.visible");
+    cy.contains("Phixyn")
+      .should("be.visible")
+      .and("have.attr", "href", "https://phixyn.com/");
+  });
 });

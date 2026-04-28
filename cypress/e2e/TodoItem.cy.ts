@@ -200,4 +200,30 @@ describe("todo list", () => {
     cy.getByTestId("cancel-task-btn").click();
     cy.getByTestId("todos-list").contains(originalTask).should("exist");
   });
+
+  it("can still be edited after switching to dark theme", () => {
+    const originalTask = faker.word.words();
+    const editedTask = faker.word.words();
+
+    cy.addTask(originalTask);
+    cy.getByTestId("theme-switcher").click();
+
+    cy.get("html").should("have.class", "dark");
+    cy.contains("li", originalTask).findByTestId("edit-task-btn").click();
+
+    cy.getByTestId("todo-item")
+      .find("input[type='text']")
+      .filter(`[value="${originalTask}"]`)
+      .clear()
+      .type(editedTask);
+
+    cy.getByTestId("todo-item")
+      .find("input[type='text']")
+      .filter(`[value="${editedTask}"]`)
+      .getByTestId("save-task-btn")
+      .click();
+
+    cy.getByTestId("todos-list").contains(editedTask).should("exist");
+    cy.getByTestId("todos-list").contains(originalTask).should("not.exist");
+  });
 });

@@ -1,0 +1,115 @@
+:root {
+  color-scheme: light;
+
+  /* App shell */
+  --ui-app-bg: #eef2f7;
+  --ui-shell-bg: #f8fafc;
+
+  /* Surfaces */
+  --ui-surface-primary: #ffffff;
+  --ui-surface-secondary: #f3f6fb;
+  --ui-surface-elevated: #ffffff;
+  --ui-surface-inset: #e9eef5;
+
+  /* Borders */
+  --ui-border-soft: #d9e1ec;
+  --ui-border-strong: #bcc8d8;
+
+  /* Text */
+  --ui-text-primary: #0f172a;
+  --ui-text-secondary: #334155;
+  --ui-text-muted: #64748b;
+  --ui-text-completed: #64748b;
+  --ui-text-inverse: #f8fafc;
+
+  /* Accent and state */
+  --ui-accent: #db2777;
+  --ui-accent-hover: #be185d;
+  --ui-success: #059669;
+  --ui-danger: #dc2626;
+  --ui-focus-ring: rgba(219, 39, 119, 0.35);
+  --ui-accent-glow-soft: rgba(219, 39, 119, 0.03);
+  --ui-accent-border-soft: #daa2c4;
+  --ui-accent-border-medium: #ca7eab;
+  --ui-accent-border-strong: #cf649c;
+  --ui-accent-border-input: #cb74a6;
+  --ui-accent-surface-soft: #fceef4;
+  --ui-accent-surface-checkbox: #efd1e3;
+  --ui-accent-shadow-soft: rgba(219, 39, 119, 0.1);
+  --ui-accent-shadow-checkbox: rgba(219, 39, 119, 0.14);
+  --ui-surface-elevated-translucent: rgba(255, 255, 255, 0.88);
+  --ui-selection-bg: rgba(219, 39, 119, 0.22);
+  --ui-selection-text: #0f172a;
+
+  /* Hero and elevation */
+  --ui-hero-overlay: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.18) 0%,
+    rgba(15, 23, 42, 0.36) 100%
+  );
+  --ui-shadow-panel: 0 24px 48px -32px rgba(15, 23, 42, 0.28);
+  --ui-shadow-elevated: 0 18px 40px -24px rgba(15, 23, 42, 0.18);
+
+  /* Shape and spacing */
+  --ui-radius-panel: 1.5rem;
+  --ui-radius-control: 0.875rem;
+  --ui-space-section: 1.5rem;
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* App shell */
+  --ui-app-bg: #050816;
+  --ui-shell-bg: #0b1020;
+
+  /* Surfaces */
+  --ui-surface-primary: #0f172a;
+  --ui-surface-secondary: #131d33;
+  --ui-surface-elevated: #18243a;
+  --ui-surface-inset: #0b1428;
+
+  /* Borders */
+  --ui-border-soft: #1d2940;
+  --ui-border-strong: #293854;
+
+  /* Text */
+  --ui-text-primary: #f8fafc;
+  --ui-text-secondary: #cbd5e1;
+  --ui-text-muted: #8ea0bf;
+  --ui-text-completed: #8fa0bd;
+  --ui-text-inverse: #020617;
+
+  /* Accent and state */
+  --ui-accent: #f472b6;
+  --ui-accent-hover: #ec4899;
+  --ui-success: #34d399;
+  --ui-danger: #f87171;
+  --ui-focus-ring: rgba(244, 114, 182, 0.32);
+  --ui-accent-glow-soft: rgba(244, 114, 182, 0.03);
+  --ui-accent-border-soft: #664268;
+  --ui-accent-border-medium: #855281;
+  --ui-accent-border-strong: #a65c91;
+  --ui-accent-border-input: #935687;
+  --ui-accent-surface-soft: #29243e;
+  --ui-accent-surface-checkbox: #3b2c4b;
+  --ui-accent-shadow-soft: rgba(244, 114, 182, 0.1);
+  --ui-accent-shadow-checkbox: rgba(244, 114, 182, 0.14);
+  --ui-surface-elevated-translucent: rgba(24, 36, 58, 0.88);
+  --ui-selection-bg: #f38bc2;
+  --ui-selection-text: #020617;
+
+  /* Hero and elevation */
+  --ui-hero-overlay: linear-gradient(
+    180deg,
+    rgba(2, 6, 23, 0.08) 0%,
+    rgba(2, 6, 23, 0.32) 100%
+  );
+  --ui-shadow-panel: 0 32px 80px -44px rgba(2, 6, 23, 0.86);
+  --ui-shadow-elevated: 0 24px 56px -36px rgba(2, 6, 23, 0.72);
+
+  /* Shape and spacing */
+  --ui-radius-panel: 1.5rem;
+  --ui-radius-control: 0.875rem;
+  --ui-space-section: 1.5rem;
+}

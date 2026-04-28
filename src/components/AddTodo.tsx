@@ -45,10 +45,10 @@ export default function AddTodo() {
   };
 
   return (
-    <div className="mx-4 mt-6 md:mx-6 lg:mx-8">
+    <div className="mx-4 mt-4 md:mx-6 md:mt-5 lg:mx-8 lg:mt-6">
       <form
         onSubmit={onSubmit}
-        className="flex items-center transition duration-500 ease-in-out py-2 border-b-2 border-gray-300 focus-within:border-b-2 focus-within:border-pink-600"
+        className="ui-line-input-wrap flex items-center gap-2 border-b-2 px-0 py-2 transition duration-300 ease-in-out sm:py-2.5"
         data-testid="task-form"
       >
         <input
@@ -68,30 +68,30 @@ export default function AddTodo() {
               setError("");
             }
           }}
-          className="flex-1 px-2.5 text-base md:text-lg bg-gray-200 placeholder-gray-500 focus:outline-none"
+          className="ui-line-input flex-1 px-2 text-base text-inherit focus:outline-none sm:text-lg"
           data-testid="task-input-field"
         />
         <button
           type="submit"
-          className="transition duration-200 ease-in-out text-gray-400 focus:outline-none hover:text-pink-500 text-xl p-2.5 md:text-2xl md:p-3 cursor-pointer"
+          className="ui-plain-icon-button h-10 w-10 shrink-0 cursor-pointer text-xl sm:h-11 sm:w-11 sm:text-2xl"
           data-testid="task-submit-btn"
         >
           <FaRegPlusSquare />
         </button>
       </form>
-      <div className="flex items-start justify-between mt-1">
+      <div className="mt-2 flex items-start justify-between gap-3 px-1">
         {error ? (
-          <p className="text-red-500 text-sm" role="alert">
+          <p className="text-sm text-[color:var(--ui-danger)]" role="alert">
             {error}
           </p>
         ) : (
           <span />
         )}
         <span
-          className={`text-sm ml-2 shrink-0 ${
+          className={`ui-text-muted ml-2 shrink-0 text-sm ${
             title.length > TASK_TITLE_MAX_LENGTH
-              ? "text-red-500"
-              : "text-gray-400"
+              ? "text-[color:var(--ui-danger)]"
+              : ""
           }`}
           aria-live="polite"
         >
