@@ -198,7 +198,7 @@ is therefore a local verification gap (CI is expected to cover it).
 Git state could not be confirmed in this environment and must be
 verified through GitHub.
 
-### Final branch snapshot for Assignment 05 (2026-11-22)
+### Intermediate branch snapshot (2026-11-22, before final deliverable documents)
 
 A later comparison after the Assignment 05 work confirmed:
 
@@ -222,3 +222,20 @@ already present in both `baseline-assignment05` and `assignment05-work`;
 `main` already ignores `.env*`, so the additional line is redundant.
 It was not introduced by the Task 03/07 work and is not a functional change
 relative to the preserved assignment baseline.
+
+### Latest GitHub snapshot before this documentation update
+
+| Field | Value |
+|-------|-------|
+| Baseline ref | `baseline-assignment05` |
+| Baseline SHA | `1c80da0d01b779b1f2aff4be42ee77dfc72ec0f0` |
+| Working ref | `assignment05-work` |
+| Working HEAD | `a95814c73725607141f1fbd3d689aba8c9365136` |
+| Comparison | 34 commits ahead; 0 behind |
+| Draft PR | [#1](https://github.com/dauletRy/react-todo-app/pull/1), draft and unmerged |
+| PR changed files | 21 (includes one redundant `.gitignore` difference relative to `main`) |
+| GitHub Actions runs for this HEAD | 0 returned |
+| Combined commit statuses | No status entries returned |
+
+The absence of workflow runs/status entries means post-change CI has not
+provided evidence. It must not be represented as a successful check.
