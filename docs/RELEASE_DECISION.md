@@ -26,7 +26,8 @@ This is a decision about the current reviewed candidate and its evidence state, 
 - Post-change `npm run lint`, `npm run test`, and `npm run build` results are not available.
 - GitHub PR #1 is open as a draft; status/check queries returned no check statuses or workflow runs at the time of review. An empty status response is not a passing result.
 - Cypress E2E was not executed in the original environment because Cypress could not find Xvfb. No post-change CI E2E result is available.
-- The branch comparison contains earlier Bolt-generated differences in `.bolt/memory.md` and `index.html`; these are documented but have not been independently justified as required assignment changes.
+- The branch comparison contains earlier Bolt-generated differences in `.bolt/memory.md` and `index.html`; these are documented but are not required Task 03/07 changes.
+- The draft PR diff against `main` also shows a redundant `.env` ignore line that is already present on `baseline-assignment05`; this is a base-branch comparison difference, not a new Task 03/07 change.
 
 ## Risk-register basis
 
