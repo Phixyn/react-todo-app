@@ -32,7 +32,7 @@ describe("todoStorage", () => {
 
     it("returns null and warns when saved JSON is malformed", () => {
       localStorage.setItem(STORAGE_KEY, "{not valid JSON");
-      const warning = vi.spyOn(console, "warn").mockImplementation(() => {});
+      const warning = vi.spyOn(console, "warn").mockImplementation(() => undefined);
 
       expect(loadTodos()).toBeNull();
       expect(warning).toHaveBeenCalledWith(
@@ -46,7 +46,7 @@ describe("todoStorage", () => {
         STORAGE_KEY,
         JSON.stringify({ id: "task-1", title: "Unexpected object" }),
       );
-      const warning = vi.spyOn(console, "warn").mockImplementation(() => {});
+      const warning = vi.spyOn(console, "warn").mockImplementation(() => undefined);
 
       expect(loadTodos()).toBeNull();
       expect(warning).toHaveBeenCalledWith(
@@ -59,7 +59,7 @@ describe("todoStorage", () => {
         STORAGE_KEY,
         JSON.stringify([{ id: "task-1", title: "Missing completed" }]),
       );
-      const warning = vi.spyOn(console, "warn").mockImplementation(() => {});
+      const warning = vi.spyOn(console, "warn").mockImplementation(() => undefined);
 
       expect(loadTodos()).toBeNull();
       expect(warning).toHaveBeenCalledWith(
@@ -83,7 +83,7 @@ describe("todoStorage", () => {
       vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
         throw new Error("Storage unavailable");
       });
-      const warning = vi.spyOn(console, "warn").mockImplementation(() => {});
+      const warning = vi.spyOn(console, "warn").mockImplementation(() => undefined);
 
       expect(loadTodos()).toBeNull();
       expect(warning).toHaveBeenCalledWith(
@@ -106,7 +106,7 @@ describe("todoStorage", () => {
       vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
         throw new Error("Storage unavailable");
       });
-      const warning = vi.spyOn(console, "warn").mockImplementation(() => {});
+      const warning = vi.spyOn(console, "warn").mockImplementation(() => undefined);
 
       expect(() => saveTodos(sampleTodos)).not.toThrow();
       expect(warning).toHaveBeenCalledWith(
