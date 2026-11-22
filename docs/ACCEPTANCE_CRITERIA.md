@@ -136,6 +136,7 @@ regression guards, not new features.
     of `TodoItemType` objects.
   - If `localStorage` is empty or unavailable, the app starts with
     an empty list (no crash).
+  - **Known current limitation:** malformed JSON is caught, and unavailable storage is caught by the load/save handlers. However, a valid JSON value with an unexpected shape (for example, a non-array value or an object missing `id`, `title`, or `completed`) is not runtime-validated before it is dispatched. This is a confirmed code gap; its precise UI impact has not been tested. Task 07 should address this through a separate mitigation and regression tests.
 - **How it can be verified:**
   - E2E: `cypress/e2e/ThemeSwitcher.cy.ts` demonstrates the reload
     persistence pattern for theme; task persistence follows the same
