@@ -57,9 +57,9 @@ R-05 and R-06 also score 4, but the existing PR-to-main workflow provides a proc
 | R-05 | 4 | Draft PR #1 opened to `main` as the intended CI/review gate | Local checks pass; GitHub workflow-run query for PR head returned no runs | **4** | PR exists and local checks pass, but CI is still unconfirmed. Empty workflow data is not a passing result. |
 | R-06 | 4 | README setup and quality-check instructions updated | Documentation reviewed against `package.json` scripts | **2** | The immediate onboarding gap is reduced; future documentation drift remains possible. |
 
-Scores are intentionally unchanged until post-change checks can be executed and inspected. The principal trade-off for R-01 is that the entire stored todo array is rejected when any element is invalid; valid records are not partially recovered and malformed storage is not automatically deleted.
+R-01 and R-02 residual scores have been reduced after their targeted tests and the full local unit suite passed. R-01 still rejects the whole array when any element is invalid; valid records are not partially recovered and malformed storage is not automatically deleted.
 
-**Next verification gate:** execute `npm run lint`, `npm run test`, and `npm run build` on `assignment05-work`; run Cypress in an environment with Xvfb; then update residual scores using actual evidence.
+**Remaining verification gate:** obtain successful GitHub Actions results for the current PR head (including Chrome E2E), review the full PR diff, and resolve or explicitly accept R-07 dependency findings before reconsidering release approval.
 
 
 ## Additional risk identified during post-change verification
