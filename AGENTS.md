@@ -245,7 +245,7 @@ state that explicitly as a verification gap.
 ## 8. Agent permissions and review gates
 
 The agent MAY:
-- Inspect and read any file in the repository.
+- Inspect and read repository files within the task scope, except secret-bearing files or credentials. Any necessary secret-file inspection requires explicit human authorization.
 - Propose changes and create documentation files within the approved
   scope.
 - Make small, focused code changes within the explicitly approved
