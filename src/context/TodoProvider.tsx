@@ -4,22 +4,17 @@ import type { ReactNode } from "react";
 import type { TodoItemType } from "../components/TodosList";
 import { TodoContext, initialState } from "./TodoContext";
 import TodoReducer from "./TodoReducer";
-
-const STORAGE_KEY = "todos";
+import { loadTodos, saveTodos } from "./todoStorage";
 
 export const TodoProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(TodoReducer, initialState);
   const hasMounted = useRef(false);
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored !== null) {
-        const parsed = JSON.parse(stored) as TodoItemType[];
-        dispatch({ type: "LOAD_TODOS", payload: parsed });
-      }
-    } catch (err) {
-      console.warn("Failed to load todos from localStorage:", err);
+    const storedTodos = loadTodos();
+
+    if (storedTodos !== null) {
+      dispatch({ type: "LOAD_TODOS", payload: storedTodos });
     }
   }, []);
 
@@ -28,11 +23,8 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
       hasMounted.current = true;
       return;
     }
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.todoItems));
-    } catch (err) {
-      console.warn("Failed to save todos to localStorage:", err);
-    }
+
+    saveTodos(state.todoItems);
   }, [state.todoItems]);
 
   // Actions
