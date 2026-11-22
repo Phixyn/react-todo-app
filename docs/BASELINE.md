@@ -144,6 +144,33 @@ blocked by the environment. The intended working branch
 through GitHub once the repository is available outside this
 environment.
 
+### Follow-up GitHub verification (2026-11-22)
+
+After the GitHub repository connection became available, the branch
+references were checked directly:
+
+| Field | Verified value |
+|-------|----------------|
+| Repository | `dauletRy/react-todo-app` |
+| Preserved baseline branch | `baseline-assignment05` |
+| Baseline branch commit at comparison | `1c80da0d01b779b1f2aff4be42ee77dfc72ec0f0` |
+| Working branch | `assignment05-work` |
+| Working branch commit at comparison | `ca9b4839f263178318189e0a0fa52c4030fc1055` |
+| Comparison | Working branch ahead by 9 commits, 0 commits behind |
+
+The initial Bolt inspection's statement that Git was unavailable remains
+accurate for that environment at that time. The later GitHub connection
+resolved the repository branch/commit visibility limitation. The GitHub
+comparison does not establish the local workspace's uncommitted working-tree
+status.
+
+The comparison also showed two earlier Bolt-generated branch differences
+outside the assignment code changes: `.bolt/memory.md` was added and
+`index.html` received three Open Graph/Twitter metadata lines. They are
+not part of the Task 03 persistence refactoring and are retained as
+observed branch-scope differences; they should not be misattributed to
+the refactoring.
+
 ---
 
 ## Summary table
