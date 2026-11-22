@@ -197,3 +197,18 @@ unverifiable area is the Cypress E2E suite, which requires Xvfb and
 is therefore a local verification gap (CI is expected to cover it).
 Git state could not be confirmed in this environment and must be
 verified through GitHub.
+
+### Final branch snapshot for Assignment 05 (2026-11-22)
+
+A later comparison after the Assignment 05 work confirmed:
+
+| Field | Value |
+|-------|-------|
+| Baseline ref | `baseline-assignment05` |
+| Baseline SHA | `1c80da0d01b779b1f2aff4be42ee77dfc72ec0f0` |
+| Working ref | `assignment05-work` |
+| Working HEAD at snapshot | `cb517179a775226dd5650c1bd282c3127cedfd5b` |
+| Comparison | 28 commits ahead; 0 behind |
+| Draft review PR | [#1](https://github.com/dauletRy/react-todo-app/pull/1), base `main`, not merged |
+
+The latest commit's GitHub combined-status and PR-workflow-run queries returned no status entries or runs. This means post-change CI was not confirmed; it does **not** mean the checks passed. See `docs/MITIGATION_VERIFICATION.md` and `docs/RELEASE_DECISION.md`.
