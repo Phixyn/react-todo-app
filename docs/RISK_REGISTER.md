@@ -45,3 +45,18 @@ R-05 and R-06 also score 4, but the existing PR-to-main workflow provides a proc
 - R-04 is intentionally marked plausible/unverified; no current lint or build failure is attributed to the stale entries.
 - The initial baseline results are pre-refactoring. Post-refactoring checks must be separately executed and recorded.
 - No risk is marked resolved merely because a mitigation has been proposed.
+
+## Task 07 — Mitigation status and residual scores
+
+| ID | Initial score | Mitigation implementation | Verification status | Residual score now | Reason |
+|---|---:|---|---|---:|---|
+| R-01 | 6 | Runtime data-shape validation added to `todoStorage.ts`; invalid payloads are rejected; negative/invalid cases added to storage tests | Tests authored, not executed | **6 (unchanged pending evidence)** | The source change addresses the cause, but no post-change test/build result is available yet. Do not reduce the score before verification. |
+| R-02 | 4 | Six direct reducer action tests added in `TodoReducer.test.ts` | Tests authored, not executed | **4 (unchanged pending evidence)** | The missing test file has been added, but its assertions have not yet been executed. |
+| R-03 | 1 | No code change | Unchanged | **1** | Low-priority dead-code concern; intent remains unknown. |
+| R-04 | 2 | No dependency/config change | Unchanged | **2** | Plausible concern only; no concrete failure demonstrated and no manifest change authorized. |
+| R-05 | 4 | Draft PR #1 opened to `main` as the intended CI/review gate | GitHub status and workflow-run queries returned no status entries at the time checked | **4** | PR exists, but checks are not confirmed. Do not treat empty status data as passing CI. |
+| R-06 | 4 | No README change yet | Unchanged | **4** | Documentation gap remains open. |
+
+Scores are intentionally unchanged until post-change checks can be executed and inspected. The principal trade-off for R-01 is that the entire stored todo array is rejected when any element is invalid; valid records are not partially recovered and malformed storage is not automatically deleted.
+
+**Next verification gate:** execute `npm run lint`, `npm run test`, and `npm run build` on `assignment05-work`; run Cypress in an environment with Xvfb; then update residual scores using actual evidence.
