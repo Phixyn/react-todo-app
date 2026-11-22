@@ -59,3 +59,13 @@ After work:
 ## Conclusion
 
 Level 2 is justified: the repository is documented and has a usable quality toolchain, but agent operation is not yet supported by complete, verified evidence. Level 3 should only be reconsidered after the critical correctness/test gaps are mitigated and the final checks are executed successfully.
+
+## Follow-up after Task 07
+
+The README setup/testing gap has been addressed: `README.md` now documents `npm ci`, `npm run lint`, `npm run test`, `npm run build`, and the Cypress/Xvfb limitation.
+
+The two priority code mitigations are also present in the working branch:
+- Runtime validation for persisted todo records in `src/context/todoStorage.ts`.
+- Direct tests for all six reducer actions in `src/context/TodoReducer.test.ts`.
+
+**Readiness remains Level 2 — Documented.** These test files have not yet been executed after the changes, post-change lint/build results are unavailable, and the draft PR has no reported check statuses. The code mitigations improve readiness but do not replace execution evidence.
