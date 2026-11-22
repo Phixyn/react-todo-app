@@ -66,6 +66,6 @@ Relevant commits on `assignment05-work`:
 
 - AC1–AC4 implementation files were not changed by these mitigations.
 - AC5 now has runtime validation for the persisted item shape. Empty/missing data, malformed JSON, invalid shapes and storage access errors result in no invalid payload being dispatched.
-- The six storage tests and six reducer tests (plus the pre-existing storage helper checks) are authored but still require actual execution.
+- Nine storage-helper tests are now present in total: six were added for the Task 03 extraction and three additional tests cover invalid shapes for Task 07. Six reducer action tests were also added. This is 15 new test cases beyond the 27-test baseline (42 expected tests if all are discovered and pass); the actual post-change count must come from the test runner.
 
 **Status:** Mitigations implemented in the working branch; verification pending. Do not mark R-01 or R-02 fully closed until the relevant test/build checks have passed.
