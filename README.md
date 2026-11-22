@@ -38,22 +38,30 @@ Front-end project only, no backend or database storage.
 
 ## Getting Started
 
-1. Clone the repository and `cd` into its root directory
-2. Run `npm install` to install dependencies
-3. Run `npm run dev` from the project directory to run in development mode
+1. Clone the repository and `cd` into its root directory.
+2. Use `npm ci` to install the exact dependency versions recorded in `package-lock.json`.
+3. Run `npm run dev` to start the development server.
 
 The application is served at [http://localhost:5173](http://localhost:5173) by default.
 
 ## Building
 
-Run `npm run build` to build the static assets for external or local hosting. The files will be located inside the `dist` folder by default.
+Run `npm run build` to type-check the TypeScript project and build the static assets for hosting. The files are written to the `dist` folder.
 
-This correctly bundles React in production mode and optimizes the build for best performance.
+## Quality Checks
 
-## Testing
+Run the core checks from the repository root:
 
-1. Run `npm run dev` to start the dev server
-2. In a separate terminal window, run `npm run cypress:run` to run end-to-end tests
+- `npm run lint` — run ESLint.
+- `npm run test` — run the Vitest unit/integration suite with coverage.
+- `npm run build` — run TypeScript project checks and the Vite production build.
+
+## End-to-End Testing
+
+1. Run `npm run dev` to start the Vite development server.
+2. In a separate terminal, run `npm run cypress:run`.
+
+Cypress requires a supported browser and display dependencies. On headless Linux, Xvfb may be required. The repository's GitHub Actions workflow runs Cypress in Chrome on `ubuntu-latest`. If Cypress cannot start locally, record the exact error and treat E2E as unverified rather than reporting a pass.
 
 ## Usage
 
