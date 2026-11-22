@@ -1,55 +1,66 @@
 # Task 09 — Release Decision
 
-Decision date: 2026-11-22
-Reviewed version: `assignment05-work`
-Review PR: #1 (draft; not merged)
+Decision date: 2026-11-22  
+Reviewed version: `assignment05-work`  
+Review PR: [#1](https://github.com/dauletRy/react-todo-app/pull/1) (open, draft, not merged)
 
 ## Decision
 
-# NO-GO — do not merge or deploy this candidate yet.
+# NO-GO — do not mark the PR ready, merge or deploy this candidate yet.
 
-This is a decision about the current reviewed candidate and its evidence state, not a claim that the application is inherently unusable.
+The local verification gates now pass. NO-GO is retained because the dependency audit identified unresolved vulnerabilities, GitHub Actions results are not confirmed, and the complete PR diff still requires human review. This is a decision about release evidence and residual risk, not a claim that the application is unusable.
 
-## Evidence supporting the decision
+## Positive evidence
 
-### Positive evidence
-- Pre-change baseline: `npm run lint` passed with exit code 0.
-- Pre-change baseline: `npm run test` passed 27/27 tests across 4 files.
-- Pre-change baseline: `npm run build` passed; TypeScript and Vite production build succeeded.
-- Task 03 moved persistence details out of the provider without changing the reducer action paths or UI components.
-- Task 07 added runtime validation for persisted todo data and direct tests for six reducer actions.
-- README setup and quality-check instructions were clarified.
-- A root `AGENTS.md` defines safe operating rules and human approval gates.
+- `npm.cmd run lint`: PASS; ESLint completed without diagnostics.
+- `npm.cmd run test`: PASS; 6 Vitest files and 42 tests passed, 0 failed.
+- Vitest coverage: statements 60.05%, branches 84.94%, functions 55.55%, lines 60.05%.
+- `npm.cmd run build`: PASS; TypeScript `tsc -b` and Vite 7.3.2 production build passed; 82 modules transformed.
+- `npm.cmd run cypress:run`: PASS; 7 Cypress specs and 47 tests passed, 0 failed, 0 pending, 0 skipped, using Electron 130 headlessly on Windows.
+- `git status --short --branch`: clean; branch tracks `origin/assignment05-work`.
+- The 9 todo-storage tests and 6 reducer tests added for Tasks 03/07 were discovered and passed.
 
-### Blocking evidence gaps
-- The Task 03/07 storage and reducer tests have been authored but have not been executed after the changes.
-- Post-change `npm run lint`, `npm run test`, and `npm run build` results are not available.
-- GitHub PR #1 is open as a draft; status/check queries returned no check statuses or workflow runs at the time of review. An empty status response is not a passing result.
-- Cypress E2E was not executed in the original environment because Cypress could not find Xvfb. No post-change CI E2E result is available.
-- The branch comparison contains earlier Bolt-generated differences in `.bolt/memory.md` and `index.html`; these are documented but are not required Task 03/07 changes.
-- The draft PR diff against `main` also shows a redundant `.env` ignore line that is already present on `baseline-assignment05`; this is a base-branch comparison difference, not a new Task 03/07 change.
+## Blocking risks and evidence gaps
+
+### 1. Dependency vulnerabilities
+
+- `npm ci` reported 34 vulnerabilities overall: 2 low, 14 moderate, 15 high and 3 critical.
+- `npm audit --omit=dev` reported 8 findings: 1 low, 1 moderate and 6 high. The report names esbuild, nanoid, postcss, react-router/react-router-dom, source-map-js, uuid and vite.
+- npm indicated fixes are available through `npm audit fix`.
+- No automatic fix or dependency update was run because that could alter dependency versions/lockfile and introduce unrelated changes. Review the dependency paths and upgrade plan; resolve the findings or obtain explicit documented risk acceptance before release.
+
+### 2. GitHub Actions not confirmed
+
+- PR #1 remains open and in draft state.
+- The workflow-run query for the current PR head returned no runs. An empty result is not a passing check.
+- Local Cypress used Electron 130, while the repository workflow is configured for Chrome on `ubuntu-latest`. The configured Chrome CI run remains unverified.
+
+### 3. Human review of the complete PR diff
+
+- Review every changed file and account for earlier Bolt-generated differences in `.bolt/memory.md` and `index.html`.
+- Review the `.gitignore` difference against `main`; the `.env` ignore line was already present on `baseline-assignment05`.
+- Confirm that all changes are in assignment scope and that no secrets or generated artifacts are included.
 
 ## Risk-register basis
 
-- R-01 (invalid persisted data shape): code mitigation implemented; execution evidence pending.
-- R-02 (missing reducer tests): tests implemented; execution evidence pending.
-- R-03 (unused AppHeader): low residual maintainability concern; no removal attempted.
-- R-04 (legacy Jest-related entries): plausible/unverified; no dependency/config change attempted.
-- R-05 (CI branch filters): PR workflow is the control, but its run is not confirmed.
-- R-06 (README verification guidance): README was updated; it should be rechecked against the actual scripts after final verification.
+- R-01: runtime validation implemented; 9 storage tests and full suite passed. Residual limitations remain for all-or-nothing rejection and malformed stored values.
+- R-02: six direct reducer tests implemented and passed.
+- R-03: unused AppHeader remains a low-priority maintainability concern.
+- R-04: legacy Jest-related entries remain plausible/unverified; no cleanup was attempted.
+- R-05: PR-based CI control exists, but no workflow run is confirmed.
+- R-06: README verification guidance was updated; retain normal documentation-drift risk.
+- R-07: dependency audit findings are unresolved and block release.
 
 ## Conditions to reconsider the release
 
-The owner is the student/repository maintainer. The candidate may be reconsidered only after all of these are completed:
+1. Review the 8 findings from `npm audit --omit=dev` and the full 34-finding install audit; identify direct/transitive paths, apply reviewed compatible updates or document explicit risk acceptance, and rerun install, lint, unit tests, build and Cypress.
+2. Obtain successful GitHub Actions results for the current PR head, including the configured Chrome E2E job; if workflows do not trigger, investigate the workflow configuration without bypassing required checks.
+3. Have a human inspect the full PR diff, including the previously documented Bolt and `.gitignore` differences.
+4. Save terminal screenshots or other course-required evidence of the local checks and final repository state.
+5. Only after the above, reconsider the NO-GO decision and explicitly approve any PR status change.
 
-1. On `assignment05-work`, run `npm run lint`, `npm run test`, and `npm run build`; record exact commands, exit codes, pass/fail totals and output.
-2. Confirm the new storage and reducer tests are discovered and pass. The current branch contains 15 newly authored test cases in addition to the 27 baseline tests; the actual final count must come from the test runner.
-3. Execute the existing Cypress suite in an environment with the required browser/display dependencies, or obtain a successful CI E2E result. Do not infer success from workflow configuration.
-4. Review the complete PR #1 diff and account for every changed file, including the earlier `.bolt/memory.md` and `index.html` changes.
-5. Have a human inspect the code and test evidence before marking the PR ready or merging.
+Until then, keep PR #1 in draft and do not merge or deploy.
 
-Until these conditions are met, keep PR #1 in draft and do not merge or deploy.
+## Environment note
 
-## Conclusion
-
-NO-GO is the defensible decision because the reviewed code version has not completed post-change verification. The baseline was healthy, and the targeted mitigations are present, but release approval requires evidence from the version being released, not only evidence from its earlier baseline.
+Local checks used Windows, Node.js v24.13.1 and npm 11.8.0. The original baseline was tested with Node.js v22.23.1 and npm 10.9.8. This environment difference should be disclosed when comparing baseline and post-change results.
