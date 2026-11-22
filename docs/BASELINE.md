@@ -212,3 +212,13 @@ A later comparison after the Assignment 05 work confirmed:
 | Draft review PR | [#1](https://github.com/dauletRy/react-todo-app/pull/1), base `main`, not merged |
 
 The latest commit's GitHub combined-status and PR-workflow-run queries returned no status entries or runs. This means post-change CI was not confirmed; it does **not** mean the checks passed. See `docs/MITIGATION_VERIFICATION.md` and `docs/RELEASE_DECISION.md`.
+
+### Pull-request base comparison note
+
+The draft PR targets the repository's `main` branch, which is not identical
+to the preserved assignment baseline ref. As a result, the PR diff against
+`main` also shows a `.gitignore` line containing `.env`. This line is
+already present in both `baseline-assignment05` and `assignment05-work`;
+`main` already ignores `.env*`, so the additional line is redundant.
+It was not introduced by the Task 03/07 work and is not a functional change
+relative to the preserved assignment baseline.
