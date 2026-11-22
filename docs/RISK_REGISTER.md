@@ -50,13 +50,33 @@ R-05 and R-06 also score 4, but the existing PR-to-main workflow provides a proc
 
 | ID | Initial score | Mitigation implementation | Verification status | Residual score now | Reason |
 |---|---:|---|---|---:|---|
-| R-01 | 6 | Runtime data-shape validation added to `todoStorage.ts`; invalid payloads are rejected; negative/invalid cases added to storage tests | Tests authored, not executed | **6 (unchanged pending evidence)** | The source change addresses the cause, but no post-change test/build result is available yet. Do not reduce the score before verification. |
-| R-02 | 4 | Six direct reducer action tests added in `TodoReducer.test.ts` | Tests authored, not executed | **4 (unchanged pending evidence)** | The missing test file has been added, but its assertions have not yet been executed. |
+| R-01 | 6 | Runtime data-shape validation added to `todoStorage.ts`; invalid payloads are rejected; negative/invalid cases added to storage tests | All 9 storage tests passed within the full 42-test Vitest run | **2 (reduced after successful local verification)** | Runtime validation is covered by passing invalid-shape tests and the full unit suite. Residual risk remains because invalid data is rejected as a whole rather than partially recovered, and malformed stored data is not automatically removed. |
+| R-02 | 4 | Six direct reducer action tests added in `TodoReducer.test.ts` | All 6 reducer tests passed within the full 42-test Vitest run | **2 (reduced after successful local verification)** | The six reducer action tests executed and passed; broader edge cases and UI integration gaps remain. |
 | R-03 | 1 | No code change | Unchanged | **1** | Low-priority dead-code concern; intent remains unknown. |
 | R-04 | 2 | No dependency/config change | Unchanged | **2** | Plausible concern only; no concrete failure demonstrated and no manifest change authorized. |
-| R-05 | 4 | Draft PR #1 opened to `main` as the intended CI/review gate | GitHub status and workflow-run queries returned no status entries at the time checked | **4** | PR exists, but checks are not confirmed. Do not treat empty status data as passing CI. |
+| R-05 | 4 | Draft PR #1 opened to `main` as the intended CI/review gate | Local checks pass; GitHub workflow-run query for PR head returned no runs | **4** | PR exists and local checks pass, but CI is still unconfirmed. Empty workflow data is not a passing result. |
 | R-06 | 4 | README setup and quality-check instructions updated | Documentation reviewed against `package.json` scripts | **2** | The immediate onboarding gap is reduced; future documentation drift remains possible. |
 
 Scores are intentionally unchanged until post-change checks can be executed and inspected. The principal trade-off for R-01 is that the entire stored todo array is rejected when any element is invalid; valid records are not partially recovered and malformed storage is not automatically deleted.
 
 **Next verification gate:** execute `npm run lint`, `npm run test`, and `npm run build` on `assignment05-work`; run Cypress in an environment with Xvfb; then update residual scores using actual evidence.
+
+
+## Additional risk identified during post-change verification
+
+| ID | Category / status | Cause → event → consequence | Evidence | L | I | Score | Mitigation | Owner | Verification plan | Residual risk |
+|---|---|---|---|---:|---:|---:|---|---|---|---|
+| R-07 | Dependency / security — confirmed audit findings | Vulnerable direct or transitive package versions remain in the dependency tree → a vulnerable code path is reachable in the app or development environment → security exposure or denial of service may occur | `npm.cmd ci` reported 34 vulnerabilities (2 low, 14 moderate, 15 high, 3 critical); `npm.cmd audit --omit=dev` reported 8 findings (1 low, 1 moderate, 6 high) naming esbuild, nanoid, postcss, react-router/react-router-dom, source-map-js, uuid and vite | 2 | 3 | **6** | Do not apply blind or forced upgrades. Review direct/transitive paths, assess whether affected functionality is reachable, plan compatible updates, rerun all checks, or document explicit risk acceptance | Student / repository maintainer | Inspect full `npm audit` JSON and dependency paths; update reviewed packages/lockfile only with approval; rerun install, lint, unit, build and E2E checks | Findings remain unresolved; severity and reachability must be assessed. Release remains NO-GO until remediated or explicitly accepted. |
+
+## Post-change verification update
+
+Local Windows verification on Node.js v24.13.1 / npm 11.8.0:
+- `npm.cmd run lint`: PASS.
+- `npm.cmd run test`: 42/42 passed across 6 files.
+- `npm.cmd run build`: PASS; TypeScript and Vite build succeeded.
+- `npm.cmd run cypress:run`: 47/47 passed across 7 specs in headless Electron 130.
+- `git status --short --branch`: clean and tracking `origin/assignment05-work`.
+
+The local Cypress result does not replace the configured GitHub Actions Chrome run. The workflow-run query for the current draft PR head returned no runs. Keep R-05 open and do not infer CI success.
+
+R-01 and R-02 implementation risks are reduced based on executed tests, but not eliminated. R-07 is a new release-blocking dependency risk. See `docs/POST_CHANGE_VERIFICATION.md` and `docs/RELEASE_DECISION.md` for the complete evidence and decision.
