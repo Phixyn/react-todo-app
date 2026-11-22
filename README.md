@@ -24,7 +24,8 @@
 - [Overview](#overview)
 - [Getting Started](#getting-started)
 - [Building](#building)
-- [Testing](#testing)
+- [Quality Checks](#quality-checks)
+- [End-to-End Testing](#end-to-end-testing)
 - [Usage](#usage)
 - [License](#license)
 
