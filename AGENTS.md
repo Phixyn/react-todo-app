@@ -132,7 +132,7 @@ Requires Node.js (CI uses Node 24; locally tested on Node v22.23.1) and
 npm.
 
 ```bash
-# Install dependencies (use the lockfile for reproducibility)
+# Install dependencies (run only after explicit human approval)
 npm ci
 
 # Start the dev server (http://localhost:5173)
@@ -150,6 +150,10 @@ npm run test
 # End-to-end tests (requires Xvfb on Linux; CI runs them in Chrome)
 npm run cypress:run
 ```
+
+The commands above are the core workflow, not an exhaustive script
+list. Check `package.json` for additional scripts such as `format`,
+`test:watch`, `cypress:open`, and `preview`.
 
 Do not invent commands. If a command is not listed in `package.json`,
 it does not exist in this project.
@@ -213,7 +217,10 @@ state that explicitly as a verification gap.
 ### FORBIDDEN
 
 - Reading, exposing, printing, or committing real credentials or
-  secrets.
+  secrets. Do not open or read `.env`, `.env.*`, private-key files,
+  credential stores, or secret-bearing configuration unless a human
+  explicitly authorizes that inspection and it is necessary for the task.
+  Never commit these files or their contents.
 - Introducing secrets, API keys, or tokens into source code.
 - Deploying the application to any environment.
 - Executing destructive shell commands (`rm -rf`, `git reset --hard`,
